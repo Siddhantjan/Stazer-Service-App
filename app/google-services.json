@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "245540218141",
+    "firebase_url": "https://stazer-service-app-3a8e6.firebaseio.com",
+    "project_id": "stazer-service-app-3a8e6",
+    "storage_bucket": "stazer-service-app-3a8e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245540218141:android:8b1e7e1cf530e8aa21edf4",
+        "android_client_info": {
+          "package_name": "stazer.user.androidstazerserviceapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245540218141-jdfu1shr2k5i3jqh56bs6caa784mk95r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "stazer.user.androidstazerserviceapp",
+            "certificate_hash": "b5622658f24cca7c07b2b9f6c8d37f240c80ebaf"
+          }
+        },
+        {
+          "client_id": "245540218141-05p9842kqgiqfnkb72im42oiocsd8hfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEnDPm33MU7oJw3Dimfwl6G3bADbZzGWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245540218141-05p9842kqgiqfnkb72im42oiocsd8hfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
