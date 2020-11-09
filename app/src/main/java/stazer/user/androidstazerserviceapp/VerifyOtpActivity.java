@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -32,6 +33,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_otp);
 
         TextView textMobile = findViewById(R.id.textMobile);
@@ -52,83 +54,73 @@ public class VerifyOtpActivity extends AppCompatActivity {
         final Button verifyBtn = findViewById(R.id.btn_verify);
         verificationID = getIntent().getStringExtra("verificationId");
 
-        verifyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (inputCode1.getText().toString().trim().isEmpty() || inputCode2.getText().toString().trim().isEmpty()
-                        || inputCode3.getText().toString().trim().isEmpty()
-                        || inputCode4.getText().toString().trim().isEmpty()
-                        || inputCode5.getText().toString().trim().isEmpty()
-                        || inputCode6.getText().toString().trim().isEmpty()
-                ) {
-                    Toast.makeText(VerifyOtpActivity.this, "Enter Verification Code", Toast.LENGTH_SHORT).show();
-                    return;
-                } else {
-                    String code = inputCode1.getText().toString() +
-                            inputCode2.getText().toString() +
-                            inputCode3.getText().toString() +
-                            inputCode4.getText().toString() +
-                            inputCode5.getText().toString() +
-                            inputCode6.getText().toString();
-                    if (verificationID != null) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        verifyBtn.setVisibility(View.INVISIBLE);
-                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
-                                verificationID,
-                                code
-                        );
-                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
-                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        progressBar.setVisibility(View.GONE);
-                                        verifyBtn.setVisibility(View.VISIBLE);
-                                        if (task.isSuccessful()) {
-                                            Intent mainIntent = new Intent(getApplicationContext(),MainActivity.class);
-                                            mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(mainIntent);
-                                            finish();
-                                        }
-                                        else {
-                                            Toast.makeText(VerifyOtpActivity.this, "Verification Code is Invalid", Toast.LENGTH_SHORT).show();
+        verifyBtn.setOnClickListener(v -> {
+            if (inputCode1.getText().toString().trim().isEmpty() || inputCode2.getText().toString().trim().isEmpty()
+                    || inputCode3.getText().toString().trim().isEmpty()
+                    || inputCode4.getText().toString().trim().isEmpty()
+                    || inputCode5.getText().toString().trim().isEmpty()
+                    || inputCode6.getText().toString().trim().isEmpty()
+            ) {
+                Toast.makeText(VerifyOtpActivity.this, "Enter Verification Code", Toast.LENGTH_SHORT).show();
+                return;
+            } else {
+                String code = inputCode1.getText().toString() +
+                        inputCode2.getText().toString() +
+                        inputCode3.getText().toString() +
+                        inputCode4.getText().toString() +
+                        inputCode5.getText().toString() +
+                        inputCode6.getText().toString();
+                if (verificationID != null) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    verifyBtn.setVisibility(View.INVISIBLE);
+                    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
+                            verificationID,
+                            code
+                    );
+                    FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
+                            .addOnCompleteListener(task -> {
+                                progressBar.setVisibility(View.GONE);
+                                verifyBtn.setVisibility(View.VISIBLE);
+                                if (task.isSuccessful()) {
+                                    Intent registerIntent = new Intent(getApplicationContext(),UserRegistrationActivity.class);
+                                    registerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(registerIntent);
+                                    finish();
+                                }
+                                else {
+                                    Toast.makeText(VerifyOtpActivity.this, "Verification Code is Invalid", Toast.LENGTH_SHORT).show();
 
-                                        }
-                                    }
-                                });
-                    }
+                                }
+                            });
                 }
             }
         });
-    findViewById(R.id.textResendOtp).setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                    "+91"+getIntent().getStringExtra("mobile"),
-                    60,
-                    TimeUnit.SECONDS,
-                    VerifyOtpActivity.this,
-                    new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                        @Override
-                        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-                        }
+    findViewById(R.id.textResendOtp).setOnClickListener(v -> PhoneAuthProvider.getInstance().verifyPhoneNumber(
+            "+91"+getIntent().getStringExtra("mobile"),
+            60,
+            TimeUnit.SECONDS,
+            VerifyOtpActivity.this,
+            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                @Override
+                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
-                        @Override
-                        public void onVerificationFailed(@NonNull FirebaseException e) {
+                }
 
-                            Toast.makeText(VerifyOtpActivity.this, "[Error]:"+e.getMessage(), Toast.LENGTH_LONG).show();
-                        }
+                @Override
+                public void onVerificationFailed(@NonNull FirebaseException e) {
 
-                        @Override
-                        public void onCodeSent(@NonNull String newVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                            verificationID = newVerificationId;
-                            Toast.makeText(VerifyOtpActivity.this, "Otp Sent Successfully", Toast.LENGTH_SHORT).show();
-                        }
+                    Toast.makeText(VerifyOtpActivity.this, "[Error]:"+e.getMessage(), Toast.LENGTH_LONG).show();
+                }
 
-                    }
-            );
-        }
-    });
+                @Override
+                public void onCodeSent(@NonNull String newVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                    verificationID = newVerificationId;
+                    Toast.makeText(VerifyOtpActivity.this, "Otp Sent Successfully", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+    ));
 
     }
 
