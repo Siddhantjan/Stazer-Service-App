@@ -4,10 +4,12 @@
     <color name="colorPrimaryDark">#FF03DAC5</color>
     <color name="colorAccent">#FF3700B3</color>
 
-    <color name="TextPrimary">#212121</color>
+    <color name="TextPrimary">#000000</color>
     <color name="TextSecondary">#757575</color>
-    
 
+
+    <color name="iconCardColor">#F8F9F9</color>
+    <color name="darkRed">#B30000</color>
     <color name="colorCardBlue">#1E1E73</color>
 
     <color name="colorDivider">#BDBDBD</color>
