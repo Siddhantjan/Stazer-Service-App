@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Electrician Services"
+                android:text="RO Services"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
@@ -47,7 +47,7 @@
 
         </RelativeLayout>
 
-<!-- Header close -->
+        <!-- Header close -->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Visit Charge For Basic Electrical Services"
+                                android:text="Visit Charge For Basic RO Checkup Services"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
@@ -96,7 +96,7 @@
                                 android:layout_below="@+id/cardTitleEle"
                                 android:layout_marginStart="25dp"
                                 android:padding="8dp"
-                                android:text=" ₹ 199/-"
+                                android:text=" ₹ 299/-"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp" />
                         </RelativeLayout>
@@ -164,7 +164,7 @@
                         android:textSize="8sp" />
 
                     <Button
-                        android:id="@+id/btn_getOTP"
+                        android:id="@+id/btn_book"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -191,7 +191,7 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-   <!-- Scroll close -->
+        <!-- Scroll close -->
 
     </LinearLayout>
 </RelativeLayout>

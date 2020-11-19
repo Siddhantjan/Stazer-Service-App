@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".services.electrician.ElectricianActivity">
+    tools:context=".services.plumber.PlumberActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Electrician Services"
+                android:text="Plumber Services"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
@@ -47,7 +47,7 @@
 
         </RelativeLayout>
 
-<!-- Header close -->
+        <!-- Header close -->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Visit Charge For Basic Electrical Services"
+                                android:text="Visit Charge For Basic Plumbing Services"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
@@ -191,7 +191,7 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-   <!-- Scroll close -->
+        <!-- Scroll close -->
 
     </LinearLayout>
 </RelativeLayout>

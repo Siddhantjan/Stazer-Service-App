@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Electrician Services"
+                android:text="Carpenter Services"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
@@ -47,7 +47,7 @@
 
         </RelativeLayout>
 
-<!-- Header close -->
+        <!-- Header close -->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-   <!-- Scroll close -->
+        <!-- Scroll close -->
 
     </LinearLayout>
 </RelativeLayout>
