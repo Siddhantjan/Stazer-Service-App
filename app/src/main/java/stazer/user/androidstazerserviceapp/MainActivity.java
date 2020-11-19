@@ -2,6 +2,8 @@ package stazer.user.androidstazerserviceapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,9 +21,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
+import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewHelperClass;
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
 import stazer.user.androidstazerserviceapp.Model.UserModel;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
@@ -38,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference userInfoRef;
     FirebaseAuth firebaseAuth;
     private Button btn_logout;
-
+    RecyclerView homeScreenAdsLayout;
+    RecyclerView.Adapter homeScreenAdsLayoutAdapter;
     @Override
     protected void onStart() {
         firebaseAuth = FirebaseAuth.getInstance();
@@ -93,6 +99,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.geyser_service_main).setOnClickListener(v -> ViewGeyserActivity());
         /* --------------------------------- Close ----------------------------------*/
 
+        //RecyclerView layout for ads
+        /* --------------------------------- Start ----------------------------------*/
+        homeScreenAdsLayout = findViewById(R.id.home_screen_ads_recyclerView);
+        homeScreenAdsLayout();
+
+        /* --------------------------------- Close ----------------------------------*/
+
+
 
         //Tender Services
         /* --------------------------------- start ----------------------------------*/
@@ -102,13 +116,24 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.hostel_institute_tender);
         /* --------------------------------- Close ----------------------------------*/
 
-
         //Logout
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(v -> {
             firebaseAuth.signOut();
             gotoLoginPage();
         });
+    }
+
+    private void homeScreenAdsLayout() {
+        homeScreenAdsLayout.setHasFixedSize(true);
+        homeScreenAdsLayout.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        ArrayList<homeScreenAdsRecyclerViewHelperClass> adsList = new ArrayList<>();
+        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.ac,"Super Offer on Ac Cleaning","Ac Split : ₹599/-","Ac window : ₹599/-"));
+        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.refrigerator,"Super Offer on Refrigerator Service","Single Door : ₹399/-","MultiDoor : ₹449/-"));
+
+        homeScreenAdsLayoutAdapter = new homeScreenAdsRecyclerViewAdapter(adsList);
+        homeScreenAdsLayout.setAdapter(homeScreenAdsLayoutAdapter);
+
     }
 
     private void ViewGeyserActivity() {

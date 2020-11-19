@@ -12,10 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".services.geyser.GeyserActivity"></activity>
-        <activity android:name=".services.roservice.RoServiceActivity" />
-        <activity android:name=".services.carpenter.CarpenterActivity" />
-        <activity android:name=".HomeAppliance.HomeApplianceActivity" />
+        <activity android:name=".services.geyser.GeyserActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".services.roservice.RoServiceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".services.carpenter.CarpenterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeAppliance.HomeApplianceActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".services.refrigerator.RefrigeratorActivity"
             android:screenOrientation="portrait" />
