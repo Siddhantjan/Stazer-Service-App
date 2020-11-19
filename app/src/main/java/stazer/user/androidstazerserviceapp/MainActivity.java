@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Model.UserModel;
+import stazer.user.androidstazerserviceapp.services.electrician.ElectricianActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,11 +38,26 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+        //Connect Layout to electrician Activity
+      findViewById(R.id.electrician_servicePop).setOnClickListener(v -> {
+          ViewElectricianActivity();
+      });
+        findViewById(R.id.electrician_service_main).setOnClickListener(v -> {
+            ViewElectricianActivity();
+        });
+
+
+        //Logout
         btn_logout= findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(v -> {
             firebaseAuth.signOut();
             gotoLoginPage();
         });
+    }
+
+    private void ViewElectricianActivity() {
+        Intent electricianIntent = new Intent(getApplicationContext(), ElectricianActivity.class);
+        startActivity(electricianIntent);
     }
 
     @Override

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".services.electrician.ElectricianActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <!-- Top Layout -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/electrician_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="Electrician Services"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp" />
+
+            <RatingBar
+                android:id="@+id/electrician_rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/electrician_text"
+                android:rating="4.5" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/electrician_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/colorDivider" />
+
+        </RelativeLayout>
+
+<!-- Header close -->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+            <!-- main Scroll start -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Layout second -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <!--Basic Rate card -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="12dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorCardBlue"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/cardTitleEle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Visit Charge For Basic Electrical Services"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/cardTitleEle"
+                                android:layout_marginStart="16dp"
+                                android:padding="8dp"
+                                android:text=" ₹ 199/-"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+                <!-- Third Layout -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/noticeRates"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="* Charges May be Differ according to your Requirements final Charges can be declared after inspection your site"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="14sp" />
+
+                        <Button
+                            android:id="@+id/electrician_RateCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/noticeRates"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:elevation="16dp"
+                            android:text="View Rate Card" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_below="@+id/electrician_RateCard"
+                            android:layout_marginStart="260dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="@color/colorDivider" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/electrician_RateCard"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:padding="16dp"
+                            android:text="Book your Service  or Schedule your Service  on one Click"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:padding="8dp"
+                        android:text="*no hidden Charges taking By us."
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="8sp" />
+
+                    <Button
+                        android:id="@+id/btn_getOTP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@drawable/background_button"
+                        android:padding="14dp"
+                        android:text="Book Now"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/scheduleService"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/background_button"
+                        android:padding="14dp"
+                        android:text="Schedule Service"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+   <!-- Scroll close -->
+
+    </LinearLayout>
+</RelativeLayout>
