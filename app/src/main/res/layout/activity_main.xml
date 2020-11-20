@@ -1,28 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
-    android:background="@null">
+    android:id="@+id/drawer_layout">
 
-    <LinearLayout
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/main_menu"
+        android:background="@color/colorWhite"/>
+
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
         android:orientation="vertical">
         <!-- Header -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:background="@drawable/top_head_img">
+
             <ImageView
-                android:background="@null"
-                android:scaleType="centerCrop"
+                android:id="@+id/menu_openIcon"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:layout_margin="16dp"
-                android:src="@drawable/ic_baseline_menu_24"/>
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_menu_24" />
         </RelativeLayout>
 
         <ScrollView
@@ -44,6 +58,7 @@
                     android:layout_marginTop="20dp"
                     android:elevation="16dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -51,140 +66,153 @@
                         android:text="Popular Services"
                         android:textColor="@color/TextSecondary"
                         android:textSize="16sp" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginEnd="40dp"
                         android:background="@color/colorDivider" />
-<!-- Card View Layouts -->
-                 <LinearLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="120dp"
-                     android:orientation="horizontal"
-                     android:gravity="center"
-                     android:layout_margin="8dp">
-                     <!-- card 1 -->
-                     <androidx.cardview.widget.CardView
-                         android:layout_width="75dp"
-                         android:layout_height="100dp"
-                         app:cardCornerRadius="8dp"
-                         app:cardElevation="8dp"
-                         android:layout_margin="4dp">
-                         <LinearLayout
-                             android:id="@+id/popCard1"
-                             android:gravity="center"
-                             android:layout_gravity="center_horizontal"
-                             android:layout_width="match_parent"
-                             android:layout_height="match_parent"
-                             android:orientation="vertical">
-                         <ImageView
-                             android:layout_margin="8dp"
-                             android:layout_width="64dp"
-                             android:layout_height="64dp"
-                             android:layout_gravity="center"
-                             android:src="@drawable/icon_service"/>
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:layout_height="wrap_content"
-                             android:text="Electrician"
-                             android:textColor="@color/TextPrimary"
-                             android:textAlignment="center"
-                             android:textSize="12sp"
-                             android:layout_marginBottom="4dp"/>
-                         </LinearLayout>
-                     </androidx.cardview.widget.CardView>
-                     <!-- card 2 -->
-                     <androidx.cardview.widget.CardView
-                         android:layout_width="75dp"
-                         android:layout_height="100dp"
-                         app:cardCornerRadius="8dp"
-                         app:cardElevation="8dp"
-                         android:layout_margin="4dp">
-                         <LinearLayout
-                             android:id="@+id/popCard2"
-                             android:gravity="center"
-                             android:layout_gravity="center_horizontal"
-                             android:layout_width="match_parent"
-                             android:layout_height="match_parent"
-                             android:orientation="vertical">
-                             <ImageView
-                                 android:layout_margin="8dp"
-                                 android:layout_width="64dp"
-                                 android:layout_height="64dp"
-                                 android:layout_gravity="center"
-                                 android:src="@drawable/icon_service"/>
-                             <TextView
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:text="Plumber"
-                                 android:textColor="@color/TextPrimary"
-                                 android:textAlignment="center"
-                                 android:textSize="12sp"
-                                 android:layout_marginBottom="4dp"/>
-                         </LinearLayout>
-                     </androidx.cardview.widget.CardView>
-                     <!-- card 3 -->
-                     <androidx.cardview.widget.CardView
-                         android:layout_width="75dp"
-                         android:layout_height="100dp"
-                         app:cardCornerRadius="8dp"
-                         app:cardElevation="8dp"
-                         android:layout_margin="4dp">
-                         <LinearLayout
-                             android:id="@+id/popCard3"
-                             android:gravity="center"
-                             android:layout_gravity="center_horizontal"
-                             android:layout_width="match_parent"
-                             android:layout_height="match_parent"
-                             android:orientation="vertical">
-                             <ImageView
-                                 android:layout_margin="8dp"
-                                 android:layout_width="64dp"
-                                 android:layout_height="64dp"
-                                 android:layout_gravity="center"
-                                 android:src="@drawable/icon_service"/>
-                             <TextView
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:text="AC Service"
-                                 android:textColor="@color/TextPrimary"
-                                 android:textAlignment="center"
-                                 android:textSize="12sp"
-                                 android:layout_marginBottom="4dp"/>
-                         </LinearLayout>
-                     </androidx.cardview.widget.CardView>
-                     <!-- card 4 -->
-                     <androidx.cardview.widget.CardView
-                         android:layout_width="75dp"
-                         android:layout_height="100dp"
-                         app:cardCornerRadius="8dp"
-                         app:cardElevation="8dp"
-                         android:layout_margin="4dp">
-                         <LinearLayout
-                             android:id="@+id/popCard4"
-                             android:gravity="center"
-                             android:layout_gravity="center_horizontal"
-                             android:layout_width="match_parent"
-                             android:layout_height="match_parent"
-                             android:orientation="vertical">
-                             <ImageView
-                                 android:layout_margin="8dp"
-                                 android:layout_width="64dp"
-                                 android:layout_height="64dp"
-                                 android:layout_gravity="center"
-                                 android:src="@drawable/icon_service"/>
-                             <TextView
-                                 android:layout_width="match_parent"
-                                 android:layout_height="wrap_content"
-                                 android:text="Refrigerator"
-                                 android:textColor="@color/TextPrimary"
-                                 android:textAlignment="center"
-                                 android:textSize="12sp"
-                                 android:layout_marginBottom="4dp"/>
-                         </LinearLayout>
-                     </androidx.cardview.widget.CardView>
-                 </LinearLayout>
+                    <!-- Card View Layouts -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_margin="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <!-- card 1 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="75dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/popCard1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/icon_service" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="Electrician"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <!-- card 2 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="75dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/popCard2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/icon_service" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="Plumber"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <!-- card 3 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="75dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/popCard3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/icon_service" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="AC Service"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <!-- card 4 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="75dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="4dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp">
+
+                            <LinearLayout
+                                android:id="@+id/popCard4"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/icon_service" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="Refrigerator"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
 
                 </LinearLayout>
                 <!-- Second Layout -->
@@ -195,6 +223,7 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:padding="8dp">
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/home_screen_ads_recyclerView"
                         android:layout_width="match_parent"
@@ -209,6 +238,7 @@
                     android:layout_marginTop="20dp"
                     android:elevation="16dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -216,6 +246,7 @@
                         android:text="Discover Services"
                         android:textColor="@color/TextSecondary"
                         android:textSize="16sp" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
@@ -226,131 +257,143 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:orientation="horizontal"
+                        android:layout_margin="8dp"
                         android:gravity="center"
-                        android:layout_margin="8dp">
+                        android:orientation="horizontal">
                         <!-- card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/homeAppliance_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Home Appliance"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/electrician_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Electrician"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 3 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/plumber_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Plumber"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 4 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/ac_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="AC Service"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -358,135 +401,146 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
-                        android:orientation="horizontal"
+                        android:layout_margin="8dp"
                         android:gravity="center"
-                        android:layout_margin="8dp">
+                        android:orientation="horizontal">
                         <!-- card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/carpenter_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Carpenter"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/ro_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="RO Service"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 3 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/refrigerator_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Refrigerator"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 4 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
                             android:layout_height="100dp"
+                            android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="4dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/geyser_service_main"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <ImageView
-                                    android:layout_margin="4dp"
                                     android:layout_width="64dp"
                                     android:layout_height="64dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/icon_service"/>
+                                    android:layout_margin="4dp"
+                                    android:src="@drawable/icon_service" />
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="35sp"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Geyser"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="12sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="12sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
-
 
 
                 </LinearLayout>
@@ -497,6 +551,7 @@
                     android:layout_marginTop="20dp"
                     android:elevation="16dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -504,6 +559,7 @@
                         android:text="Tender Services"
                         android:textColor="@color/TextSecondary"
                         android:textSize="16sp" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
@@ -514,57 +570,61 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="138dp"
-                        android:orientation="horizontal"
+                        android:layout_margin="8dp"
                         android:gravity="center"
-                        android:layout_margin="8dp">
+                        android:orientation="horizontal">
                         <!-- card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="145dp"
                             android:layout_height="135dp"
+                            android:layout_margin="10dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="10dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/hotel_restaurants_tender"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Hotels and Restaurants "
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="18sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="18sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="145dp"
                             android:layout_height="135dp"
+                            android:layout_margin="10dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="10dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/hostel_institute_tender"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Hostel and Institutes"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="18sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="18sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
@@ -572,63 +632,66 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="138dp"
-                        android:orientation="horizontal"
+                        android:layout_margin="8dp"
                         android:gravity="center"
-                        android:layout_margin="8dp">
+                        android:orientation="horizontal">
                         <!-- card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="145dp"
                             android:layout_height="135dp"
+                            android:layout_margin="10dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="10dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/mall_tender"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Mall"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="18sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="18sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                         <!-- card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="145dp"
                             android:layout_height="135dp"
+                            android:layout_margin="10dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp"
-                            android:layout_margin="10dp">
+                            app:cardElevation="8dp">
+
                             <LinearLayout
                                 android:id="@+id/flats_societies_tender"
-                                android:gravity="center"
-                                android:layout_gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
                                 android:orientation="vertical">
+
                                 <TextView
-                                    android:gravity="center"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_marginBottom="2dp"
+                                    android:gravity="center"
                                     android:text="Flats and Societies"
-                                    android:textColor="@color/TextPrimary"
                                     android:textAlignment="center"
-                                    android:textSize="18sp"
-                                    android:layout_marginBottom="2dp"/>
+                                    android:textColor="@color/TextPrimary"
+                                    android:textSize="18sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
                     </LinearLayout>
 
                 </LinearLayout>
-                
 
 
                 <!-- main Scroll Close -->
@@ -651,8 +714,7 @@
 
         </ScrollView>
 
-
     </LinearLayout>
 
 
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

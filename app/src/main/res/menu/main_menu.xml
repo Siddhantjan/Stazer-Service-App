@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_dashboard_24"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_booking"
+            android:icon="@drawable/ic_baseline_book_online_24"
+            android:title="Booking" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:title="Sign out" />
+    </group>
+    <item android:title="Share">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_baseline_share_24"
+                    android:title="Share" />
+                <item
+                    android:id="@+id/nav_rate_us"
+                    android:icon="@drawable/ic_baseline_star_rate_24"
+                    android:title="Rate Us" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="About Us">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_aboutCompany"
+                    android:title="About Company" />
+                <item
+                    android:id="@+id/nav_terms"
+                    android:title="Terms and Conditions" />
+                <item
+                    android:id="@+id/nav_values"
+                    android:title="Our Vision" />
+                <item
+                    android:id="@+id/nav_team"
+                    android:title="Developer Team" />
+            </group>
+        </menu>
+    </item>
+
+
+</menu>

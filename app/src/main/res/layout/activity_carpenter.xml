@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".services.electrician.ElectricianActivity">
+    tools:context=".services.carpenter.CarpenterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_marginTop="20dp">
 
             <TextView
-                android:id="@+id/electrician_text"
+                android:id="@+id/carpenter_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -29,18 +29,18 @@
                 android:textSize="22sp" />
 
             <RatingBar
-                android:id="@+id/electrician_rating"
+                android:id="@+id/carpenter_rating"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_toEndOf="@+id/electrician_text"
+                android:layout_toEndOf="@+id/carpenter_text"
                 android:rating="4.5" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_below="@+id/electrician_text"
+                android:layout_below="@+id/carpenter_text"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="40dp"
                 android:background="@color/colorDivider" />
@@ -62,7 +62,7 @@
                 <!-- Layout second -->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
@@ -82,23 +82,33 @@
                             android:padding="10dp">
 
                             <TextView
-                                android:id="@+id/cardTitleEle"
+                                android:id="@+id/cardTitle_carpenter"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Visit Charge For Basic Electrical Services"
+                                android:text="Visit Charge For Book a Carpenter"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
                             <TextView
+                                android:id="@+id/carpenter_rate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/cardTitleEle"
+                                android:layout_below="@+id/cardTitle_carpenter"
                                 android:layout_marginStart="25dp"
                                 android:padding="8dp"
-                                android:text=" ₹ 199/-"
+                                android:text=" ₹ 1/-"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp" />
+                            <TextView
+                                android:layout_width="280dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/carpenter_rate"
+                                android:layout_marginStart="25dp"
+                                android:text="This only Visit Charge. Final charges provide by our Carpenter After Visiting your Work or Requirements"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="14sp" />
+
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
@@ -124,7 +134,7 @@
                             android:textSize="14sp" />
 
                         <Button
-                            android:id="@+id/electrician_RateCard"
+                            android:id="@+id/carpenter_RateCard"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/noticeRates"
@@ -136,7 +146,7 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="2dp"
-                            android:layout_below="@+id/electrician_RateCard"
+                            android:layout_below="@+id/carpenter_RateCard"
                             android:layout_marginStart="260dp"
                             android:layout_marginEnd="4dp"
                             android:background="@color/colorDivider" />
@@ -144,7 +154,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/electrician_RateCard"
+                            android:layout_below="@+id/carpenter_RateCard"
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="16dp"
                             android:gravity="center"
@@ -164,7 +174,7 @@
                         android:textSize="8sp" />
 
                     <Button
-                        android:id="@+id/btn_getOTP"
+                        android:id="@+id/btn_book_carpenter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -176,7 +186,7 @@
                         android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/scheduleService"
+                        android:id="@+id/scheduleServiceCarpenter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -185,7 +195,7 @@
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/background_button"
                         android:padding="14dp"
-                        android:text="Schedule Service"
+                        android:text="Schedule Meeting"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
                 </LinearLayout>

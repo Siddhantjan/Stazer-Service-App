@@ -1,18 +1,24 @@
 package stazer.user.androidstazerserviceapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
+import android.graphics.RenderNode;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +34,6 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewHelperClass;
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
-import stazer.user.androidstazerserviceapp.Model.UserModel;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
 import stazer.user.androidstazerserviceapp.services.carpenter.CarpenterActivity;
 import stazer.user.androidstazerserviceapp.services.electrician.ElectricianActivity;
@@ -37,14 +42,23 @@ import stazer.user.androidstazerserviceapp.services.plumber.PlumberActivity;
 import stazer.user.androidstazerserviceapp.services.refrigerator.RefrigeratorActivity;
 import stazer.user.androidstazerserviceapp.services.roservice.RoServiceActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    static final float END_SCALE = 0.7f;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userInfoRef;
     FirebaseAuth firebaseAuth;
     private Button btn_logout;
+    private ImageView menuOpenIcon;
+    //Home Ads RecyclerView
     RecyclerView homeScreenAdsLayout;
     RecyclerView.Adapter homeScreenAdsLayoutAdapter;
+    LinearLayout contentView;
+
+    //HomeDrawer menu
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     @Override
     protected void onStart() {
         firebaseAuth = FirebaseAuth.getInstance();
@@ -65,6 +79,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+
+        menuOpenIcon = findViewById(R.id.menu_openIcon);
+        contentView = findViewById(R.id.content);
+        //Menu
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.navigation_view);
+
+
+        navigationDrawer();
+
 
         // Popular Service
         /* ---------------------------------------------------------- Start ----------------------------------*/
@@ -107,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         /* --------------------------------- Close ----------------------------------*/
 
 
-
         //Tender Services
         /* --------------------------------- start ----------------------------------*/
         findViewById(R.id.hotel_restaurants_tender);
@@ -115,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.flats_societies_tender);
         findViewById(R.id.hostel_institute_tender);
         /* --------------------------------- Close ----------------------------------*/
-
         //Logout
         btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(v -> {
@@ -124,18 +146,80 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Navigation Drawer functions
+    private void navigationDrawer() {
+        //Navigation Drawer
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+
+
+        menuOpenIcon.setOnClickListener(v -> {
+
+            if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+
+        });
+
+        animateNavigationDrawer();
+    }
+
+    private void animateNavigationDrawer() {
+        drawerLayout.setScrimColor(getResources().getColor(R.color.colorCardBlue));
+        //Add any color or remove it to use the default one!
+        //To make it transparent use Color.Transparent in side setScrimColor();
+        //drawerLayout.setScrimColor(Color.TRANSPARENT);
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+                // Scale the View based on current slide offset
+                final float diffScaledOffset = slideOffset * (1 - END_SCALE);
+                final float offsetScale = 1 - diffScaledOffset;
+                contentView.setScaleX(offsetScale);
+                contentView.setScaleY(offsetScale);
+
+                // Translate the View, accounting for the scaled width
+                final float xOffset = drawerView.getWidth() * slideOffset;
+                final float xOffsetDiff = contentView.getWidth() * diffScaledOffset / 2;
+                final float xTranslation = xOffset - xOffsetDiff;
+                contentView.setTranslationX(xTranslation);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
+    }
+
+
+    //layout function RecyclerView
     private void homeScreenAdsLayout() {
         homeScreenAdsLayout.setHasFixedSize(true);
-        homeScreenAdsLayout.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        homeScreenAdsLayout.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         ArrayList<homeScreenAdsRecyclerViewHelperClass> adsList = new ArrayList<>();
-        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.ac,"Super Offer on Ac Cleaning","Ac Split : ₹599/-","Ac window : ₹599/-"));
-        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.refrigerator,"Super Offer on Refrigerator Service","Single Door : ₹399/-","MultiDoor : ₹449/-"));
+        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.ac, "Super Offer on Ac Cleaning", "Ac Split : ₹499/-", "Ac window : ₹449/-"));
+        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.refrigerator, "Super Offer on Refrigerator Service", "Single Door : ₹399/-", "MultiDoor : ₹449/-"));
+        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.washinemachine, "Super Offer on Washing Machine Service", "Normal : ₹399/-", "Automatic : ₹449/-"));
 
         homeScreenAdsLayoutAdapter = new homeScreenAdsRecyclerViewAdapter(adsList);
         homeScreenAdsLayout.setAdapter(homeScreenAdsLayoutAdapter);
 
     }
 
+    //layout function
     private void ViewGeyserActivity() {
         Intent geyserIntent = new Intent(getApplicationContext(), GeyserActivity.class);
         startActivity(geyserIntent);
@@ -176,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(electricianIntent);
     }
 
-
+    //Internal Checking Fun
     private void checkUserFromFirebase() {
         userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -200,10 +284,12 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    // when You Logout
     private void gotoLoginPage() {
         Intent authIntent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(authIntent);
         finish();
     }
+
 
 }

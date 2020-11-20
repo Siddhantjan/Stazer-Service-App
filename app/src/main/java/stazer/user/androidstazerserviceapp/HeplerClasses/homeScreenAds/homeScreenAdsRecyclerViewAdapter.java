@@ -37,6 +37,9 @@ public class homeScreenAdsRecyclerViewAdapter extends RecyclerView.Adapter<homeS
         holder.adTitle.setText(homeScreenAdsRecyclerViewHelperClass.getAdTitle());
         holder.adRate1.setText(homeScreenAdsRecyclerViewHelperClass.getAdRate1());
         holder.adRate2.setText(homeScreenAdsRecyclerViewHelperClass.getAdRate2());
+
+
+
     }
 
     @Override
