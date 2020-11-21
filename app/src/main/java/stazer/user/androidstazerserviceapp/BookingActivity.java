@@ -1,19 +1,16 @@
-package stazer.user.androidstazerserviceapp.services.geyser;
+package stazer.user.androidstazerserviceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import stazer.user.androidstazerserviceapp.R;
-
-public class GeyserActivity extends AppCompatActivity {
+public class BookingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_geyser);
+        setContentView(R.layout.activity_booking);
     }
 }

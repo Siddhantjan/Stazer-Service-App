@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Company.OurVisionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="8dp"
+            android:text="Purpose  and  Values"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/TextSecondary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="65dp"
+            android:background="@color/colorDivider" />
+
+        <!-- header Close -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+               <RelativeLayout
+                   android:layout_margin="8dp"
+                   android:padding="8dp"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <TextView
+                       android:textColor="@color/TextPrimary"
+                       android:id="@+id/thoughts_owner"
+                       android:layout_alignParentTop="true"
+                       android:layout_alignParentStart="true"
+                       android:layout_alignParentEnd="true"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="Everyone always had an Idea No matter. What matters how effort You put to make successful that idea."
+                       android:textSize="12sp"
+                       android:gravity="center"/>
+                   <TextView
+                       android:layout_marginEnd="4dp"
+                       android:textColor="@color/TextSecondary"
+                       android:layout_below="@+id/thoughts_owner"
+                       android:id="@+id/owner_name"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentEnd="true"
+                       android:text="Siddhant Jain"
+                       android:textSize="8sp"/>
+                   <TextView
+                       android:layout_marginEnd="4dp"
+                       android:textColor="@color/TextSecondary"
+                       android:layout_below="@+id/owner_name"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentEnd="true"
+                       android:text="Founder of Stazer"
+                       android:layout_alignParentBottom="true"
+                       android:textSize="6sp"/>
+               </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="12dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Core values: "
+                        android:textAllCaps="true"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="16sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="STAZER has always been a values-driven organisation. These values continue to direct the growth and business of STAZER companies."
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="The five core STAZER values underpinning the way we do business are:"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Integrity :"
+                        android:textAllCaps="true"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="We will be fair, honest, transparent and ethical in our conduct; everything we do must stand the test of public scrutiny."
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Responsibility :"
+                        android:textAllCaps="true"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        android:text="We will integrate environmental and social principles in our businesses, ensuring that what comes from the people goes back to the people many times over."
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Excellence :"
+                        android:textAllCaps="true"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        android:text="We will be passionate about achieving the highest standards of quality, always promoting meritocracy."
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pioneering :"
+                        android:textAllCaps="true"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        android:text="We will be bold and agile, courageously taking on challenges, using deep customer insight to develop innovative solutions."
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Unity :"
+                        android:textAllCaps="true"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        android:text="We will invest in our people and partners, enable continuous learning, and build caring and collaborative relationships based on trust and mutual respect."
+                        />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/logo" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="STAZER"
+                        android:textAlignment="center"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="12dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

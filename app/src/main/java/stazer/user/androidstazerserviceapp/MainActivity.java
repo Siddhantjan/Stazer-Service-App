@@ -3,6 +3,7 @@ package stazer.user.androidstazerserviceapp;
 import android.content.Intent;
 import android.graphics.RenderNode;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -31,6 +32,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
+import stazer.user.androidstazerserviceapp.Company.DeveloperTeamActivity;
+import stazer.user.androidstazerserviceapp.Company.OurVisionActivity;
+import stazer.user.androidstazerserviceapp.Company.TermsAndConditionActivity;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewHelperClass;
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
@@ -48,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userInfoRef;
     FirebaseAuth firebaseAuth;
-    private Button btn_logout;
     private ImageView menuOpenIcon;
     //Home Ads RecyclerView
     RecyclerView homeScreenAdsLayout;
@@ -138,12 +142,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.flats_societies_tender);
         findViewById(R.id.hostel_institute_tender);
         /* --------------------------------- Close ----------------------------------*/
-        //Logout
-        btn_logout = findViewById(R.id.btn_logout);
-        btn_logout.setOnClickListener(v -> {
-            firebaseAuth.signOut();
-            gotoLoginPage();
-        });
     }
 
     // Navigation Drawer functions
@@ -199,9 +197,79 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                gotoHomePage();
+                break;
+            case R.id.nav_booking:
+                gotoBookingPage();
+                break;
+            case R.id.nav_logout:
+                logoutUser();
+                break;
+            case R.id.nav_aboutCompany:
+                gotoAboutCompanyPage();
+                break;
+            case R.id.nav_terms:
+                gotoTermsPage();
+                break;
+            case R.id.nav_team:
+                gotoDeveloperTeam();
+                break;
+            case R.id.nav_values:
+                gotoValuesPage();
+                break;
+            case R.id.nav_share:
+                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_rate_us:
+                Toast.makeText(this, "Rate Us", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    //Menu  Functions
+    private void gotoValuesPage() {
+        Intent missionIntent = new Intent(getApplicationContext(), OurVisionActivity.class);
+        startActivity(missionIntent);
+    }
+
+    private void gotoDeveloperTeam() {
+        Intent developerIntent = new Intent(getApplicationContext(), DeveloperTeamActivity.class);
+        startActivity(developerIntent);
+    }
+
+    private void gotoTermsPage() {
+        Intent termsIntent = new Intent(getApplicationContext(), TermsAndConditionActivity.class);
+        startActivity(termsIntent);
+    }
+
+    private void gotoAboutCompanyPage() {
+        Intent aboutIntent = new Intent(getApplicationContext(), AboutUsActivity.class);
+        startActivity(aboutIntent);
+    }
+
+    private void gotoHomePage() {
+        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainIntent);
+        finish();
+    }
+
+    private void gotoBookingPage() {
+        Intent bookingIntent = new Intent(getApplicationContext(), BookingActivity.class);
+        startActivity(bookingIntent);
+    }
+
+    private void logoutUser() {
+        firebaseAuth.signOut();
+        gotoLoginPage();
     }
 
 
@@ -267,7 +335,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            Toast.makeText(MainActivity.this, "Welcome!" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid(), Toast.LENGTH_SHORT).show();
+                            Log.d("TAG", "onDataChange: User Present");
                         } else {
                             Intent registerIntent = new Intent(getApplicationContext(), UserRegistrationActivity.class);
                             registerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

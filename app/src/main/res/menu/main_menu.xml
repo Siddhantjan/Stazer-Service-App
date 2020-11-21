@@ -31,7 +31,7 @@
 
     <item android:title="About Us">
         <menu>
-            <group android:checkableBehavior="single">
+            <group android:checkableBehavior="none">
                 <item
                     android:id="@+id/nav_aboutCompany"
                     android:title="About Company" />

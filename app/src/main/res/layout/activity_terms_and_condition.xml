@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Company.TermsAndConditionActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="8dp"
+            android:text="Terms And Conditions"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/TextSecondary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="65dp"
+            android:background="@color/colorDivider" />
+
+        <!-- header Close -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    android:padding="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="12dp"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="1. Introduction :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="These Application Standard Terms and Conditions written on this AppPage shall manage your use of this Application .These Terms will be applied fully and affect to your use of this Application. By using this Application, you agreed to accept all terms and conditions written in here. You must not use this Application if you disagree with any of these Application Standard Terms and Conditions. Minors or people below 16 years old are not allowed to use this Application."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="2. Intellectual Property Rights :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Other than the content you own, under these Terms, STAZER and/or its licensors own all the intellectual property rights and materials contained in this Application. You are granted limited license only for purposes of viewing the material contained on this Application."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="3. Restrictions :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="You are specifically restricted from all of the following-"
+                            android:textColor="@color/TextPrimary"
+                            />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="publishing any Application material in any other media; selling, sublicensing and/or otherwise commercializing any Application material; publicly performing and/or showing any Application material; using this Application in any way that is or may be damaging to this Application; using this Application in any way that impacts user access to this Application; using this Application contrary to applicable laws and regulations, or in any way may cause harm to the Application, or to any person or business entity; engaging in any data mining, data harvesting, data extracting or any other similar activity in relation to this Application; using this Application to engage in any advertising or marketing."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Certain areas of this Application are restricted from being access by you and STAZER may further restrict access by you to any areas of this Application, at any time, in absolute discretion. Any user ID and password you may have for this Application are confidential and you must maintain confidentiality as well."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="4. Your Content :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="In these Application Standard Terms and Conditions, “Your Content” shall mean any audio, video text, images or other material you choose to display on this Application. By displaying Your Content, you grant STAZER a non-exclusive, worldwide irrevocable, sub licensable license to use, reproduce, adapt, publish, translate and distribute it in any and all media."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Your Content must be your own and must not be invading any third-party’s rights. STAZER reserves the right to remove any of Your Content from this Application at any time without notice"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="5. No warranties :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="This Application is provided “as is,” with all faults, and STAZER express no representations or warranties, of any kind related to this Application or the materials contained on this Application. Also, nothing contained on this Application shall be interpreted as advising you."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="6. Limitation of liability :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="In no event shall STAZER, nor any of its officers, directors and employees, shall be held liable for anything arising out of or in any way connected with your use of this Application whether such liability is under contract. STAZER, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Application."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="7. Indemnification :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="You hereby indemnify to the fullest extent STAZER from and against any and/or all liabilities, costs, demands, causes of action, damages and expenses arising in any way related to your breach of any of the provisions of these Terms."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="8. Severability :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="If any provision of these Terms is found to be invalid under any applicable law, such provisions shall be deleted without affecting the remaining provisions herein."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="9. Variation of Terms :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="STAZER is permitted to revise these Terms at any time as it sees fit, and by using this Application you are expected to review these Terms on a regular basis."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="10. Assignment :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="The STAZER is allowed to assign, transfer, and subcontract its rights and/or obligations under these Terms without any notification. However, you are not allowed to assign, transfer, or subcontract any of your rights and/or obligations under these Terms."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="11. Entire Agreement :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="These Terms constitute the entire agreement between STAZER and you in relation to your use of this Application, and supersede all prior agreements and understandings."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="12. Governing Law and Jurisdiction :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="These Terms will be governed by and interpreted in accordance with the laws of the State of Rajasthan, and you submit to the non-exclusive jurisdiction of the state and federal courts located in Rajasthan for the resolution of any disputes."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="13.Receive Auto Generated Acknowledgement Message :"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="On Submition Of Forms User Will Recieve Auto Generated Acknowledgement (Transectional) Message."
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/logo" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="STAZER"
+                            android:textAlignment="center"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>
