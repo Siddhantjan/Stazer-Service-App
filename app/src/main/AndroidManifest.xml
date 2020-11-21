@@ -12,11 +12,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Company.DeveloperTeamActivity"></activity>
-        <activity android:name=".Company.OurVisionActivity" />
-        <activity android:name=".Company.TermsAndConditionActivity" />
-        <activity android:name=".Company.AboutUsActivity" />
-        <activity android:name=".BookingActivity" />
+        <activity android:name=".BookingProcess.OrderCategoryActivity"></activity>
+        <activity
+            android:name=".BookingProcess.OrderBookingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Company.DeveloperTeamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Company.OurVisionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Company.TermsAndConditionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Company.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BookingActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".services.geyser.GeyserActivity"
             android:screenOrientation="portrait" />

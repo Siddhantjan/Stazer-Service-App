@@ -49,6 +49,7 @@ import stazer.user.androidstazerserviceapp.services.roservice.RoServiceActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    //Variables
     static final float END_SCALE = 0.7f;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userInfoRef;
