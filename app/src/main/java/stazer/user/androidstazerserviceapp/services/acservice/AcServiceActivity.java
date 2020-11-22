@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
+import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
 
 public class AcServiceActivity extends AppCompatActivity {
@@ -18,12 +19,14 @@ public class AcServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ac_service);
-        findViewById(R.id.btn_book_ac).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bookAcService();
-            }
-        });
+        findViewById(R.id.btn_book_ac).setOnClickListener(v -> bookAcService());
+        findViewById(R.id.scheduleServiceAc).setOnClickListener(v -> scheduleServiceAc());
+    }
+
+    private void scheduleServiceAc() {
+        Intent serviceIntent = new Intent(getApplicationContext(), orderSchduleActivity.class);
+        serviceIntent.putExtra("serviceType",service_name);
+        startActivity(serviceIntent);
     }
 
     private void bookAcService() {

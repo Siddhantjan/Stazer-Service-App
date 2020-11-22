@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.WindowManager;
 
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
+import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
+import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
 
 public class CarpenterActivity extends AppCompatActivity {
 
@@ -17,12 +19,19 @@ public class CarpenterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_carpenter);
-        findViewById(R.id.btn_book_carpenter).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_book_carpenter).setOnClickListener(v -> goTOCarpernterbook());
+        findViewById(R.id.scheduleServiceCarpenter).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goTOCarpernterbook();
+                scheduleServiceCarpenter();
             }
         });
+    }
+
+    private void scheduleServiceCarpenter() {
+        Intent serviceIntent = new Intent(getApplicationContext(), orderSchduleActivity.class);
+        serviceIntent.putExtra("serviceType","Carpenter Service");
+        startActivity(serviceIntent);
     }
 
     private void goTOCarpernterbook() {

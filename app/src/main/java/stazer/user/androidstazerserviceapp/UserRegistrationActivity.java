@@ -33,6 +33,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
     private EditText editFirstName;
     private EditText editLastName;
     private EditText editPhoneNumber;
+    private EditText editFlatno;
+    private EditText editArea;
+    private EditText editLandmark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             editLastName = findViewById(R.id.edit_last_name);
                             editPhoneNumber = findViewById(R.id.edit_mobile_number);
                             btnUserRegister = findViewById(R.id.btn_user_register);
+                            editFlatno = findViewById(R.id.edit_house_no);
+                            editArea = findViewById(R.id.edit_Area);
+                            editLandmark = findViewById(R.id.edit_landmark);
                             if (FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber() != null
                                     && !TextUtils.isEmpty(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber()))
                                 editPhoneNumber.setText(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
@@ -72,21 +78,33 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                 if (editFirstName.getText().toString().trim().isEmpty()) {
                                     Toast.makeText(UserRegistrationActivity.this, "Enter First Name", Toast.LENGTH_SHORT).show();
                                     return;
-                                } else if (editLastName.getText().toString().trim().isEmpty()) {
+                                }
+                                else if (editLastName.getText().toString().trim().isEmpty()) {
                                     Toast.makeText(UserRegistrationActivity.this, "Enter Last Name", Toast.LENGTH_SHORT).show();
                                     return;
                                 } else if (editPhoneNumber.getText().toString().trim().isEmpty()) {
                                     Toast.makeText(UserRegistrationActivity.this, "Enter Phone Number", Toast.LENGTH_SHORT).show();
+                                    return;
+                                } else if (editFlatno.getText().toString().trim().isEmpty()) {
+                                    Toast.makeText(UserRegistrationActivity.this, "Enter House/Flat no", Toast.LENGTH_SHORT).show();
+                                    return;
+                                } else if (editArea.getText().toString().trim().isEmpty()) {
+                                    Toast.makeText(UserRegistrationActivity.this, "Enter Area no", Toast.LENGTH_SHORT).show();
+                                    return;
+                                } else if (editLandmark.getText().toString().trim().isEmpty()) {
+                                    Toast.makeText(UserRegistrationActivity.this, "Enter Landmark no", Toast.LENGTH_SHORT).show();
                                     return;
                                 } else {
                                     UserModel model = new UserModel();
                                     model.setFirstName(editFirstName.getText().toString());
                                     model.setLastName(editLastName.getText().toString());
                                     model.setPhoneNumber(editPhoneNumber.getText().toString());
-
-                                    userInfoRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    model.setFlatNo(editFlatno.getText().toString());
+                                    model.setArea(editArea.getText().toString());
+                                    model.setLandmark(editLandmark.getText().toString());
+                                    userInfoRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userInfo")
                                             .setValue(model)
-                                            .addOnFailureListener(e -> Toast.makeText(UserRegistrationActivity.this, "[Error]:"+e.getMessage(), Toast.LENGTH_SHORT).show()).addOnSuccessListener(aVoid -> {
+                                            .addOnFailureListener(e -> Toast.makeText(UserRegistrationActivity.this, "[Error]:" + e.getMessage(), Toast.LENGTH_SHORT).show()).addOnSuccessListener(aVoid -> {
                                         Toast.makeText(UserRegistrationActivity.this, "information is Saved Successfully", Toast.LENGTH_SHORT).show();
                                         goToHomeActivity(model);
                                     });

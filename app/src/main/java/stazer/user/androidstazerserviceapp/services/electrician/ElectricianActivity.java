@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
+import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
 
 public class ElectricianActivity extends AppCompatActivity {
@@ -16,13 +17,19 @@ public class ElectricianActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_electrician);
-        findViewById(R.id.btn_book_ele).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_book_ele).setOnClickListener(v -> goToElectricianBooking());
+        findViewById(R.id.scheduleServiceEle).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToElectricianBooking();
+                scheduleServiceEle();
             }
         });
+    }
 
+    private void scheduleServiceEle() {
+        Intent serviceIntent = new Intent(getApplicationContext(), orderSchduleActivity.class);
+        serviceIntent.putExtra("serviceType","Electrician Service");
+        startActivity(serviceIntent);
     }
 
     private void goToElectricianBooking() {
