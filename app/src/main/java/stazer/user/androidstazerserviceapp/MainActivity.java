@@ -1,7 +1,9 @@
 package stazer.user.androidstazerserviceapp;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.graphics.RenderNode;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -28,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -224,16 +227,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 gotoValuesPage();
                 break;
             case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                openShareAppActivity();
                 break;
             case R.id.nav_rate_us:
-                Toast.makeText(this, "Rate Us", Toast.LENGTH_SHORT).show();
+               openActivityforRateUs();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    private void openActivityforRateUs() {
+        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
+        Intent rateIntent = new Intent(Intent.ACTION_VIEW,uri);
+        try {
+            Log.d("RateAct", "openActivityForRateUs: Play Store Opened");
+            startActivity(rateIntent);
+            finish();
+        }
+        catch (Exception e){
+            Toast.makeText(this, "Unable to open [Error]: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void openShareAppActivity() {
+       try {
+           Log.d("ShareAct", "openShareAppActivity: Share done Successfully");
+           ApplicationInfo applicationInfo= getApplicationContext().getApplicationInfo();
+           String apkPath = applicationInfo.sourceDir;
+           Intent shareIntent = new Intent(Intent.ACTION_SEND);
+           shareIntent.setType("application/vnd.android.package-archive");
+           shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(apkPath)));
+           startActivity(Intent.createChooser(shareIntent,"ShareVia"));
+       }
+       catch (Exception e){
+           Toast.makeText(this, "[Error]: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+       }
+    }
 
 
     //Menu  Functions
