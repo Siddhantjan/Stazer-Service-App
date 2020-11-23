@@ -41,7 +41,7 @@ public class OrderBookingActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference userInfoRef;
     String userName;
-    String phoneNumber, serviceName;
+    String serviceName;
     String UserAddress;
     private TextView mName, mMobileNumber, mServiceType, mCategoryType, mAddress;
 
@@ -97,6 +97,7 @@ public class OrderBookingActivity extends AppCompatActivity {
                 Toast.makeText(OrderBookingActivity.this, "[Error]: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
         btn_bookingComplete.setOnClickListener(v -> {
             HashMap<String, Object> bookingMap = new HashMap<>();
             bookingMap.put("serviceType", mServiceType.getText().toString());

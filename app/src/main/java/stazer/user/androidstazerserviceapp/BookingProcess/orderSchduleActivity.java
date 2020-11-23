@@ -42,6 +42,8 @@ public class orderSchduleActivity extends AppCompatActivity {
     DatabaseReference userInfoRef;
     private TextView mServiceType;
     private Button btn_bookingSchedule;
+    private TextView mName, mMobileNumber,  mAddress;
+    private String UserAddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,11 @@ public class orderSchduleActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_order_schdule);
+
+        //these are invisible hooks
+        mName = findViewById(R.id.customer_name_sch);
+        mMobileNumber = findViewById(R.id.customer_mobile_sch);
+        mAddress = findViewById(R.id.address_type_sch);
 
         //Hooks
         mSelectDate = (TextView) findViewById(R.id.btn_booking_date);
@@ -61,29 +68,61 @@ public class orderSchduleActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
 
-        btn_bookingSchedule.setOnClickListener(v -> {
-            if (mDisplayDate.getText().toString().trim().isEmpty()) {
-                Toast.makeText(orderSchduleActivity.this, "Select Date", Toast.LENGTH_SHORT).show();
+        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("dataRetrieve", "onDataChange: Data Retrieve successfully");
+                if (snapshot.exists()) {
+                    String firstName = snapshot.child("firstName").getValue().toString();
+                    String lastName = snapshot.child("lastName").getValue().toString();
+                    String mobileNumber = snapshot.child("phoneNumber").getValue().toString();
+                    String flatno = snapshot.child("flatNo").getValue().toString();
+                    String Area = snapshot.child("area").getValue().toString();
+                    String Landmark = snapshot.child("landmark").getValue().toString();
 
-            } else if (mDisplayTime.getText().toString().isEmpty()) {
-                Toast.makeText(orderSchduleActivity.this, "Select Time", Toast.LENGTH_SHORT).show();
+                    UserAddress = flatno + " " + Area + " " + Landmark;
+                    String userName = firstName + " " + lastName;
+                    mName.setText(userName);
+                    mMobileNumber.setText(mobileNumber);
+                    mAddress.setText(UserAddress);
+                    Log.d("dataRetrieve", "onDataChange: Data Retrieve successfully");
+                }
+            }
 
-            } else {
-                HashMap<String, Object> scheduleMap = new HashMap<>();
-                scheduleMap.put("serviceType", mServiceType.getText().toString());
-                scheduleMap.put("serviceTime", mDisplayTime.getText().toString());
-                scheduleMap.put("serviceDate", mDisplayDate.getText().toString());
-                userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("ScheduleOrdersDetails")
-                        .push().setValue(scheduleMap)
-                        .addOnCompleteListener(task -> {
-                            Toast.makeText(this, "Your Service Scheduled on Time ", Toast.LENGTH_SHORT).show();
-                            goToHomeActivity();
-
-                        }).addOnFailureListener(e -> {
-                    Toast.makeText(this, "[Error]:"+e.getMessage(), Toast.LENGTH_SHORT).show();
-                        });
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(orderSchduleActivity.this, "[Error]: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        btn_bookingSchedule.setOnClickListener(v -> {
+            goToOrderCompleteActivity();
+        });
+    }
+
+    private void goToOrderCompleteActivity() {
+        if (mDisplayDate.getText().toString().trim().isEmpty()) {
+            Toast.makeText(orderSchduleActivity.this, "Select Date", Toast.LENGTH_SHORT).show();
+
+        } else if (mDisplayTime.getText().toString().isEmpty()) {
+            Toast.makeText(orderSchduleActivity.this, "Select Time", Toast.LENGTH_SHORT).show();
+
+        } else {
+            HashMap<String, Object> scheduleMap = new HashMap<>();
+            scheduleMap.put("serviceType", mServiceType.getText().toString());
+            scheduleMap.put("serviceTime", mDisplayTime.getText().toString());
+            scheduleMap.put("serviceDate", mDisplayDate.getText().toString());
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("ScheduleOrdersDetails")
+                    .push().setValue(scheduleMap)
+                    .addOnCompleteListener(task -> {
+                        Toast.makeText(this, "Your Service Scheduled on Time ", Toast.LENGTH_SHORT).show();
+                        goToHomeActivity();
+
+                    }).addOnFailureListener(e -> {
+                Toast.makeText(this, "[Error]:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
     private void goToHomeActivity() {

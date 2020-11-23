@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookingProcess.orderSchduleActivity"></activity>
+        <activity android:name=".tenderService.hostelAndInstituteActivity"></activity>
+        <activity android:name=".BookingProcess.orderSchduleActivity" />
         <activity android:name=".BookingProcess.OrderCategoryActivity" />
         <activity
             android:name=".BookingProcess.OrderBookingActivity"

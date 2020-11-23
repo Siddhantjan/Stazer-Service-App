@@ -52,107 +52,167 @@
                 android:layout_margin="8dp"
                 android:paddingLeft="15dp">
 
+                <!-- user info  it is invisible for Users-->
+            <RelativeLayout
+                android:visibility="invisible"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="6dp"
+                android:id="@+id/UserInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/booking_details"
+                    android:id="@+id/customer_name_sch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Booking Details"
-                    android:textColor="@color/TextPrimary"
-                    android:textSize="14sp" />
+                    android:text="Customer Name"
+                    android:textColor="@color/TextSecondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/customer_mobile_sch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customer_name_sch"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:text=" User Mobile Number"
+                    android:textColor="@color/TextSecondary"
+                    android:textSize="12sp" />
 
                 <LinearLayout
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
-                    android:id="@+id/service_type_heading"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/Address_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/booking_details"
+                    android:layout_below="@+id/customer_mobile_sch"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Service :"
+                        android:text="Address :"
                         android:textColor="@color/TextPrimary"
                         android:textSize="14sp" />
 
                     <TextView
-                        android:id="@+id/service_type_sch"
+                        android:id="@+id/address_type_sch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="Name of Service"
+                        android:text="Address"
                         android:textColor="@color/TextSecondary"
                         android:textSize="14sp" />
                 </LinearLayout>
-
-
-
-                <TextView
-                    android:layout_marginTop="12dp"
-                    android:padding="8dp"
-                    android:gravity="center"
-                    android:layout_below="@+id/service_type_heading"
-                    android:id="@+id/btn_booking_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@color/colorBlack"
-                    android:text="Select Date"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp"
+            </RelativeLayout>
+                <!-- Booking info -->
+                <RelativeLayout
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="6dp"
                     android:visibility="visible"
-                    android:onClick="CalendarAppears"/>
-                <EditText
-                    android:background="@null"
-                    android:padding="4dp"
-                    android:gravity="center"
-                    android:layout_below="@+id/btn_booking_date"
-                    android:id="@+id/btn_booking_date_display"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="8dp"
-                    android:hint="Date"
-                    android:textSize="16sp"
-                    android:visibility="invisible"/>
-                <TextView
-                    android:gravity="center"
-                    android:layout_below="@+id/btn_booking_date_display"
-                    android:id="@+id/btn_booking_time"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="30dp"
-                    android:padding="8dp"
-                    android:background="@color/colorBlack"
-                    android:text="Select Time"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="12sp"
-                    android:visibility="visible"
-                    android:onClick="TimeAppears"/>
-                <EditText
-                    android:visibility="invisible"
-                    android:background="@null"
-                    android:gravity="center"
-                    android:layout_below="@+id/btn_booking_time"
-                    android:id="@+id/btn_booking_time_display"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="30dp"
-                    android:padding="8dp"
-                    android:hint="Display Time"
-                    android:textSize="16sp"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/booking_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Booking Details"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="14sp" />
+                    <LinearLayout
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/service_type_heading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/booking_details"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Service :"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/service_type_sch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Name of Service"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_below="@+id/service_type_heading"
+                        android:layout_marginTop="12dp"
+                        android:padding="8dp"
+                        android:gravity="center"
+                        android:id="@+id/btn_booking_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:background="@color/colorBlack"
+                        android:text="Select Date"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        android:visibility="visible"
+                        android:onClick="CalendarAppears"/>
+                    <EditText
+                        android:background="@null"
+                        android:padding="4dp"
+                        android:gravity="center"
+                        android:layout_below="@+id/btn_booking_date"
+                        android:id="@+id/btn_booking_date_display"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginTop="8dp"
+                        android:hint="Date"
+                        android:textSize="16sp"
+                        android:visibility="invisible"/>
+                    <TextView
+                        android:gravity="center"
+                        android:layout_below="@+id/btn_booking_date_display"
+                        android:id="@+id/btn_booking_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="30dp"
+                        android:padding="8dp"
+                        android:background="@color/colorBlack"
+                        android:text="Select Time"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="12sp"
+                        android:visibility="visible"
+                        android:onClick="TimeAppears"/>
+                    <EditText
+                        android:layout_marginBottom="8dp"
+                        android:visibility="invisible"
+                        android:background="@null"
+                        android:gravity="center"
+                        android:layout_below="@+id/btn_booking_time"
+                        android:id="@+id/btn_booking_time_display"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="30dp"
+                        android:padding="8dp"
+                        android:hint="Display Time"
+                        android:textSize="16sp"/>
+                </RelativeLayout>
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <!-- Second Layout -->
