@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tenderService.hostelAndInstituteActivity"></activity>
+        <activity android:name=".tenderService.hostelAndInstituteActivity"/>
         <activity android:name=".BookingProcess.orderSchduleActivity" />
         <activity android:name=".BookingProcess.OrderCategoryActivity" />
         <activity
@@ -31,7 +31,7 @@
             android:name=".Company.AboutUsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".BookingActivity"
+            android:name=".BookingInfo.BookingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".services.geyser.GeyserActivity"
@@ -81,6 +81,8 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
+
+
     </application>
 
 </manifest>

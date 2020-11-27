@@ -3,17 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingActivity">
+    tools:context=".BookingInfo.BookingActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+  <!-- First Layout -->
+        <!-- Header Class -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
-    <TextView
+            <TextView
+                android:id="@+id/geyser_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="Booking Services"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/geyser_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/colorDivider" />
+
+        </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/previous_booking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="normal"
-        android:text="This is Booking Page"
-        android:textColor="@color/TextPrimary"
-        android:layout_marginTop="35dp"
-        android:layout_marginStart="35dp"
-        android:padding="15dp"
-        android:textSize="22sp"/>
-
+        android:layout_margin="8dp"
+        android:background="@color/colorWhite"
+        />
+    </LinearLayout>
 </RelativeLayout>

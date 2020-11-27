@@ -26,6 +26,14 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onStart() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if ( user != null){
+          //  FirebaseInstanceId.getInstance()
+            //        .getInstanceId()
+              //      .addOnFailureListener(e -> Toast.makeText(SplashScreenActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show())
+               //     .addOnSuccessListener(instanceIdResult -> {
+                   //     Log.d("TOKEN", instanceIdResult.getToken());
+                     //   UserUtils.updateToken(SplashScreenActivity.this,instanceIdResult.getToken());
+                       // Toast.makeText(this, "Token is :"+instanceIdResult.getToken(), Toast.LENGTH_SHORT).show();
+                    //});
             gotoHomeScreen();
         }
         else {

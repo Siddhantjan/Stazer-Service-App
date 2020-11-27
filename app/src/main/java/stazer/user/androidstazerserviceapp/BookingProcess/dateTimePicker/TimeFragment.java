@@ -29,6 +29,6 @@ public class TimeFragment extends DialogFragment implements TimePickerDialog.OnT
         int hrs = calendar.get(Calendar.HOUR_OF_DAY);
         int min = calendar.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(),this,hrs,min,true);
+        return new TimePickerDialog(getActivity(),this,hrs,min,false);
     }
 }

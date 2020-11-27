@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Objects;
 
+import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.dateTimePicker.DateFragment;
 import stazer.user.androidstazerserviceapp.BookingProcess.dateTimePicker.TimeFragment;
 import stazer.user.androidstazerserviceapp.Common.Common;
@@ -111,13 +112,14 @@ public class orderSchduleActivity extends AppCompatActivity {
         } else {
             HashMap<String, Object> scheduleMap = new HashMap<>();
             scheduleMap.put("serviceType", mServiceType.getText().toString());
-            scheduleMap.put("serviceTime", mDisplayTime.getText().toString());
-            scheduleMap.put("serviceDate", mDisplayDate.getText().toString());
-            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("ScheduleOrdersDetails")
+            scheduleMap.put("Time", mDisplayTime.getText().toString());
+            scheduleMap.put("Date", mDisplayDate.getText().toString());
+            scheduleMap.put("Status","pending");
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
                     .push().setValue(scheduleMap)
                     .addOnCompleteListener(task -> {
                         Toast.makeText(this, "Your Service Scheduled on Time ", Toast.LENGTH_SHORT).show();
-                        goToHomeActivity();
+                        goToBookingActivity();
 
                     }).addOnFailureListener(e -> {
                 Toast.makeText(this, "[Error]:"+e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -125,8 +127,8 @@ public class orderSchduleActivity extends AppCompatActivity {
         }
     }
 
-    private void goToHomeActivity() {
-        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+    private void goToBookingActivity() {
+        Intent mainIntent = new Intent(getApplicationContext(), BookingActivity.class);
         startActivity(mainIntent);
         finish();
     }
@@ -153,7 +155,8 @@ public class orderSchduleActivity extends AppCompatActivity {
     public void takeTime(int hourOfDay, int minute) {
         String hour = Integer.toString(hourOfDay);
         String min = Integer.toString(minute);
+
         mDisplayTime.setVisibility(View.VISIBLE);
-        mDisplayTime.setText(hour + ":" + min);
+        mDisplayTime.setText(hour + ":" + min );
     }
 }

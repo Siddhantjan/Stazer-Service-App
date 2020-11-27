@@ -2,14 +2,12 @@ package stazer.user.androidstazerserviceapp;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.graphics.RenderNode;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -34,6 +32,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
 import stazer.user.androidstazerserviceapp.Company.DeveloperTeamActivity;

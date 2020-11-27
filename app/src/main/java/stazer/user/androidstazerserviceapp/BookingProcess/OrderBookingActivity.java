@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,9 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,13 +20,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
+import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
-import stazer.user.androidstazerserviceapp.MainActivity;
 import stazer.user.androidstazerserviceapp.R;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
@@ -68,7 +66,11 @@ public class OrderBookingActivity extends AppCompatActivity {
         mCategoryType.setText(getIntent().getStringExtra("categoryType"));
         mAddress = findViewById(R.id.address_type);
         btn_bookingComplete = findViewById(R.id.btn_booking_final);
-        Date currentTime = Calendar.getInstance().getTime();
+        Date currentDate = Calendar.getInstance().getTime();
+        String CurrentDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentDate);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
+        String Time = simpleDateFormat.format(calendar.getTime());
 
 
         userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo").addValueEventListener(new ValueEventListener() {
@@ -103,7 +105,9 @@ public class OrderBookingActivity extends AppCompatActivity {
             bookingMap.put("serviceType", mServiceType.getText().toString());
             bookingMap.put("serviceCategory", mCategoryType.getText().toString());
             try {
-                bookingMap.put("DateFragment ", currentTime.toString());
+                bookingMap.put("Status","pending");
+                bookingMap.put("Date", CurrentDate);
+                bookingMap.put("Time",Time);
             } catch (Exception e) {
                 Toast.makeText(OrderBookingActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
@@ -112,7 +116,9 @@ public class OrderBookingActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         Log.d("Tag", "onComplete: Booking Confirmed saved");
                         Toast.makeText(OrderBookingActivity.this, "you Successfully booked Service.", Toast.LENGTH_SHORT).show();
-                    goToHomeActivity();
+                        goToBookingActivity();
+
+
                     }).addOnFailureListener(e -> {
                         Log.d("error", "onFailure: "+e.toString());
                         Toast.makeText(OrderBookingActivity.this, "[Error]"+e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -122,8 +128,8 @@ public class OrderBookingActivity extends AppCompatActivity {
 
     }
 
-    private void goToHomeActivity() {
-        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+    private void goToBookingActivity() {
+        Intent mainIntent = new Intent(getApplicationContext(), BookingActivity.class);
         startActivity(mainIntent);
         finish();
     }
