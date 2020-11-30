@@ -20,6 +20,8 @@ public class Common {
     public static final String TOKEN_REFERENCE = "Token";
     public static final String NOTI_TITLE = "title";
     public static final String NOTI_Content = "body";
+    public static final String ADMIN_INFO_REFERENCE = "Admin";
+
 
     public static UserModel currentUser;
 

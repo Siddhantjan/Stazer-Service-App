@@ -1,8 +1,11 @@
 package stazer.user.androidstazerserviceapp.HeplerClasses.ShowBookingInfo;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,14 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import stazer.user.androidstazerserviceapp.BookingInfo.FinalBookingPaymentActivity;
 import stazer.user.androidstazerserviceapp.Model.FetchBookingDetailsModel;
 import stazer.user.androidstazerserviceapp.R;
 
 public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
     List<FetchBookingDetailsModel> fetchBookingDetailsModelList;
+    Context context;
 
-    public BookingInfoRecyclerViewAdapter(List<FetchBookingDetailsModel> fetchBookingDetailsModelList) {
+    public BookingInfoRecyclerViewAdapter(List<FetchBookingDetailsModel> fetchBookingDetailsModelList,Context context) {
         this.fetchBookingDetailsModelList = fetchBookingDetailsModelList;
+        this.context = context;
     }
 
     @NonNull
@@ -34,10 +40,14 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
         FetchBookingDetailsModel fetchBookingDetailsModel = fetchBookingDetailsModelList.get(position);
         bookingInfoViewHolder.serviceName.setText(fetchBookingDetailsModel.getServiceType());
         bookingInfoViewHolder.serviceCategory.setText(fetchBookingDetailsModel.getServiceCategory());
-        bookingInfoViewHolder.serviceStatus.setText(fetchBookingDetailsModel.getStatus());
         bookingInfoViewHolder.serviceDate.setText(fetchBookingDetailsModel.getDate());
         bookingInfoViewHolder.serviceTime.setText(fetchBookingDetailsModel.getTime());
 
+        bookingInfoViewHolder.relativeLayoutDetails.setOnClickListener(v -> {
+            Intent newDetailIntent = new Intent(context, FinalBookingPaymentActivity.class);
+            newDetailIntent.putExtra("Service",fetchBookingDetailsModel.getServiceType());
+            context.startActivity(newDetailIntent);
+        });
 
     }
 
@@ -48,7 +58,8 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static class BookingInfoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView serviceName, serviceCategory, serviceTime, serviceDate, serviceStatus;
+        TextView serviceName, serviceCategory, serviceTime, serviceDate;
+        RelativeLayout relativeLayoutDetails;
 
         public BookingInfoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,8 +67,9 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
             serviceName = itemView.findViewById(R.id.nameService);
             serviceCategory = itemView.findViewById(R.id.nameCategory);
             serviceDate = itemView.findViewById(R.id.serviceDate);
-            serviceStatus = itemView.findViewById(R.id.status);
+
             serviceTime = itemView.findViewById(R.id.serviceTime);
+            relativeLayoutDetails = itemView.findViewById(R.id.info_bookings);
 
         }
     }

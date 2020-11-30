@@ -58,7 +58,7 @@ public class BookingActivity extends AppCompatActivity {
                         FetchBookingDetailsModel detailsModel = ds.getValue(FetchBookingDetailsModel.class);
                         fetchBookingDetailsModels.add(detailsModel);
                     }
-                    bookingInfoRecyclerViewAdapter = new BookingInfoRecyclerViewAdapter(fetchBookingDetailsModels);
+                    bookingInfoRecyclerViewAdapter = new BookingInfoRecyclerViewAdapter(fetchBookingDetailsModels,getApplicationContext());
                     recyclerViewBooking.setAdapter(bookingInfoRecyclerViewAdapter);
                 }
                 else

@@ -13,6 +13,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,7 +40,7 @@ public class OrderBookingActivity extends AppCompatActivity {
 
     private Button btn_bookingComplete;
     FirebaseDatabase database;
-    DatabaseReference userInfoRef;
+    DatabaseReference userInfoRef,adminInfoRef;
     String userName;
     String serviceName;
     String UserAddress;
@@ -55,6 +58,7 @@ public class OrderBookingActivity extends AppCompatActivity {
         serviceName = prefs.getString("serviceName", NULL);
         database = FirebaseDatabase.getInstance();
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
+        adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
 
 
         //hooks
@@ -78,6 +82,7 @@ public class OrderBookingActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("dataRetrieve", "onDataChange: Data Retrieve successfully");
                 if (snapshot.exists()) {
+
                     String firstName = snapshot.child("firstName").getValue().toString();
                     String lastName = snapshot.child("lastName").getValue().toString();
                     String mobileNumber = snapshot.child("phoneNumber").getValue().toString();
@@ -123,6 +128,24 @@ public class OrderBookingActivity extends AppCompatActivity {
                         Log.d("error", "onFailure: "+e.toString());
                         Toast.makeText(OrderBookingActivity.this, "[Error]"+e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
+            //Send Data To Admin App
+            HashMap<String, Object> serviceSendAdmin = new HashMap<>();
+            serviceSendAdmin.put("UserName" , mName.getText().toString());
+            serviceSendAdmin.put("UserMobile",mMobileNumber.getText().toString());
+            serviceSendAdmin.put("UserAddress",mAddress.getText().toString());
+            serviceSendAdmin.put("serviceType",mServiceType.getText().toString());
+            serviceSendAdmin.put("serviceCategoryType",mCategoryType.getText().toString());
+            try {
+                serviceSendAdmin.put("Status","pending");
+                serviceSendAdmin.put("Date", CurrentDate);
+                serviceSendAdmin.put("Time",Time);
+            } catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrderBooking")
+                    .setValue(serviceSendAdmin)
+                    .addOnCompleteListener(task -> Log.d("sendDataToAdmin", "onComplete: Booking Confirmed saved"))
+                    .addOnFailureListener(e -> Log.d("sendDataToAdmin", "onFailure: "+e.toString()));
         });
 
 

@@ -197,6 +197,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
+            Intent exitIntent = new Intent(Intent.ACTION_MAIN);
+            exitIntent.addCategory(Intent.CATEGORY_HOME);
+            exitIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(exitIntent);
             super.onBackPressed();
         }
     }

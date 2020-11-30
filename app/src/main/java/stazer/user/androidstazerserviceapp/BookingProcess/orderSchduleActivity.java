@@ -40,7 +40,7 @@ public class orderSchduleActivity extends AppCompatActivity {
     private TextView mSelectTime, mSelectDate;
     private EditText mDisplayTime, mDisplayDate;
     FirebaseDatabase database;
-    DatabaseReference userInfoRef;
+    DatabaseReference userInfoRef,adminInfoRef;
     private TextView mServiceType;
     private Button btn_bookingSchedule;
     private TextView mName, mMobileNumber,  mAddress;
@@ -68,6 +68,7 @@ public class orderSchduleActivity extends AppCompatActivity {
         mServiceType.setText(getIntent().getStringExtra("serviceType"));
         database = FirebaseDatabase.getInstance();
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
+        adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
 
         userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo").addValueEventListener(new ValueEventListener() {
             @Override
@@ -124,6 +125,20 @@ public class orderSchduleActivity extends AppCompatActivity {
                     }).addOnFailureListener(e -> {
                 Toast.makeText(this, "[Error]:"+e.getMessage(), Toast.LENGTH_SHORT).show();
             });
+
+            HashMap<String,Object> serviceScheduleMap = new HashMap<>();
+            serviceScheduleMap.put("Name",mName.getText().toString());
+            serviceScheduleMap.put("MobileNumber",mMobileNumber.getText().toString());
+            serviceScheduleMap.put("UserAddress",mAddress.getText().toString());
+            serviceScheduleMap.put("ServiceName",mServiceType.getText().toString());
+            serviceScheduleMap.put("Time", mDisplayTime.getText().toString());
+            serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
+            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrderBookingSchdule")
+                    .setValue(serviceScheduleMap)
+                    .addOnCompleteListener(task -> Log.d("sendDataToAdminSchedule", "onComplete: Booking Confirmed saved"))
+                    .addOnFailureListener(e -> Log.d("sendDataToAdminSchedule", "onFailure: "+e.toString()));
+
+
         }
     }
 
