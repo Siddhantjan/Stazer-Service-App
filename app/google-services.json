@@ -42,6 +42,43 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245540218141:android:80e499ebeb7a46e121edf4",
+        "android_client_info": {
+          "package_name": "stazer.user.stazerinternalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245540218141-se9h8h9q1m7nm5df1pl0shpmh7pct4oj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "stazer.user.stazerinternalapp",
+            "certificate_hash": "b5622658f24cca7c07b2b9f6c8d37f240c80ebaf"
+          }
+        },
+        {
+          "client_id": "245540218141-05p9842kqgiqfnkb72im42oiocsd8hfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEnDPm33MU7oJw3Dimfwl6G3bADbZzGWM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245540218141-05p9842kqgiqfnkb72im42oiocsd8hfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

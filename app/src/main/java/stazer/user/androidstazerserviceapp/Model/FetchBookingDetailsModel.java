@@ -6,16 +6,26 @@ public class FetchBookingDetailsModel {
     private String Time;
     private String Date;
     private String Status;
+    private  String Amount;
 
     public FetchBookingDetailsModel() {
     }
 
-    public FetchBookingDetailsModel(String serviceType, String serviceCategory, String time, String date, String status) {
+    public FetchBookingDetailsModel(String serviceType, String serviceCategory, String time, String date, String status, String amount) {
         this.serviceType = serviceType;
         this.serviceCategory = serviceCategory;
         Time = time;
         Date = date;
         Status = status;
+        Amount = amount;
+    }
+
+    public String getAmount() {
+        return Amount;
+    }
+
+    public void setAmount(String amount) {
+        Amount = amount;
     }
 
     public String getServiceType() {

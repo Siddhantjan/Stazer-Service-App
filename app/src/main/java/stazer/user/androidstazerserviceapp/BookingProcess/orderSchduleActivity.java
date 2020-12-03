@@ -116,6 +116,7 @@ public class orderSchduleActivity extends AppCompatActivity {
             scheduleMap.put("Time", mDisplayTime.getText().toString());
             scheduleMap.put("Date", mDisplayDate.getText().toString());
             scheduleMap.put("Status","pending");
+            scheduleMap.put("Amount","0");
             userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
                     .push().setValue(scheduleMap)
                     .addOnCompleteListener(task -> {

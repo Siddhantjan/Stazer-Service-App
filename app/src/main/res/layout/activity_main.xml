@@ -52,11 +52,14 @@
 
 
                 <!-- First Layout -->
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:elevation="16dp"
+                    android:elevation="16dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
@@ -215,6 +218,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+                </RelativeLayout>
                 <!-- Second Layout -->
                 <RelativeLayout
                     android:layout_width="match_parent"

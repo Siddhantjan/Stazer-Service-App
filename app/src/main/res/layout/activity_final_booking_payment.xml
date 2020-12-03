@@ -16,16 +16,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
             <!-- First -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="You Service is"
+                    android:textColor="@color/TextSecondary"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/servicingStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Status"
+                    android:textColor="@color/TextPrimary"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+            <!-- Second -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:text="You Booked :"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/serviceBookedName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Service name"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                    <TextView
+                        android:layout_marginLeft="12dp"
+                        android:id="@+id/serviceCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="14sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -36,27 +91,78 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="You Booked :"
+                        android:text="Date :"
                         android:textColor="@color/TextSecondary"
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/serviceBookedName"
+                        android:id="@+id/servicingDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Service name"
+                        android:text="Date"
                         android:textColor="@color/TextPrimary"
                         android:textSize="18sp" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text=""
+                        android:text=";"
+                        android:textColor="@color/TextPrimary"
                         android:textSize="18sp" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Time :"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/servicingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="Time"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text=";"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Amount :"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/serviceAmount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="@null"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <!-- Third -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

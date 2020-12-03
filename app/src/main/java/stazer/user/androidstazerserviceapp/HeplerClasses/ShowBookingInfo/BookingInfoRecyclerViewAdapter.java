@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,16 +41,25 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
         FetchBookingDetailsModel fetchBookingDetailsModel = fetchBookingDetailsModelList.get(position);
         bookingInfoViewHolder.serviceName.setText(fetchBookingDetailsModel.getServiceType());
         bookingInfoViewHolder.serviceCategory.setText(fetchBookingDetailsModel.getServiceCategory());
+        bookingInfoViewHolder.mServiceStatus.setText(fetchBookingDetailsModel.getStatus());
         bookingInfoViewHolder.serviceDate.setText(fetchBookingDetailsModel.getDate());
         bookingInfoViewHolder.serviceTime.setText(fetchBookingDetailsModel.getTime());
+        String cAmount = fetchBookingDetailsModel.getAmount();
 
         bookingInfoViewHolder.relativeLayoutDetails.setOnClickListener(v -> {
+
             Intent newDetailIntent = new Intent(context, FinalBookingPaymentActivity.class);
-            newDetailIntent.putExtra("Service",fetchBookingDetailsModel.getServiceType());
+            newDetailIntent.putExtra("Amount",cAmount);
+            newDetailIntent.putExtra("Service",bookingInfoViewHolder.serviceName.getText().toString());
+            newDetailIntent.putExtra("Category",bookingInfoViewHolder.serviceCategory.getText().toString());
+            newDetailIntent.putExtra("Status",bookingInfoViewHolder.mServiceStatus.getText().toString());
+            newDetailIntent.putExtra("Time",bookingInfoViewHolder.serviceTime.getText().toString());
+            newDetailIntent.putExtra("Date",bookingInfoViewHolder.serviceDate.getText().toString());
             context.startActivity(newDetailIntent);
         });
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -58,7 +68,7 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static class BookingInfoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView serviceName, serviceCategory, serviceTime, serviceDate;
+        TextView serviceName, serviceCategory, serviceTime, serviceDate,mServiceStatus;
         RelativeLayout relativeLayoutDetails;
 
         public BookingInfoViewHolder(@NonNull View itemView) {
@@ -67,6 +77,7 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
             serviceName = itemView.findViewById(R.id.nameService);
             serviceCategory = itemView.findViewById(R.id.nameCategory);
             serviceDate = itemView.findViewById(R.id.serviceDate);
+            mServiceStatus = itemView.findViewById(R.id.serviceStatus);
 
             serviceTime = itemView.findViewById(R.id.serviceTime);
             relativeLayoutDetails = itemView.findViewById(R.id.info_bookings);

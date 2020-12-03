@@ -33,7 +33,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_otp);
 
         TextView textMobile = findViewById(R.id.textMobile);
@@ -82,12 +82,11 @@ public class VerifyOtpActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 verifyBtn.setVisibility(View.VISIBLE);
                                 if (task.isSuccessful()) {
-                                    Intent registerIntent = new Intent(getApplicationContext(),UserRegistrationActivity.class);
+                                    Intent registerIntent = new Intent(getApplicationContext(), UserRegistrationActivity.class);
                                     registerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(registerIntent);
                                     finish();
-                                }
-                                else {
+                                } else {
                                     Toast.makeText(VerifyOtpActivity.this, "Verification Code is Invalid", Toast.LENGTH_SHORT).show();
 
                                 }
@@ -96,31 +95,31 @@ public class VerifyOtpActivity extends AppCompatActivity {
             }
         });
 
-    findViewById(R.id.textResendOtp).setOnClickListener(v -> PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            "+91"+getIntent().getStringExtra("mobile"),
-            60,
-            TimeUnit.SECONDS,
-            VerifyOtpActivity.this,
-            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                @Override
-                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+        findViewById(R.id.textResendOtp).setOnClickListener(v -> PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+91" + getIntent().getStringExtra("mobile"),
+                60,
+                TimeUnit.SECONDS,
+                VerifyOtpActivity.this,
+                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    @Override
+                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+
+                    }
+
+                    @Override
+                    public void onVerificationFailed(@NonNull FirebaseException e) {
+
+                        Toast.makeText(VerifyOtpActivity.this, "[Error]:" + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onCodeSent(@NonNull String newVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                        verificationID = newVerificationId;
+                        Toast.makeText(VerifyOtpActivity.this, "Otp Sent Successfully", Toast.LENGTH_SHORT).show();
+                    }
 
                 }
-
-                @Override
-                public void onVerificationFailed(@NonNull FirebaseException e) {
-
-                    Toast.makeText(VerifyOtpActivity.this, "[Error]:"+e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-
-                @Override
-                public void onCodeSent(@NonNull String newVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                    verificationID = newVerificationId;
-                    Toast.makeText(VerifyOtpActivity.this, "Otp Sent Successfully", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-    ));
+        ));
 
     }
 

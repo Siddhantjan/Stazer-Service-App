@@ -12,6 +12,19 @@
             android:layout_height="match_parent"
             android:padding="15dp">
             <TextView
+                android:id="@+id/serviceStatus"
+                android:padding="6dp"
+                android:layout_marginEnd="4dp"
+                android:textSize="12sp"
+                android:textColor="@color/TextSecondary"
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text=""/>
+
+            <TextView
                 android:id="@+id/nameService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -19,7 +32,7 @@
                 android:layout_marginStart="8dp"
                 android:textSize="16sp"
                 android:textColor="@color/TextPrimary"
-                android:text="Service name"
+                android:text=""
                 />
 
             <TextView
@@ -44,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/TextPrimary"
-                android:text="Date"
+                android:text=""
                 android:layout_margin="8dp"
                 />
                 <TextView
@@ -52,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/TextPrimary"
-                    android:text="Time"
+                    android:text=""
                     android:layout_margin="8dp"
                     />
             </LinearLayout>

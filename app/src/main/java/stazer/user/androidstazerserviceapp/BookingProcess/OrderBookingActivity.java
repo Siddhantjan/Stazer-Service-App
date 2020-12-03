@@ -109,10 +109,12 @@ public class OrderBookingActivity extends AppCompatActivity {
             HashMap<String, Object> bookingMap = new HashMap<>();
             bookingMap.put("serviceType", mServiceType.getText().toString());
             bookingMap.put("serviceCategory", mCategoryType.getText().toString());
+            bookingMap.put("Amount","0");
             try {
                 bookingMap.put("Status","pending");
                 bookingMap.put("Date", CurrentDate);
                 bookingMap.put("Time",Time);
+
             } catch (Exception e) {
                 Toast.makeText(OrderBookingActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
