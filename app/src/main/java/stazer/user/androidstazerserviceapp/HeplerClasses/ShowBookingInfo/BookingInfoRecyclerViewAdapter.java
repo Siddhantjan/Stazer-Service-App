@@ -55,6 +55,7 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
             newDetailIntent.putExtra("Status",bookingInfoViewHolder.mServiceStatus.getText().toString());
             newDetailIntent.putExtra("Time",bookingInfoViewHolder.serviceTime.getText().toString());
             newDetailIntent.putExtra("Date",bookingInfoViewHolder.serviceDate.getText().toString());
+            newDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(newDetailIntent);
         });
 
