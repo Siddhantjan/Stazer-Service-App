@@ -35,7 +35,6 @@ import java.util.Objects;
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
-import stazer.user.androidstazerserviceapp.Company.DeveloperTeamActivity;
 import stazer.user.androidstazerserviceapp.Company.OurVisionActivity;
 import stazer.user.androidstazerserviceapp.Company.TermsAndConditionActivity;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
@@ -48,6 +47,7 @@ import stazer.user.androidstazerserviceapp.services.geyser.GeyserActivity;
 import stazer.user.androidstazerserviceapp.services.plumber.PlumberActivity;
 import stazer.user.androidstazerserviceapp.services.refrigerator.RefrigeratorActivity;
 import stazer.user.androidstazerserviceapp.services.roservice.RoServiceActivity;
+import stazer.user.androidstazerserviceapp.tenderService.TenderActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -140,10 +140,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Tender Services
         /* --------------------------------- start ----------------------------------*/
-        findViewById(R.id.hotel_restaurants_tender);
-        findViewById(R.id.mall_tender);
-        findViewById(R.id.flats_societies_tender);
-        findViewById(R.id.hostel_institute_tender);
+        findViewById(R.id.hotel_restaurants_tender).setOnClickListener(v -> {
+            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
+            tenderIntent.putExtra("Tender","Hotels and Restaurants");
+            startActivity(tenderIntent);
+        });
+        findViewById(R.id.mall_tender).setOnClickListener(v -> {
+            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
+            tenderIntent.putExtra("Tender","Mall");
+            startActivity(tenderIntent);
+        });
+        findViewById(R.id.flats_societies_tender).setOnClickListener(v -> {
+            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
+            tenderIntent.putExtra("Tender","Flats and Societies");
+                    startActivity(tenderIntent);
+        });
+        findViewById(R.id.hostel_institute_tender).setOnClickListener(v -> {
+            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
+            tenderIntent.putExtra("Tender","Hostel and Institutes");
+                    startActivity(tenderIntent);
+        });
         /* --------------------------------- Close ----------------------------------*/
     }
 
@@ -223,9 +239,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_terms:
                 gotoTermsPage();
                 break;
-            case R.id.nav_team:
-                gotoDeveloperTeam();
-                break;
             case R.id.nav_values:
                 gotoValuesPage();
                 break;
@@ -235,10 +248,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_rate_us:
                openActivityforRateUs();
                 break;
+
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     private void openActivityforRateUs() {
         Uri uri = Uri.parse("https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
@@ -275,10 +290,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(missionIntent);
     }
 
-    private void gotoDeveloperTeam() {
-        Intent developerIntent = new Intent(getApplicationContext(), DeveloperTeamActivity.class);
-        startActivity(developerIntent);
-    }
+
 
     private void gotoTermsPage() {
         Intent termsIntent = new Intent(getApplicationContext(), TermsAndConditionActivity.class);
