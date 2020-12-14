@@ -163,7 +163,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Third -->
+            <!-- Third (Feedback) -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -202,6 +202,7 @@
                             android:textSize="18sp" />
 
                         <EditText
+                            android:inputType="textPersonName"
                             android:id="@+id/mechanicName"
                             android:layout_width="120dp"
                             android:layout_height="wrap_content"
@@ -229,15 +230,40 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
                     </LinearLayout>
-
-                    <EditText
-                        android:id="@+id/feedbackText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="Any Suggestion or Your Feedback for us "
-                        android:padding="8dp"
-                        android:textColor="@color/TextPrimary"
-                        android:textSize="18sp" />
+                    <RelativeLayout
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:layout_alignParentStart="true"
+                            android:id="@+id/ch1"
+                            android:padding="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Well Experienced "/>
+                        <CheckBox
+                            android:id="@+id/ch2"
+                            android:layout_below="@+id/ch1"
+                            android:padding="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Good in Behaviour "/>
+                        <CheckBox
+                            android:layout_alignParentEnd="true"
+                            android:id="@+id/ch3"
+                            android:padding="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Take Reliable cost"/>
+                        <CheckBox
+                            android:layout_alignParentEnd="true"
+                            android:id="@+id/ch4"
+                            android:layout_below="@+id/ch3"
+                            android:padding="4dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reached On Time"/>
+                    </RelativeLayout>
 
                     <Button
                         android:id="@+id/sendFeedback"

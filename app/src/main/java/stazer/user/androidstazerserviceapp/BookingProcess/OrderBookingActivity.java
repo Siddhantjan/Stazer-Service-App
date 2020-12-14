@@ -136,15 +136,14 @@ public class OrderBookingActivity extends AppCompatActivity {
             serviceSendAdmin.put("UserMobile",mMobileNumber.getText().toString());
             serviceSendAdmin.put("UserAddress",mAddress.getText().toString());
             serviceSendAdmin.put("serviceType",mServiceType.getText().toString());
-            serviceSendAdmin.put("serviceCategoryType",mCategoryType.getText().toString());
+            serviceSendAdmin.put("serviceCategory",mCategoryType.getText().toString());
             try {
-                serviceSendAdmin.put("Status","pending");
                 serviceSendAdmin.put("Date", CurrentDate);
                 serviceSendAdmin.put("Time",Time);
             } catch (Exception e){
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrderBooking")
+            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                     .setValue(serviceSendAdmin)
                     .addOnCompleteListener(task -> Log.d("sendDataToAdmin", "onComplete: Booking Confirmed saved"))
                     .addOnFailureListener(e -> Log.d("sendDataToAdmin", "onFailure: "+e.toString()));

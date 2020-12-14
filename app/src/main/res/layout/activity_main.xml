@@ -101,11 +101,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/electrician_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -134,11 +134,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/plumber_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -167,11 +167,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/air_conditioner_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -200,11 +200,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="8dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/refrigerator_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -282,11 +282,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/appliance_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -316,11 +316,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/electrician_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -350,11 +350,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/plumber_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -384,11 +384,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/air_conditioner_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -426,11 +426,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/carpenter_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -460,11 +460,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/ro_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -494,11 +494,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/refrigerator_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -528,11 +528,11 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="4dp"
-                                    android:src="@drawable/icon_service" />
+                                    android:src="@drawable/geyser_icon" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -561,7 +561,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Tender Services"
+                        android:text="Most Searched Tender Services"
                         android:textColor="@color/TextSecondary"
                         android:textSize="16sp" />
 
@@ -571,132 +571,192 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginEnd="40dp"
                         android:background="@color/colorDivider" />
-                    <!-- Card View Layouts row 1-->
-                    <LinearLayout
+
+                    <GridLayout
                         android:layout_width="match_parent"
-                        android:layout_height="138dp"
-                        android:layout_margin="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <!-- card 1 -->
+                        android:layout_height="wrap_content"
+                        android:rowCount="2"
+                        android:columnCount="2"
+                        >
+                        <!--Row 1 card 1 -->
                         <androidx.cardview.widget.CardView
-                            android:layout_width="145dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="135dp"
                             android:layout_margin="10dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp">
-
+                            app:cardElevation="8dp"
+                            android:layout_row="0"
+                            android:layout_column="0"
+                            android:layout_rowWeight="1"
+                            android:layout_gravity="fill"
+                            android:layout_columnWeight="1">
                             <LinearLayout
-                                android:id="@+id/hotel_restaurants_tender"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:layout_width="135dp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:orientation="vertical">
-
+                                android:layout_gravity="center_horizontal |center_vertical">
+                                <ImageView
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/icon_service"/>
                                 <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginBottom="2dp"
-                                    android:gravity="center"
-                                    android:text="Hotels and Restaurants "
                                     android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:padding="4dp"
+                                    android:textAllCaps="true"
                                     android:textColor="@color/TextPrimary"
-                                    android:textSize="18sp" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Electrician"/>
+
                             </LinearLayout>
+
                         </androidx.cardview.widget.CardView>
-                        <!-- card 2 -->
+                        <!--Row 1 card 2 -->
                         <androidx.cardview.widget.CardView
-                            android:layout_width="145dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="135dp"
                             android:layout_margin="10dp"
                             app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp">
-
+                            app:cardElevation="8dp"
+                            android:layout_row="0"
+                            android:layout_column="1"
+                            android:layout_rowWeight="1"
+                            android:layout_gravity="fill"
+                            android:layout_columnWeight="1">
                             <LinearLayout
-                                android:id="@+id/hostel_institute_tender"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:layout_width="135dp"                                android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:orientation="vertical">
-
+                                android:layout_gravity="center_horizontal |center_vertical">
+                                <ImageView
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/icon_service"/>
                                 <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginBottom="2dp"
-                                    android:gravity="center"
-                                    android:text="Hostel and Institutes"
                                     android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:padding="4dp"
+                                    android:textAllCaps="true"
                                     android:textColor="@color/TextPrimary"
-                                    android:textSize="18sp" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="air conditioner maintenance"/>
+
                             </LinearLayout>
+
                         </androidx.cardview.widget.CardView>
-                    </LinearLayout>
-                    <!-- Card View Layouts row 2-->
-                    <LinearLayout
+                        <!--Row 2 card 1 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="135dp"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp"
+                            android:layout_row="1"
+                            android:layout_column="0"
+                            android:layout_rowWeight="1"
+                            android:layout_gravity="fill"
+                            android:layout_columnWeight="1">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="135dp"                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal |center_vertical">
+                                <ImageView
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/icon_service"/>
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:padding="4dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/TextPrimary"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Complete Sanitization"/>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                        <!--Row 2 card 2 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="135dp"
+                            android:layout_margin="10dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardElevation="8dp"
+                            android:layout_row="1"
+                            android:layout_column="1"
+                            android:layout_rowWeight="1"
+                            android:layout_gravity="fill"
+                            android:layout_columnWeight="1">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="135dp"                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal |center_vertical">
+                                <ImageView
+                                    android:layout_margin="8dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/icon_service"/>
+                                <TextView
+                                    android:textAlignment="center"
+                                    android:textSize="12sp"
+                                    android:padding="4dp"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/TextPrimary"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Appliance"/>
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </GridLayout>
+                    <Button
+                        android:textColor="@color/TextPrimary"
+                        android:textAlignment="center"
+                        android:textSize="12dp"
+                        android:layout_margin="12dp"
+                        android:textAllCaps="true"
                         android:layout_width="match_parent"
-                        android:layout_height="138dp"
-                        android:layout_margin="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-                        <!-- card 1 -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="145dp"
-                            android:layout_height="135dp"
-                            android:layout_margin="10dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp">
-
-                            <LinearLayout
-                                android:id="@+id/mall_tender"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginBottom="2dp"
-                                    android:gravity="center"
-                                    android:text="Mall"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/TextPrimary"
-                                    android:textSize="18sp" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                        <!-- card 2 -->
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="145dp"
-                            android:layout_height="135dp"
-                            android:layout_margin="10dp"
-                            app:cardCornerRadius="8dp"
-                            app:cardElevation="8dp">
-
-                            <LinearLayout
-                                android:id="@+id/flats_societies_tender"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_horizontal"
-                                android:gravity="center"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginBottom="2dp"
-                                    android:gravity="center"
-                                    android:text="Flats and Societies"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/TextPrimary"
-                                    android:textSize="18sp" />
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                    </LinearLayout>
+                        android:layout_height="wrap_content"
+                        android:elevation="12dp"
+                        android:text="View All Tenders"/>
 
                 </LinearLayout>
+            <LinearLayout
+                android:layout_marginBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:elevation="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Heavy Work"
+                    android:textColor="@color/TextSecondary"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@color/colorDivider" />
+
+
+            </LinearLayout>
 
                 <!-- main Scroll Close -->
             </LinearLayout>

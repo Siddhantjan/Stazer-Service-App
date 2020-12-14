@@ -128,13 +128,15 @@ public class orderSchduleActivity extends AppCompatActivity {
             });
 
             HashMap<String,Object> serviceScheduleMap = new HashMap<>();
-            serviceScheduleMap.put("Name",mName.getText().toString());
-            serviceScheduleMap.put("MobileNumber",mMobileNumber.getText().toString());
+            serviceScheduleMap.put("UserName",mName.getText().toString());
+            serviceScheduleMap.put("UserMobile",mMobileNumber.getText().toString());
             serviceScheduleMap.put("UserAddress",mAddress.getText().toString());
-            serviceScheduleMap.put("ServiceName",mServiceType.getText().toString());
+            serviceScheduleMap.put("serviceType",mServiceType.getText().toString());
             serviceScheduleMap.put("Time", mDisplayTime.getText().toString());
             serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
-            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrderBookingSchdule")
+            serviceScheduleMap.put("serviceCategory","");
+
+            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                     .setValue(serviceScheduleMap)
                     .addOnCompleteListener(task -> Log.d("sendDataToAdminSchedule", "onComplete: Booking Confirmed saved"))
                     .addOnFailureListener(e -> Log.d("sendDataToAdminSchedule", "onFailure: "+e.toString()));

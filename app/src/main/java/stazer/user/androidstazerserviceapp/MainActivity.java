@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Tender Services
         /* --------------------------------- start ----------------------------------*/
-        findViewById(R.id.hotel_restaurants_tender).setOnClickListener(v -> {
+        /*findViewById(R.id.hotel_restaurants_tender).setOnClickListener(v -> {
             Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
             tenderIntent.putExtra("Tender","Hotels and Restaurants");
             startActivity(tenderIntent);
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
             tenderIntent.putExtra("Tender","Hostel and Institutes");
                     startActivity(tenderIntent);
-        });
+        }); */
         /* --------------------------------- Close ----------------------------------*/
     }
 

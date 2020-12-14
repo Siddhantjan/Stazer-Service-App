@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -15,6 +18,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,20 +29,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.MainActivity;
 import stazer.user.androidstazerserviceapp.R;
 
-public class FinalBookingPaymentActivity extends AppCompatActivity {
+public class FinalBookingPaymentActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Spinner mFeedbackRating;
-    private Button mServiceDone;
+    private Button mServiceDone,mFeedbackDone;
     private TextView mServiceType,mServiceStatus,mServiceCategory,mServiceDate,mServiceTime,mServiceAmount;
     private EditText mMechanicName, mFeedbackText;
     FirebaseDatabase database;
     DatabaseReference adminInfoRef, userInfoRef;
+    private  String Rating;
     private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount;
+    private CheckBox mExperience,mTiming,mCost,mBehaviour;
 
     @Override
     protected void onStart() {
@@ -67,17 +76,21 @@ public class FinalBookingPaymentActivity extends AppCompatActivity {
         mServiceDate = findViewById(R.id.servicingDate);
         mServiceTime = findViewById(R.id.servicingTime);
 
+        mExperience = findViewById(R.id.ch1);
+        mBehaviour = findViewById(R.id.ch2);
+        mCost = findViewById(R.id.ch3);
+        mTiming = findViewById(R.id.ch4);
 
-
-
+        mFeedbackDone = findViewById(R.id.sendFeedback);
         mFeedbackRating = findViewById(R.id.feedbackRating);
         mMechanicName = findViewById(R.id.mechanicName);
-        mFeedbackText = findViewById(R.id.feedbackText);
         mServiceDone = findViewById(R.id.serviceDone);
         mServiceAmount = findViewById(R.id.serviceAmount);
 
 
+       if (mExperience.isChecked()){
 
+       }
         Bundle bundle = getIntent().getExtras();
         if ( bundle != null){
             //getData
@@ -99,9 +112,10 @@ public class FinalBookingPaymentActivity extends AppCompatActivity {
 
         }
 
-        String[] feedback = {"Excellent", "Best", "Good", "Poor"};
+        String[] feedback = {"Select","Excellent", "Best", "Good", "Poor"};
         ArrayAdapter<String> feedbackAdapter = new ArrayAdapter<String>(this, R.layout.spinner_options, feedback);
         mFeedbackRating.setAdapter(feedbackAdapter);
+        mFeedbackRating.setOnItemSelectedListener(this);
 
         mServiceDone.setOnClickListener(v -> {
             mServiceStatus.setText("Completed");
@@ -126,8 +140,6 @@ public class FinalBookingPaymentActivity extends AppCompatActivity {
             amountDialogBuilder.setView(mAmount);
             amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
                 if (!TextUtils.isEmpty(mAmount.getText().toString())) {
-                   // DatabaseReference myRef = database.getReference(String.valueOf());
-                   //Query query1 = myRef.orderByChild("Amount").equalTo(mAmount.getText().toString());
                     userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -157,10 +169,70 @@ public class FinalBookingPaymentActivity extends AppCompatActivity {
 
         });
 
+        mFeedbackDone.setOnClickListener(v -> {
+
+            if (mMechanicName.getText().toString().trim().isEmpty()) {
+                Toast.makeText(FinalBookingPaymentActivity.this, "Enter Mechanic Name", Toast.LENGTH_SHORT).show();
+            }
+            else if (mFeedbackRating.getSelectedItemPosition() < 1){
+                Toast.makeText(FinalBookingPaymentActivity.this, "Please Select Rating", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                StringBuffer feedBackText = new StringBuffer();
+                if (!mTiming.isChecked() && !mExperience.isChecked() && !mCost.isChecked() && !mBehaviour.isChecked()){
+                    feedBackText.append("");
+                }
+                else {
+                    feedBackText.append("Service man is : ");
+                    if (mExperience.isChecked()) {
+                         feedBackText.append(" "+ mExperience.getText().toString());
+                    }
+                    if (mBehaviour.isChecked()) {
+                        feedBackText.append(","+ mBehaviour.getText().toString());
+                    }
+                    if (mCost.isChecked()) {
+                        feedBackText.append(","+ mCost.getText().toString());
+                    }
+                    if (mTiming.isChecked()) {
+                        feedBackText.append(","+ mTiming.getText().toString());
+                    }
+                }
+                String feedbackTxt = feedBackText.toString();
+
+                HashMap<String, Object> feedbackMap = new HashMap<>();
+                feedbackMap.put("rating", Rating);
+                try {
+                    feedbackMap.put("feedback",feedbackTxt);
+
+                } catch (Exception e) {
+                    Toast.makeText(FinalBookingPaymentActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                String mName = mMechanicName.getText().toString();
+
+                userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("FeedbackDetails")
+                        .child(mName).push().setValue(feedbackMap)
+                        .addOnCompleteListener(task -> Toast.makeText(FinalBookingPaymentActivity.this, "Thanks for Feedback", Toast.LENGTH_SHORT).show())
+                        .addOnFailureListener(e -> Toast.makeText(FinalBookingPaymentActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+
+            }
+        });
+
+
     }
     private void goToHomeActivity() {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(mainIntent);
         finish();
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Rating  = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
