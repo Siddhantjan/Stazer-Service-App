@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".services.CleaningServices.CarWash.CarWashingActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- First Layout -->
+        <!-- Header Class -->
+        <RelativeLayout
+            android:elevation="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/geyser_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="Car Washing Services"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/geyser_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/colorDivider" />
+
+        </RelativeLayout>
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:text="Select Your Car Type"
+            android:textColor="@color/TextPrimary"
+            android:textSize="14sp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+            <!-- main Scroll start -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_gravity="fill"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp">
+                        <RelativeLayout
+                            android:id="@+id/hatchbackCar"
+                            android:layout_margin="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="HatchBack"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="12dp"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="fill"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp">
+                    <RelativeLayout
+                        android:id="@+id/sedanCar"
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Sedan"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="12dp"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="fill"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp">
+                    <RelativeLayout
+                        android:id="@+id/seaterXUV_5"
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="5- seater XUV"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="12dp"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="fill"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp">
+                    <RelativeLayout
+                        android:id="@+id/seaterXUV_7"
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="7 - seater XUV"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="12dp"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="fill"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp">
+                    <RelativeLayout
+                        android:id="@+id/luxury"
+                        android:layout_margin="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="Luxury"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:layout_alignParentEnd="true"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:elevation="12dp"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+                <View
+                    android:layout_marginTop="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/gradient_view"/>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>

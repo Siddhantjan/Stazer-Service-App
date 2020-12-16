@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import stazer.user.androidstazerserviceapp.R;
 
 public class OrderCategoryActivity extends AppCompatActivity {
+    String serviceName;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        serviceName = getIntent().getStringExtra("serviceType");
+    }
 
     RelativeLayout installationLayout,servicelayout,repairLayout;
     @Override
@@ -19,15 +25,6 @@ public class OrderCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_oder_category);
-       // assign service name
-        String serviceName = getIntent().getStringExtra("serviceType");
-        // save Service name
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences("USER_PREF",
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("serviceName", serviceName);
-        editor.apply();
-
         //hooks
         installationLayout=findViewById(R.id.category_type_1);
         servicelayout = findViewById(R.id.category_type_3);
@@ -35,12 +32,14 @@ public class OrderCategoryActivity extends AppCompatActivity {
 
         installationLayout.setOnClickListener(v -> {
             Intent categoryIntent = new Intent(getApplicationContext(), OrderBookingActivity.class);
+            categoryIntent.putExtra("serviceType",serviceName);
             categoryIntent.putExtra("categoryType","Installation / unInstallation");
             startActivity(categoryIntent);
         });
 
         servicelayout.setOnClickListener(v -> {
             Intent categoryIntent = new Intent(getApplicationContext(), OrderBookingActivity.class);
+            categoryIntent.putExtra("serviceType",serviceName);
             categoryIntent.putExtra("categoryType","Service");
             startActivity(categoryIntent);
         });
@@ -48,6 +47,7 @@ public class OrderCategoryActivity extends AppCompatActivity {
 
         repairLayout.setOnClickListener(v -> {
             Intent categoryIntent = new Intent(getApplicationContext(), OrderBookingActivity.class);
+            categoryIntent.putExtra("serviceType",serviceName);
             categoryIntent.putExtra("categoryType","Repair");
             startActivity(categoryIntent);
         });

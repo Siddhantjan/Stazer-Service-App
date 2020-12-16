@@ -119,8 +119,9 @@
                     android:visibility="visible">
 
                     <TextView
+                        android:textAlignment="center"
                         android:id="@+id/booking_details"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="Booking Details"
@@ -154,60 +155,74 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
-                   <LinearLayout
-                       android:layout_marginTop="16dp"
-                       android:layout_below="@+id/service_type_heading"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:gravity="center"
-                       android:orientation="vertical"
-                       android:padding="16dp">
-                       <LinearLayout
-                           android:background="@null"
-                           android:id="@+id/selectDateTime"
-                           android:layout_width="match_parent"
-                           android:layout_height="wrap_content"
-                           android:orientation="horizontal">
-                           <TextView
-                               android:background="@color/snowWhite"
-                               android:id="@+id/btn_booking_date"
-                               android:layout_width="0dp"
-                               android:layout_height="wrap_content"
-                               android:textAlignment="center"
-                               android:layout_margin="8dp"
-                               android:padding="8dp"
-                               android:textSize="14sp"
-                               android:elevation="8dp"
-                               android:textStyle="bold"
-                               android:textColorHint="@color/colorBlack"
-                               android:layout_weight="1"
-                               android:hint="Select Date" />
-                           <TextView
-                               android:background="@color/snowWhite"
-                               android:id="@+id/btn_booking_time"
-                               android:layout_width="0dp"
-                               android:layout_height="wrap_content"
-                               android:textAlignment="center"
-                               android:layout_margin="8dp"
-                               android:padding="8dp"
-                               android:textSize="14sp"
-                               android:elevation="8dp"
-                               android:textStyle="bold"
-                               android:textColorHint="@color/colorBlack"
-                               android:layout_weight="1"
-                               android:hint="Select Time"
-                             />
-                       </LinearLayout>
+                    <TextView
+                        android:textAlignment="center"
+                        android:id="@+id/serviceCategorySch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/service_type_heading"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="14sp" />
 
-                       <TextView
-                           android:id="@+id/btn_booking_date_display"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content" />
-                       <TextView
-                           android:id="@+id/btn_booking_time_display"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content" />
-                   </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/serviceCategorySch"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <LinearLayout
+                            android:id="@+id/selectDateTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/btn_booking_date"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:background="@color/snowWhite"
+                                android:elevation="8dp"
+                                android:hint="Select Date"
+                                android:padding="8dp"
+                                android:textAlignment="center"
+                                android:textColorHint="@color/colorBlack"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/btn_booking_time"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:background="@color/snowWhite"
+                                android:elevation="8dp"
+                                android:hint="Select Time"
+                                android:padding="8dp"
+                                android:textAlignment="center"
+                                android:textColorHint="@color/colorBlack"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/btn_booking_date_display"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/btn_booking_time_display"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
 
                 </RelativeLayout>
 

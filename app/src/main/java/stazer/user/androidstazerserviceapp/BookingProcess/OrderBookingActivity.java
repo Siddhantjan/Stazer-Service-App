@@ -42,7 +42,6 @@ public class OrderBookingActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference userInfoRef,adminInfoRef;
     String userName;
-    String serviceName;
     String UserAddress;
     private TextView mName, mMobileNumber, mServiceType, mCategoryType, mAddress;
 
@@ -53,9 +52,7 @@ public class OrderBookingActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_order_booking);
 
-        SharedPreferences prefs = getApplicationContext().getSharedPreferences("USER_PREF",
-                Context.MODE_PRIVATE);
-        serviceName = prefs.getString("serviceName", NULL);
+
         database = FirebaseDatabase.getInstance();
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
         adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
@@ -63,7 +60,7 @@ public class OrderBookingActivity extends AppCompatActivity {
 
         //hooks
         mServiceType = findViewById(R.id.service_type);
-        mServiceType.setText(serviceName);
+        mServiceType.setText(getIntent().getStringExtra("serviceType"));
         mCategoryType = findViewById(R.id.category_type);
         mMobileNumber = findViewById(R.id.customer_mobile);
         mName = findViewById(R.id.customer_name);

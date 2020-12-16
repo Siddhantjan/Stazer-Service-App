@@ -40,6 +40,8 @@ import stazer.user.androidstazerserviceapp.Company.TermsAndConditionActivity;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewHelperClass;
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.AllCleaningServicesActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.CarWashingActivity;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
 import stazer.user.androidstazerserviceapp.services.carpenter.CarpenterActivity;
 import stazer.user.androidstazerserviceapp.services.electrician.ElectricianActivity;
@@ -47,7 +49,6 @@ import stazer.user.androidstazerserviceapp.services.geyser.GeyserActivity;
 import stazer.user.androidstazerserviceapp.services.plumber.PlumberActivity;
 import stazer.user.androidstazerserviceapp.services.refrigerator.RefrigeratorActivity;
 import stazer.user.androidstazerserviceapp.services.roservice.RoServiceActivity;
-import stazer.user.androidstazerserviceapp.tenderService.TenderActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /* --------------------------------- Close ----------------------------------*/
 
 
-        //Tender Services
+        //Cleaning Services
         /* --------------------------------- start ----------------------------------*/
         /*findViewById(R.id.hotel_restaurants_tender).setOnClickListener(v -> {
             Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
@@ -160,6 +161,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             tenderIntent.putExtra("Tender","Hostel and Institutes");
                     startActivity(tenderIntent);
         }); */
+        findViewById(R.id.carWash).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent carWashIntent = new Intent(getApplicationContext(), CarWashingActivity.class);
+                startActivity(carWashIntent);
+            }
+        });
+        findViewById(R.id.allCleaningServiceShow).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cleaningIntent = new Intent(getApplicationContext(), AllCleaningServicesActivity.class);
+                startActivity(cleaningIntent);
+            }
+        });
         /* --------------------------------- Close ----------------------------------*/
     }
 

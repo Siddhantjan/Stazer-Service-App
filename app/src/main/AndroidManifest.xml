@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".tenderService.TenderActivity"></activity>
+        <activity android:name=".services.CleaningServices.CarWash.CarWashCategoryActivity"></activity>
+        <activity android:name=".services.CleaningServices.CarWash.CarWashingActivity" />
+        <activity android:name=".services.CleaningServices.bathroomCleaning.BathroomCleaningActivity" />
+        <activity android:name=".services.CleaningServices.AllCleaningServicesActivity" />
+
         <activity
             android:name=".BookingInfo.FinalBookingPaymentActivity"
             android:screenOrientation="portrait" />

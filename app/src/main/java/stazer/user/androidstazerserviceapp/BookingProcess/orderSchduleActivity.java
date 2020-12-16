@@ -39,7 +39,7 @@ public class orderSchduleActivity extends AppCompatActivity {
     private TextView mDisplayTime, mDisplayDate;
     FirebaseDatabase database;
     DatabaseReference userInfoRef,adminInfoRef;
-    private TextView mServiceType;
+    private TextView mServiceType,mServiceCategory;
     private Button btn_bookingSchedule;
     private TextView mName, mMobileNumber,  mAddress;
     private String UserAddress;
@@ -51,7 +51,6 @@ public class orderSchduleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_order_schdule);
 
         //initialize calender
@@ -141,9 +140,11 @@ public class orderSchduleActivity extends AppCompatActivity {
         });
 
         mServiceType = findViewById(R.id.service_type_sch);
+        mServiceCategory = findViewById(R.id.serviceCategorySch);
         btn_bookingSchedule = findViewById(R.id.btn_booking_schdule);
 
         mServiceType.setText(getIntent().getStringExtra("serviceType"));
+        mServiceCategory.setText(getIntent().getStringExtra("categoryType"));
         database = FirebaseDatabase.getInstance();
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
         adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
@@ -191,6 +192,7 @@ public class orderSchduleActivity extends AppCompatActivity {
         } else {
             HashMap<String, Object> scheduleMap = new HashMap<>();
             scheduleMap.put("serviceType", mServiceType.getText().toString());
+            scheduleMap.put("serviceCategory",mServiceCategory.getText().toString());
             scheduleMap.put("Time", mDisplayTime.getText().toString());
             scheduleMap.put("Date", mDisplayDate.getText().toString());
             scheduleMap.put("Status","pending");
@@ -212,7 +214,7 @@ public class orderSchduleActivity extends AppCompatActivity {
             serviceScheduleMap.put("serviceType",mServiceType.getText().toString());
             serviceScheduleMap.put("Time", mDisplayTime.getText().toString());
             serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
-            serviceScheduleMap.put("serviceCategory","");
+            serviceScheduleMap.put("serviceCategory",mServiceCategory.getText().toString());
 
             adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                     .setValue(serviceScheduleMap)

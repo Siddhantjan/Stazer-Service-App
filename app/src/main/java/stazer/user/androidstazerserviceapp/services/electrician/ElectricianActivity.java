@@ -17,6 +17,7 @@ public class ElectricianActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_electrician);
+
         findViewById(R.id.btn_book_ele).setOnClickListener(v -> goToElectricianBooking());
         findViewById(R.id.scheduleServiceEle).setOnClickListener(new View.OnClickListener() {
             @Override
