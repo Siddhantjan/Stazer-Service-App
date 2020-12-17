@@ -1,6 +1,8 @@
 package stazer.user.androidstazerserviceapp;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -10,7 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
+
 public class SplashScreenActivity extends AppCompatActivity {
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     private static int SPLASH_SCREEN_TIMER=3000;
     @Override
@@ -24,6 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener,filter);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if ( user != null){
           //  FirebaseInstanceId.getInstance()
@@ -41,6 +48,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         }
 
         super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 
     private void gotoHomeScreen() {

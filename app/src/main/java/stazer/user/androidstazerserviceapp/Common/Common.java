@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
@@ -24,6 +26,22 @@ public class Common {
 
 
     public static UserModel currentUser;
+
+
+    public static boolean isConnectedToInternet(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo[] info = connectivityManager.getAllNetworkInfo();
+            if (info != null) {
+                for (int i = 0; i < info.length; i++) {
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
 
     public static void showNotification(Context context, int id, String title, String body, Intent intent) {
@@ -44,20 +62,20 @@ public class Common {
                 notificationManager.createNotificationChannel(notificationChannel);
             }
 
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(context,NOTIFICATION_CHANNEL_ID);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID);
             builder.setContentTitle(title)
                     .setContentText(body)
                     .setAutoCancel(false)
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setDefaults(Notification.DEFAULT_VIBRATE)
                     .setSmallIcon(R.drawable.icon_service)
-                    .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),R.drawable.icon_service));
+                    .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.icon_service));
 
-            if (pendingIntent != null){
+            if (pendingIntent != null) {
                 builder.setContentIntent(pendingIntent);
             }
             Notification notification = builder.build();
-            notificationManager.notify(id,notification);
+            notificationManager.notify(id, notification);
         }
 
     }

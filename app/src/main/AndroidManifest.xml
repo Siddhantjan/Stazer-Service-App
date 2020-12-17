@@ -3,6 +3,7 @@
     package="stazer.user.androidstazerserviceapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".services.CleaningServices.CarWash.CarWashCategoryActivity"></activity>
+        <activity android:name=".services.CleaningServices.CarWash.CarWashCategoryActivity"/>
         <activity android:name=".services.CleaningServices.CarWash.CarWashingActivity" />
         <activity android:name=".services.CleaningServices.bathroomCleaning.BathroomCleaningActivity" />
         <activity android:name=".services.CleaningServices.AllCleaningServicesActivity" />

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -22,12 +24,28 @@ import java.util.List;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.HeplerClasses.ShowBookingInfo.BookingInfoRecyclerViewAdapter;
 import stazer.user.androidstazerserviceapp.MainActivity;
 import stazer.user.androidstazerserviceapp.Model.FetchBookingDetailsModel;
 import stazer.user.androidstazerserviceapp.R;
 
 public class BookingActivity extends AppCompatActivity {
+
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 
     List<FetchBookingDetailsModel> fetchBookingDetailsModels;
     RecyclerView recyclerViewBooking;

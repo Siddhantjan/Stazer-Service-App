@@ -2,7 +2,9 @@ package stazer.user.androidstazerserviceapp.BookingProcess;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -32,11 +34,27 @@ import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.R;
 
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class OrderBookingActivity extends AppCompatActivity {
+
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener,filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 
     private Button btn_bookingComplete;
     FirebaseDatabase database;

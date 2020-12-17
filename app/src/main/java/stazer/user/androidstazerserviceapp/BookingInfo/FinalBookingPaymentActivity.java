@@ -2,6 +2,8 @@ package stazer.user.androidstazerserviceapp.BookingInfo;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -33,10 +35,13 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.MainActivity;
 import stazer.user.androidstazerserviceapp.R;
 
 public class FinalBookingPaymentActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
     private Spinner mFeedbackRating;
     private Button mServiceDone,mFeedbackDone;
     private TextView mServiceType,mServiceStatus,mServiceCategory,mServiceDate,mServiceTime,mServiceAmount;
@@ -46,9 +51,10 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     private  String Rating;
     private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount;
     private CheckBox mExperience,mTiming,mCost,mBehaviour;
-
     @Override
     protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener,filter);
         if (!mServiceStatus.getText().toString().equals("Completed")){
             mServiceDone.setEnabled(true);
         }
@@ -57,7 +63,11 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         }
         super.onStart();
     }
-
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

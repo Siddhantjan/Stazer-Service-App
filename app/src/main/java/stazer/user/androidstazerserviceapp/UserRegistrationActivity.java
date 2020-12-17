@@ -1,6 +1,8 @@
 package stazer.user.androidstazerserviceapp;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.WindowManager;
@@ -22,10 +24,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.Model.UserModel;
 
 public class UserRegistrationActivity extends AppCompatActivity {
-
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userInfoRef;
     FirebaseAuth firebaseAuth;
@@ -36,6 +39,19 @@ public class UserRegistrationActivity extends AppCompatActivity {
     private EditText editFlatno;
     private EditText editArea;
     private EditText editLandmark;
+
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +94,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                 if (editFirstName.getText().toString().trim().isEmpty()) {
                                     Toast.makeText(UserRegistrationActivity.this, "Enter First Name", Toast.LENGTH_SHORT).show();
                                     return;
-                                }
-                                else if (editLastName.getText().toString().trim().isEmpty()) {
+                                } else if (editLastName.getText().toString().trim().isEmpty()) {
                                     Toast.makeText(UserRegistrationActivity.this, "Enter Last Name", Toast.LENGTH_SHORT).show();
                                     return;
                                 } else if (editPhoneNumber.getText().toString().trim().isEmpty()) {

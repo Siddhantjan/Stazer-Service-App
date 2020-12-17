@@ -1,7 +1,9 @@
 package stazer.user.androidstazerserviceapp;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +36,7 @@ import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
+import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
 import stazer.user.androidstazerserviceapp.Company.OurVisionActivity;
 import stazer.user.androidstazerserviceapp.Company.TermsAndConditionActivity;
@@ -51,7 +54,7 @@ import stazer.user.androidstazerserviceapp.services.refrigerator.RefrigeratorAct
 import stazer.user.androidstazerserviceapp.services.roservice.RoServiceActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     //Variables
     static final float END_SCALE = 0.7f;
     FirebaseDatabase firebaseDatabase;
@@ -67,8 +70,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
     @Override
     protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
