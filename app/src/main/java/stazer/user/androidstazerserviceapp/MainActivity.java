@@ -45,6 +45,8 @@ import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScree
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.AllCleaningServicesActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.CarWashingActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.bathroomCleaning.BathroomCleaningActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.kitchenCleaning.KitchenCleaningActivity;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
 import stazer.user.androidstazerserviceapp.services.carpenter.CarpenterActivity;
 import stazer.user.androidstazerserviceapp.services.electrician.ElectricianActivity;
@@ -153,31 +155,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Cleaning Services
         /* --------------------------------- start ----------------------------------*/
-        /*findViewById(R.id.hotel_restaurants_tender).setOnClickListener(v -> {
-            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
-            tenderIntent.putExtra("Tender","Hotels and Restaurants");
-            startActivity(tenderIntent);
-        });
-        findViewById(R.id.mall_tender).setOnClickListener(v -> {
-            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
-            tenderIntent.putExtra("Tender","Mall");
-            startActivity(tenderIntent);
-        });
-        findViewById(R.id.flats_societies_tender).setOnClickListener(v -> {
-            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
-            tenderIntent.putExtra("Tender","Flats and Societies");
-                    startActivity(tenderIntent);
-        });
-        findViewById(R.id.hostel_institute_tender).setOnClickListener(v -> {
-            Intent tenderIntent = new Intent(getApplicationContext(), TenderActivity.class);
-            tenderIntent.putExtra("Tender","Hostel and Institutes");
-                    startActivity(tenderIntent);
-        }); */
         findViewById(R.id.carWash).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent carWashIntent = new Intent(getApplicationContext(), CarWashingActivity.class);
                 startActivity(carWashIntent);
+            }
+        });
+        findViewById(R.id.bathroomCleaning).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent BathroomCleaningIntent = new Intent(getApplicationContext(), BathroomCleaningActivity.class);
+                startActivity(BathroomCleaningIntent);
+            }
+        });
+        findViewById(R.id.homeSanitization).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.kitchenCleaning).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent kitchenCleaningIntent = new Intent(getApplicationContext(), KitchenCleaningActivity.class);
+                startActivity(kitchenCleaningIntent);
             }
         });
         findViewById(R.id.allCleaningServiceShow).setOnClickListener(new View.OnClickListener() {

@@ -630,6 +630,7 @@
                             app:cardElevation="8dp">
 
                             <LinearLayout
+                                android:id="@+id/bathroomCleaning"
                                 android:layout_margin="4dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -668,6 +669,7 @@
                             app:cardElevation="8dp">
 
                             <LinearLayout
+                                android:id="@+id/homeSanitization"
                                 android:layout_margin="4dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -685,7 +687,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:padding="4dp"
-                                    android:text="Home Sanitization"
+                                    android:text="Sanitization"
                                     android:textAlignment="center"
                                     android:textAllCaps="true"
                                     android:textColor="@color/TextPrimary"
@@ -706,6 +708,7 @@
                             app:cardElevation="8dp">
 
                             <LinearLayout
+                                android:id="@+id/kitchenCleaning"
                                 android:layout_margin="4dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -723,7 +726,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:padding="4dp"
-                                    android:text="Deep Kitchen Cleaning"
+                                    android:text=" Kitchen Cleaning"
                                     android:textAlignment="center"
                                     android:textAllCaps="true"
                                     android:textColor="@color/TextPrimary"

@@ -121,11 +121,13 @@ public class OrderBookingActivity extends AppCompatActivity {
         });
 
         btn_bookingComplete.setOnClickListener(v -> {
+        String id = userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").push().getKey();
             HashMap<String, Object> bookingMap = new HashMap<>();
             bookingMap.put("serviceType", mServiceType.getText().toString());
             bookingMap.put("serviceCategory", mCategoryType.getText().toString());
             bookingMap.put("Amount","0");
             try {
+                bookingMap.put("id",id);
                 bookingMap.put("Status","pending");
                 bookingMap.put("Date", CurrentDate);
                 bookingMap.put("Time",Time);
@@ -133,8 +135,8 @@ public class OrderBookingActivity extends AppCompatActivity {
             } catch (Exception e) {
                 Toast.makeText(OrderBookingActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
-            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").push()
-                    .setValue(bookingMap)
+
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(id).setValue(bookingMap)
                     .addOnCompleteListener(task -> {
                         Log.d("Tag", "onComplete: Booking Confirmed saved");
                         Toast.makeText(OrderBookingActivity.this, "you Successfully booked Service.", Toast.LENGTH_SHORT).show();

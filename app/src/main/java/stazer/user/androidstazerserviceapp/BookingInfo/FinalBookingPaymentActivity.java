@@ -49,7 +49,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     FirebaseDatabase database;
     DatabaseReference adminInfoRef, userInfoRef;
     private  String Rating;
-    private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount;
+    private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount,cID;
     private CheckBox mExperience,mTiming,mCost,mBehaviour;
     @Override
     protected void onStart() {
@@ -97,13 +97,10 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         mServiceDone = findViewById(R.id.serviceDone);
         mServiceAmount = findViewById(R.id.serviceAmount);
 
-
-       if (mExperience.isChecked()){
-
-       }
         Bundle bundle = getIntent().getExtras();
         if ( bundle != null){
             //getData
+            cID = bundle.getString("id");
             cServiceType = bundle.getString("Service");
             cServiceCategory = bundle.getString("Category");
             cServiceStatus = bundle.getString("Status");
@@ -130,18 +127,18 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         mServiceDone.setOnClickListener(v -> {
             mServiceStatus.setText("Completed");
 
-            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").addListenerForSingleValueEvent(new ValueEventListener() {
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(cID).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot ds:snapshot.getChildren()){
-                            ds.getRef().child("Status").setValue("Completed");
-                        }
+                                snapshot.getRef().child("Status").setValue("Completed");
+
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(FinalBookingPaymentActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+
             AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(FinalBookingPaymentActivity.this);
             final EditText mAmount = new EditText(FinalBookingPaymentActivity.this);
             amountDialogBuilder.setTitle("Enter The amount Which You Give to Our Service Man");
@@ -150,15 +147,14 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             amountDialogBuilder.setView(mAmount);
             amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
                 if (!TextUtils.isEmpty(mAmount.getText().toString())) {
-                    userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").addListenerForSingleValueEvent(new ValueEventListener() {
+                    userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(cID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot ds:snapshot.getChildren()){
-                                ds.getRef().child("Amount").setValue(mAmount.getText().toString());
-                                Toast.makeText(getApplicationContext(), "Thanks For Booking.... ", Toast.LENGTH_SHORT).show();
 
-                                goToHomeActivity();
-                            }
+                                    snapshot.getRef().child("Amount").setValue(mAmount.getText().toString());
+                                    Toast.makeText(getApplicationContext(), "Thanks For Booking.... ", Toast.LENGTH_SHORT).show();
+                                    goToHomeActivity();
+
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {

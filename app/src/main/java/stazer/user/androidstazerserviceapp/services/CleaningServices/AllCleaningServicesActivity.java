@@ -9,6 +9,10 @@ import android.view.WindowManager;
 
 import stazer.user.androidstazerserviceapp.R;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.CarWashingActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.bathroomCleaning.BathroomCleaningActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.carpetCleaning.CarpetCleaningActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.kitchenCleaning.KitchenCleaningActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.sofaCleaning.SofaCleaningActivity;
 
 public class AllCleaningServicesActivity extends AppCompatActivity {
 
@@ -22,6 +26,40 @@ public class AllCleaningServicesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent carWashIntent = new Intent(getApplicationContext(), CarWashingActivity.class);
                 startActivity(carWashIntent);
+            }
+        });
+        findViewById(R.id.bathroomCleaningServices).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent BathroomIntent = new Intent(getApplicationContext(), BathroomCleaningActivity.class);
+                startActivity(BathroomIntent);
+            }
+        });
+        findViewById(R.id.kitchenCleaningService).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent kitchenCleaningIntent = new Intent(getApplicationContext(), KitchenCleaningActivity.class);
+                startActivity(kitchenCleaningIntent);
+            }
+        });
+        findViewById(R.id.sanitizationService).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        findViewById(R.id.carpetCleaningServices).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent carpetCleaningIntent = new Intent(getApplicationContext(), CarpetCleaningActivity.class);
+                startActivity(carpetCleaningIntent);
+            }
+        });
+        findViewById(R.id.sofaCleaningService).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sofaCleaningIntent = new Intent(getApplicationContext(), SofaCleaningActivity.class);
+                startActivity(sofaCleaningIntent);
             }
         });
     }

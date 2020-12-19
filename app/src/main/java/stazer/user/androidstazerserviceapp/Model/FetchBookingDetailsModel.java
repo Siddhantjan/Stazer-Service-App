@@ -7,17 +7,27 @@ public class FetchBookingDetailsModel {
     private String Date;
     private String Status;
     private  String Amount;
+    private String id;
 
     public FetchBookingDetailsModel() {
     }
 
-    public FetchBookingDetailsModel(String serviceType, String serviceCategory, String time, String date, String status, String amount) {
+    public FetchBookingDetailsModel(String serviceType, String serviceCategory, String time, String date, String status, String amount, String id) {
         this.serviceType = serviceType;
         this.serviceCategory = serviceCategory;
-        Time = time;
-        Date = date;
-        Status = status;
-        Amount = amount;
+        this.Time = time;
+        this.Date = date;
+        this.Status = status;
+        this.Amount = amount;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getAmount() {

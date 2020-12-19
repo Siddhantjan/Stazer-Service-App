@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
@@ -89,72 +90,72 @@ public class orderSchduleActivity extends AppCompatActivity {
         mName = findViewById(R.id.customer_name_sch);
         mMobileNumber = findViewById(R.id.customer_mobile_sch);
         mAddress = findViewById(R.id.address_type_sch);
-
         //Hooks for Date and Time
         mSelectDate = (TextView) findViewById(R.id.btn_booking_date);
         mSelectTime = (TextView) findViewById(R.id.btn_booking_time);
         mDisplayDate = (TextView) findViewById(R.id.btn_booking_date_display);
         mDisplayTime = (TextView) findViewById(R.id.btn_booking_time_display);
 
-        mSelectDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Initialize date Picker Dialog
-                DatePickerDialog datePickerDialog = new DatePickerDialog(orderSchduleActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        sYear=year;
-                        sMonth = month;
-                        sDay = dayOfMonth;
+        mSelectDate.setOnClickListener(v -> {
+            //Initialize date Picker Dialog
+            DatePickerDialog datePickerDialog = new DatePickerDialog(orderSchduleActivity.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    sYear=year;
+                    sMonth = month;
+                    sDay = dayOfMonth;
 
-                        String sDate = sDay+"-"+sMonth+"-"+sYear;
-                        mDisplayDate.setText(sDate);
+                    String sDate = sDay+"-"+sMonth+"-"+sYear;
+                    mDisplayDate.setText(sDate);
 
-                    }
-                },cYear,cMonth,cDay);
-                // Displayed previous selected Date
-                datePickerDialog.updateDate(sYear,sMonth,sDay);
-                //Disabled past Date
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-                // Disabled future Date
-                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() + 604800000L); // 7 * 24 * 60 * 60 * 1000
-                //show Date Picker Dialog
-                datePickerDialog.show();
-            }
+                }
+            },cYear,cMonth,cDay);
+            // Displayed previous selected Date
+            datePickerDialog.updateDate(sYear,sMonth,sDay);
+            //Disabled past Date
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+            // Disabled future Date
+            datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() + 604800000L); // 7 * 24 * 60 * 60 * 1000
+            //show Date Picker Dialog
+            datePickerDialog.show();
         });
 
         mSelectTime.setOnClickListener(v -> {
-            //Initialize Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(
-                    orderSchduleActivity.this, (view, hourOfDay, minute) -> {
-                sHour = hourOfDay;
-                sMinute = minute;
+            if (TextUtils.isEmpty(mDisplayDate.getText().toString())){
+                Toast.makeText(this, "Please Select Date First", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                //Initialize Time Picker Dialog
+                TimePickerDialog timePickerDialog = new TimePickerDialog(
+                        orderSchduleActivity.this, (view, hourOfDay, minute) -> {
+                    sHour = hourOfDay;
+                    sMinute = minute;
 
-                //Initialize Calender
-                Calendar calendar1= Calendar.getInstance();
+                    //Initialize Calender
+                    Calendar calendar1 = Calendar.getInstance();
 
-                String sDate = mDisplayDate.getText().toString().trim();
-                //Split Date
-                String [] strings = sDate.split("-");
-                //Get day on Calender
-                sDay = Integer.parseInt(strings[0]);
-                //set day on Calender
-                calendar1.set(Calendar.DAY_OF_MONTH,sDay);
-                //set Hour on Calender
-                calendar1.set(Calendar.HOUR_OF_DAY,sHour);
-                //set Minute on Calender
-                calendar1.set(Calendar.MINUTE,sMinute);
-                if (calendar1.getTimeInMillis() >= Calendar.getInstance().getTimeInMillis()){
-                    mDisplayTime.setText(DateFormat.format("hh:mm aa",calendar1));
-                }
-                else {
-                    Toast.makeText(this, "You Selected Past Time Please Select Correct Time", Toast.LENGTH_SHORT).show();
-                }
+                    String sDate = mDisplayDate.getText().toString().trim();
+                    //Split Date
+                    String[] strings = sDate.split("-");
+                    //Get day on Calender
+                    sDay = Integer.parseInt(strings[0]);
+                    //set day on Calender
+                    calendar1.set(Calendar.DAY_OF_MONTH, sDay);
+                    //set Hour on Calender
+                    calendar1.set(Calendar.HOUR_OF_DAY, sHour);
+                    //set Minute on Calender
+                    calendar1.set(Calendar.MINUTE, sMinute);
+                    if (calendar1.getTimeInMillis() >= Calendar.getInstance().getTimeInMillis()) {
+                        mDisplayTime.setText(DateFormat.format("hh:mm aa", calendar1));
+                    } else {
+                        Toast.makeText(this, "You Selected Past Time Please Select Correct Time", Toast.LENGTH_SHORT).show();
+                    }
 
 
-            }, cHour,cMinute,false);
-            //show Dialog
-            timePickerDialog.show();
+                }, cHour, cMinute, false);
+                //show Dialog
+                timePickerDialog.show();
+            }
         });
 
         mServiceType = findViewById(R.id.service_type_sch);
@@ -208,6 +209,8 @@ public class orderSchduleActivity extends AppCompatActivity {
             Toast.makeText(orderSchduleActivity.this, "Select Time", Toast.LENGTH_SHORT).show();
 
         } else {
+            String id =   userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
+                    .push().getKey();
             HashMap<String, Object> scheduleMap = new HashMap<>();
             scheduleMap.put("serviceType", mServiceType.getText().toString());
             scheduleMap.put("serviceCategory",mServiceCategory.getText().toString());
@@ -215,8 +218,15 @@ public class orderSchduleActivity extends AppCompatActivity {
             scheduleMap.put("Date", mDisplayDate.getText().toString());
             scheduleMap.put("Status","pending");
             scheduleMap.put("Amount","0");
+            try {
+                scheduleMap.put("id",id);
+            }
+            catch (Exception e){
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
             userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
-                    .push().setValue(scheduleMap)
+                    .child(id).setValue(scheduleMap)
                     .addOnCompleteListener(task -> {
                         Toast.makeText(this, "Your Service Scheduled on Time ", Toast.LENGTH_SHORT).show();
                         goToBookingActivity();

@@ -12,6 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import java.util.List;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.FinalBookingPaymentActivity;
@@ -22,7 +25,7 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
     List<FetchBookingDetailsModel> fetchBookingDetailsModelList;
     Context context;
 
-    public BookingInfoRecyclerViewAdapter(List<FetchBookingDetailsModel> fetchBookingDetailsModelList,Context context) {
+    public BookingInfoRecyclerViewAdapter(List<FetchBookingDetailsModel> fetchBookingDetailsModelList, Context context) {
         this.fetchBookingDetailsModelList = fetchBookingDetailsModelList;
         this.context = context;
     }
@@ -37,7 +40,7 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        BookingInfoViewHolder bookingInfoViewHolder = (BookingInfoViewHolder)holder;
+        BookingInfoViewHolder bookingInfoViewHolder = (BookingInfoViewHolder) holder;
         FetchBookingDetailsModel fetchBookingDetailsModel = fetchBookingDetailsModelList.get(position);
         bookingInfoViewHolder.serviceName.setText(fetchBookingDetailsModel.getServiceType());
         bookingInfoViewHolder.serviceCategory.setText(fetchBookingDetailsModel.getServiceCategory());
@@ -45,20 +48,20 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
         bookingInfoViewHolder.serviceDate.setText(fetchBookingDetailsModel.getDate());
         bookingInfoViewHolder.serviceTime.setText(fetchBookingDetailsModel.getTime());
         String cAmount = fetchBookingDetailsModel.getAmount();
+        String id = fetchBookingDetailsModel.getId();
 
         bookingInfoViewHolder.relativeLayoutDetails.setOnClickListener(v -> {
-
             Intent newDetailIntent = new Intent(context, FinalBookingPaymentActivity.class);
-            newDetailIntent.putExtra("Amount",cAmount);
-            newDetailIntent.putExtra("Service",bookingInfoViewHolder.serviceName.getText().toString());
-            newDetailIntent.putExtra("Category",bookingInfoViewHolder.serviceCategory.getText().toString());
-            newDetailIntent.putExtra("Status",bookingInfoViewHolder.mServiceStatus.getText().toString());
-            newDetailIntent.putExtra("Time",bookingInfoViewHolder.serviceTime.getText().toString());
-            newDetailIntent.putExtra("Date",bookingInfoViewHolder.serviceDate.getText().toString());
+            newDetailIntent.putExtra("id",id);
+            newDetailIntent.putExtra("Amount", cAmount);
+            newDetailIntent.putExtra("Service", bookingInfoViewHolder.serviceName.getText().toString());
+            newDetailIntent.putExtra("Category", bookingInfoViewHolder.serviceCategory.getText().toString());
+            newDetailIntent.putExtra("Status", bookingInfoViewHolder.mServiceStatus.getText().toString());
+            newDetailIntent.putExtra("Time", bookingInfoViewHolder.serviceTime.getText().toString());
+            newDetailIntent.putExtra("Date", bookingInfoViewHolder.serviceDate.getText().toString());
             newDetailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(newDetailIntent);
         });
-
     }
 
 
@@ -69,7 +72,7 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
 
     public static class BookingInfoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView serviceName, serviceCategory, serviceTime, serviceDate,mServiceStatus;
+        TextView serviceName, serviceCategory, serviceTime, serviceDate, mServiceStatus;
         RelativeLayout relativeLayoutDetails;
 
         public BookingInfoViewHolder(@NonNull View itemView) {
