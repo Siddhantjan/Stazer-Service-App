@@ -9,6 +9,7 @@ import android.view.WindowManager;
 
 import stazer.user.androidstazerserviceapp.R;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.CarWashingActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.Sanitization.SanitizationServiceActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.bathroomCleaning.BathroomCleaningActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.carpetCleaning.CarpetCleaningActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.kitchenCleaning.KitchenCleaningActivity;
@@ -45,7 +46,8 @@ public class AllCleaningServicesActivity extends AppCompatActivity {
         findViewById(R.id.sanitizationService).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent sanitizationIntent = new Intent(getApplicationContext(), SanitizationServiceActivity.class);
+                startActivity(sanitizationIntent);
             }
         });
         findViewById(R.id.carpetCleaningServices).setOnClickListener(new View.OnClickListener() {

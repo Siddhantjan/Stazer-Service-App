@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import stazer.user.androidstazerserviceapp.AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
@@ -24,6 +25,11 @@ public class ElectricianActivity extends AppCompatActivity {
             public void onClick(View v) {
                 scheduleServiceEle();
             }
+        });
+
+        findViewById(R.id.electrician_RateCard).setOnClickListener(v -> {
+            Intent serviceIntent = new Intent(getApplicationContext(), ElectricianRateCardActivity.class);
+            startActivity(serviceIntent);
         });
     }
 

@@ -8,13 +8,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import stazer.user.androidstazerserviceapp.AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity;
+import stazer.user.androidstazerserviceapp.AllRatesCard.PlumberRateCard.PlumberRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
 
 public class PlumberActivity extends AppCompatActivity {
 
-    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,10 @@ public class PlumberActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_book_plumber).setOnClickListener(v -> gotoPlumberbooking());
         findViewById(R.id.scheduleServicePlumber).setOnClickListener(v -> scheduleServicePlu());
+        findViewById(R.id.plumber_RateCard).setOnClickListener(v -> {
+            Intent serviceIntent = new Intent(getApplicationContext(), PlumberRateCardActivity.class);
+            startActivity(serviceIntent);
+        });
     }
 
     private void scheduleServicePlu() {

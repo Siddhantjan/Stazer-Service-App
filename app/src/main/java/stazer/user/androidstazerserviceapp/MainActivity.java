@@ -45,6 +45,7 @@ import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScree
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.AllCleaningServicesActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.CarWashingActivity;
+import stazer.user.androidstazerserviceapp.services.CleaningServices.Sanitization.SanitizationServiceActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.bathroomCleaning.BathroomCleaningActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.kitchenCleaning.KitchenCleaningActivity;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
@@ -172,7 +173,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.homeSanitization).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent sanitizationIntent = new Intent(getApplicationContext(), SanitizationServiceActivity.class);
+                startActivity(sanitizationIntent);
             }
         });
         findViewById(R.id.kitchenCleaning).setOnClickListener(new View.OnClickListener() {

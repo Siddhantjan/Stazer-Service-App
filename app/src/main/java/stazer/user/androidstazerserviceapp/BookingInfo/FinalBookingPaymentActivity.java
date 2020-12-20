@@ -131,7 +131,6 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 snapshot.getRef().child("Status").setValue("Completed");
-
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -170,6 +169,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
 
             }).setNegativeButton("CANCEL", (dialog, which) -> dialog.dismiss());
             AlertDialog dialog = amountDialogBuilder.create();
+            dialog.setCancelable(false);
             dialog.show();
 
 

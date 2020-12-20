@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".services.CleaningServices.Sanitization.SanitizationServiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/sanitizationService_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="Sanitization"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp" />
+
+            <RatingBar
+                android:id="@+id/sanitizationService_rating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_toEndOf="@+id/sanitizationService_text"
+                android:rating="5.0" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/sanitizationService_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/colorDivider" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:text="Get the best Sanitization service"
+                    android:textAlignment="center"
+                    android:textColor="@color/TextPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Answer a few simple question to get the required sanitization services"
+                    android:textAlignment="center"
+                    android:textColor="@color/TextSecondary"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="14dp"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Where do you want the service to be done?"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:gravity="center">
+
+                        <CheckBox
+                            android:id="@+id/homeCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:padding="4dp"
+                            android:text="Home" />
+
+                        <CheckBox
+                            android:id="@+id/doctorClinicCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/homeCheckBox"
+                            android:padding="4dp"
+                            android:text="Doctor's Clinic" />
+
+
+                        <CheckBox
+                            android:id="@+id/restaurantCheckbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/doctorClinicCheckBox"
+                            android:layout_toEndOf="@+id/showroomsCheckBox"
+                            android:padding="4dp"
+                            android:text="Restaurant" />
+
+                        <CheckBox
+                            android:id="@+id/showroomsCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/homeCheckBox"
+                            android:layout_alignParentStart="true"
+                            android:padding="4dp"
+                            android:text="ShowRooms" />
+
+                        <CheckBox
+                            android:id="@+id/retailShopCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/showroomsCheckBox"
+                            android:layout_alignParentStart="true"
+                            android:padding="4dp"
+                            android:text="Shops or Businesses or Small Offices" />
+
+                        <CheckBox
+                            android:id="@+id/largeOfficeCheckBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/retailShopCheckBox"
+                            android:layout_alignParentStart="true"
+                            android:padding="4dp"
+                            android:text="Large Offices (> 5000 sp.ft)" />
+
+                        <CheckBox
+                            android:id="@+id/hostelsInstitutes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/largeOfficeCheckBox"
+                            android:layout_alignParentStart="true"
+                            android:padding="4dp"
+                            android:text="Hostel or Institutes" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Enter Size of your place"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/sizeOfPlace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="enter value in Sq.ft"
+                            android:inputType="number"
+                            android:padding="8dp"
+                            android:text=""
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_marginLeft="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Which type of Sanitization You Want?"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                    <RadioGroup
+                        android:id="@+id/sanitizaionServiceSelectGroup"
+                        android:layout_margin="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RadioButton
+                            android:id="@+id/normalBathCleanType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Normal Sanitization"/>
+                        <RadioButton
+                            android:id="@+id/DeepBathCleanType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Steam Sanitization"/>
+                    </RadioGroup>
+
+                    <Button
+                        android:id="@+id/scheduleServiceSanitization"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/background_button"
+                        android:padding="14dp"
+                        android:text="Book Your Service"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Service Highlights"
+                                android:textColor="@color/TextPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="* Disinfection of entire premises at best in class prices"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * Kills disease causing viruses"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * 3+ years experienced professionals"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * Certified, hospital-grade disinfectants used"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="How is it done"
+                                android:textColor="@color/TextPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * Our professionals wear full-body protective gear and carry required equipment with them"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * The entire place is fumigated and sprayed with a special device, every corner and surface is covered"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * High touch surfaces like doors, switches and taps in addition to desks, chairs and pantry area are disinfected"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * EPA recommended hospital-grade chemicals* are used, known to kill disease-causing viruses, bacteria"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * All high-frequency touchpoints of the office (door handles, switches etc) are sanitised thoroughly"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * The service is completely safe and ensures the highest standard of hygiene"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * The area can be used after 1-hour of service completion"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Important Instructions for the Service :"
+                                android:textColor="@color/TextPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * All food items, medicines and consumables should be kept away (inside cupboards, shelves, refrigerators)"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * *Disclaimer : As per manufacturer’s claims"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * place should be vacated for 1-hour post the service"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:text="Payment terms"
+                                android:textColor="@color/TextPrimary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text=" * Pre/Post service online and offline payment options available"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="16sp" />
+
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text=" * We Kindly request the provision of a Ladder/Stool exhaust cleaning"
+                        android:textColor="@color/TextPrimary"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>
