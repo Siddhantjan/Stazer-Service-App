@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import stazer.user.androidstazerserviceapp.AllRatesCard.RO.RoRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
@@ -21,6 +22,14 @@ public class RoServiceActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_book_ro).setOnClickListener(v -> gotoRoBooking());
         findViewById(R.id.scheduleServiceRo).setOnClickListener(v -> scheduleServiceRo());
+        findViewById(R.id.roService_RateCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent rateIntent = new Intent(getApplicationContext(), RoRateCardActivity.class);
+                startActivity(rateIntent);
+            }
+        });
     }
 
     private void scheduleServiceRo() {

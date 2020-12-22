@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import stazer.user.androidstazerserviceapp.AllRatesCard.Ac.AcRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
@@ -21,6 +22,13 @@ public class AcServiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ac_service);
         findViewById(R.id.btn_book_ac).setOnClickListener(v -> bookAcService());
         findViewById(R.id.scheduleServiceAc).setOnClickListener(v -> scheduleServiceAc());
+        findViewById(R.id.ac_RateCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rateIntent = new Intent(getApplicationContext(), AcRateCardActivity.class);
+                startActivity(rateIntent);
+            }
+        });
     }
 
     private void scheduleServiceAc() {

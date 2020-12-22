@@ -63,7 +63,7 @@
                 <TextView
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:text="Labour Cost (₹)"
+                    android:text="Service Cost (₹)"
                     android:textSize="10sp"
                     android:textColor="@color/TextPrimary"
                     android:textAllCaps="true"

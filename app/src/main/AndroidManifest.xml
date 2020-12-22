@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllRatesCard.PlumberRateCard.PlumberRateCardActivity"></activity>
+        <activity android:name=".AllRatesCard.waterDispenser.WaterDispenserActivity"></activity>
+        <activity android:name=".AllRatesCard.WashingMachine.WashineMachineRateCardActivity" />
+        <activity android:name=".AllRatesCard.RO.RoRateCardActivity" />
+        <activity android:name=".AllRatesCard.RefrigeratorRateCard.RefrigeratorRateCardActivity" />
+        <activity android:name=".AllRatesCard.Geyser.GeyserRateCardActivity" />
+        <activity android:name=".AllRatesCard.AirCooler.AirCoolerRateCardActivity" />
+        <activity android:name=".AllRatesCard.Ac.AcRateCardActivity" />
+        <activity android:name=".AllRatesCard.PlumberRateCard.PlumberRateCardActivity" />
         <activity android:name=".AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity" />
         <activity android:name=".services.CleaningServices.Sanitization.SanitizationServiceActivity" />
         <activity android:name=".services.CleaningServices.sofaCleaning.SofaCleaningActivity" />

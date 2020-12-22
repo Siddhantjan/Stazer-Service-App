@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity">
+    tools:context=".AllRatesCard.Geyser.GeyserRateCardActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Electrician Rates"
+                android:text="Geyser Rates"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
@@ -35,48 +36,51 @@
         </RelativeLayout>
 
         <TableLayout
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
+            android:layout_marginEnd="4dp"
             android:stretchColumns="1,2,3">
+
             <TableRow>
+
                 <TextView
+                    android:layout_column="1"
+                    android:layout_gravity="center"
                     android:padding="10dp"
                     android:text="Spare part Name"
-                    android:textSize="10sp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/TextPrimary"
                     android:textAllCaps="true"
-                    android:layout_column="1"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/TextPrimary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:layout_column="1"
                     android:layout_gravity="center"
                     android:padding="10dp"
                     android:text="Spare part Cost (₹)"
-                    android:textSize="10sp"
-                    android:textColor="@color/TextPrimary"
                     android:textAllCaps="true"
-                    android:layout_column="1"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/TextPrimary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
                 <TextView
+                    android:layout_column="1"
                     android:layout_gravity="center"
                     android:padding="10dp"
                     android:text="Service Cost (₹)"
-                    android:textSize="10sp"
-                    android:textColor="@color/TextPrimary"
                     android:textAllCaps="true"
-                    android:layout_column="1"
-                    android:textStyle="bold"/>
+                    android:textColor="@color/TextPrimary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
             </TableRow>
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/EleRateCardView"
+                android:id="@+id/geyserRateCardView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="match_parent" />
 
         </TableLayout>
     </LinearLayout>
-
 </RelativeLayout>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity">
-
+    tools:context=".AllRatesCard.RefrigeratorRateCard.RefrigeratorRateCardActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Electrician Rates"
+                android:text="Refrigerator Rates"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
@@ -71,12 +71,11 @@
                     android:textStyle="bold"/>
             </TableRow>
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/EleRateCardView"
+                android:id="@+id/fridgeRateCardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
 
         </TableLayout>
     </LinearLayout>
-
 </RelativeLayout>

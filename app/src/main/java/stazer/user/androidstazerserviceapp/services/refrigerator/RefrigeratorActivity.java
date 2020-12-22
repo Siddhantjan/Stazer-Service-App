@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import stazer.user.androidstazerserviceapp.AllRatesCard.RefrigeratorRateCard.RefrigeratorRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.R;
@@ -21,6 +22,14 @@ public class RefrigeratorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_refrigerator);
         findViewById(R.id.btn_book_refrigerator).setOnClickListener(v -> gotoRefrigeratorbooking());
         findViewById(R.id.scheduleServiceRefrigerator).setOnClickListener(v -> scheduleServiceRefrigerator());
+        findViewById(R.id.refrigerator_RateCard).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent rateIntent = new Intent(getApplicationContext(), RefrigeratorRateCardActivity.class);
+                startActivity(rateIntent);
+            }
+        });
     }
 
     private void scheduleServiceRefrigerator() {
