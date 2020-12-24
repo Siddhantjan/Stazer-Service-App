@@ -38,7 +38,7 @@ public class WaterDispenserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_water_dispenser);
+        setContentView(R.layout.activity_water_dispenser_rate_card);
         recView = findViewById(R.id.waterDispenserRateCardView);
         recView.setLayoutManager(new LinearLayoutManager(this));
         FirebaseRecyclerOptions<RateModel> options =

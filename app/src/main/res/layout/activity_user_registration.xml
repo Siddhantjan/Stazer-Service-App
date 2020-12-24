@@ -65,33 +65,33 @@
            />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:orientation="horizontal"
             android:layout_marginTop="15dp"
             android:weightSum="2"
             >
             <EditText
                 android:id="@+id/edit_house_no"
-                android:hint="House/Flat No (ex - 4-h-9)"
-                android:textSize="20sp"
+                android:hint="House/Flat-no(ex - 4-h-9)"
+                android:textSize="16sp"
                 android:textColor="@color/TextPrimary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="4dp"/>
             <EditText
                 android:id="@+id/edit_Area"
-                android:hint="Area (ex- Rangbari Yojana)"
-                android:textSize="20sp"
+                android:hint="Area(ex- Rangbari-Yojana)"
+                android:textSize="16sp"
                 android:textColor="@color/TextPrimary"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginStart="4dp"/>
         </LinearLayout>
         <EditText
             android:id="@+id/edit_landmark"
-            android:hint="Landmark (for ex - Near Nandwana Hosptial)"
+            android:hint="Landmark (for ex - Near Stazer Head Office)"
             android:textSize="20sp"
             android:layout_marginTop="15dp"
             android:textColor="@color/TextPrimary"
