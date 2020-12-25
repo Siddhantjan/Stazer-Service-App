@@ -3,23 +3,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_screen"
+    android:background="@color/colorWhite"
     tools:context=".SplashScreenActivity"
     tools:deviceIds="wear">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:padding="16dp"
-        android:layout_marginBottom="169dp"
-        android:fontFamily="@font/stazer_trocchi_font"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/book_service_on_very_affordable_price_at_your_door_step"
-        android:textColor="@color/TextSecondary"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/logo" />
+<!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="14dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+                <TextView
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Home"
+                    android:textAllCaps="true"
+                    android:textColor="@color/TextPrimary"
+                    android:textSize="14sp" />
+            <TextView
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Care"
+                android:textAllCaps="true"
+                android:textColor="@color/TextPrimary"
+                android:textSize="14sp" />
+            <TextView
+                android:textAllCaps="true"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Time"
+                android:textColor="@color/TextPrimary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/stazer_trocchi_font"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/book_service_on_very_affordable_price_at_your_door_step"
+            android:textColor="@color/TextSecondary"
+            android:textSize="12sp" />
+    </LinearLayout>
 </RelativeLayout>

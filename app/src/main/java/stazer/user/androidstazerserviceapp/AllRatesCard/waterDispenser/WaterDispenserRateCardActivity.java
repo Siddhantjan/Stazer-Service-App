@@ -16,7 +16,7 @@ import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.Model.RateModel;
 import stazer.user.androidstazerserviceapp.R;
 
-public class WaterDispenserActivity extends AppCompatActivity {
+public class WaterDispenserRateCardActivity extends AppCompatActivity {
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     RecyclerView recView;
     WaterDispenserRateCardAdapter waterDispenserRateCardAdapter;

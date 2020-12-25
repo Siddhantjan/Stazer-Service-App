@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import stazer.user.androidstazerserviceapp.R;
+import stazer.user.androidstazerserviceapp.services.AirCooler.AirCoolerActivity;
+import stazer.user.androidstazerserviceapp.services.WashingMachine.WashingMachineActivity;
+import stazer.user.androidstazerserviceapp.services.WaterDispenser.WaterDispenserActivity;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
 import stazer.user.androidstazerserviceapp.services.carpenter.CarpenterActivity;
 import stazer.user.androidstazerserviceapp.services.electrician.ElectricianActivity;
@@ -36,7 +38,16 @@ public class HomeApplianceActivity extends AppCompatActivity {
             Toast.makeText(this, "Not Created", Toast.LENGTH_SHORT).show();
         });
         findViewById(R.id.cooler_service_appliance).setOnClickListener(v -> {
-            Toast.makeText(this, "Not Created", Toast.LENGTH_SHORT).show();
+            Intent coolerIntent = new Intent(getApplicationContext(), AirCoolerActivity.class);
+            startActivity(coolerIntent);
+        });
+        findViewById(R.id.washingMachineView).setOnClickListener(v -> {
+            Intent washingMachineIntent = new Intent(getApplicationContext(), WashingMachineActivity.class);
+            startActivity(washingMachineIntent);
+        });
+        findViewById(R.id.waterDispenserView).setOnClickListener(v -> {
+            Intent waterDispenserIntent = new Intent(getApplicationContext(), WaterDispenserActivity.class);
+            startActivity(waterDispenserIntent);
         });
 
     }

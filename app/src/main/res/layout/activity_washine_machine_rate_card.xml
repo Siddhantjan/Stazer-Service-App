@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Wahing Machine Rates"
+                android:text="Washing Machine Rates"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 

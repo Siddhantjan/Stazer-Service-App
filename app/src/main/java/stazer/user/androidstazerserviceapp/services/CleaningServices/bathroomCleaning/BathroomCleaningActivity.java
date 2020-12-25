@@ -37,6 +37,7 @@ public class BathroomCleaningActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
         mBathroomCount.setText(null);
         mGroupService.clearCheck();
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);

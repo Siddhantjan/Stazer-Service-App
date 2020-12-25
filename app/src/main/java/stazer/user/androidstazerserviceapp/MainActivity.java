@@ -6,6 +6,7 @@ import android.content.pm.ApplicationInfo;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -48,6 +49,7 @@ import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.Car
 import stazer.user.androidstazerserviceapp.services.CleaningServices.Sanitization.SanitizationServiceActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.bathroomCleaning.BathroomCleaningActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.kitchenCleaning.KitchenCleaningActivity;
+import stazer.user.androidstazerserviceapp.services.Construction.ConstructionWorkActivity;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
 import stazer.user.androidstazerserviceapp.services.carpenter.CarpenterActivity;
 import stazer.user.androidstazerserviceapp.services.electrician.ElectricianActivity;
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //HomeDrawer menu
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    boolean doubleBackToExitPressedOnce = false;
 
 
     @Override
@@ -145,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Connect Layout to Geyser Activity
         findViewById(R.id.geyser_service_main).setOnClickListener(v -> ViewGeyserActivity());
         /* --------------------------------- Close ----------------------------------*/
-
         //RecyclerView layout for ads
         /* --------------------------------- Start ----------------------------------*/
         homeScreenAdsLayout = findViewById(R.id.home_screen_ads_recyclerView);
@@ -192,6 +194,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         /* --------------------------------- Close ----------------------------------*/
+
+        //Major Work
+        /* --------------------------------- Start ----------------------------------*/
+        findViewById(R.id.constructionService).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent constructionIntent = new Intent(getApplicationContext(), ConstructionWorkActivity.class);
+                startActivity(constructionIntent);
+            }
+        });
+        /* --------------------------------- Close ----------------------------------*/
+
     }
 
     // Navigation Drawer functions
@@ -244,11 +258,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            Intent exitIntent = new Intent(Intent.ACTION_MAIN);
-            exitIntent.addCategory(Intent.CATEGORY_HOME);
-            exitIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(exitIntent);
-            super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                Intent exitIntent = new Intent(Intent.ACTION_MAIN);
+                exitIntent.addCategory(Intent.CATEGORY_HOME);
+                exitIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(exitIntent);
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
+
         }
     }
 
@@ -357,7 +380,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ArrayList<homeScreenAdsRecyclerViewHelperClass> adsList = new ArrayList<>();
         adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.ac, "Super Offer on Ac Cleaning", "Ac Split : ₹499/-", "Ac window : ₹449/-"));
         adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.refrigerator, "Super Offer on Refrigerator Service", "Single Door : ₹399/-", "MultiDoor : ₹449/-"));
-        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.washinemachine, "Super Offer on Washing Machine Service", "Normal : ₹399/-", "Automatic : ₹449/-"));
+        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.washinemachine, "Super Offer on Washing Machine Service", "Normal : ₹349/-", "Automatic : ₹449/-"));
 
         homeScreenAdsLayoutAdapter = new homeScreenAdsRecyclerViewAdapter(adsList);
         homeScreenAdsLayout.setAdapter(homeScreenAdsLayoutAdapter);
