@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import stazer.user.androidstazerserviceapp.R;
 import stazer.user.androidstazerserviceapp.services.AirCooler.AirCoolerActivity;
+import stazer.user.androidstazerserviceapp.services.Painter.PainterServiceActivity;
 import stazer.user.androidstazerserviceapp.services.WashingMachine.WashingMachineActivity;
 import stazer.user.androidstazerserviceapp.services.WaterDispenser.WaterDispenserActivity;
 import stazer.user.androidstazerserviceapp.services.acservice.AcServiceActivity;
@@ -35,7 +36,8 @@ public class HomeApplianceActivity extends AppCompatActivity {
         findViewById(R.id.carpenter_service_appliance).setOnClickListener(v -> ViewCarpenterActivity());
         findViewById(R.id.geyser_service_appliance).setOnClickListener(v -> ViewGeyserActivity());
         findViewById(R.id.painter_service_appliance).setOnClickListener(v -> {
-            Toast.makeText(this, "Not Created", Toast.LENGTH_SHORT).show();
+            Intent painterIntent = new Intent(getApplicationContext(), PainterServiceActivity.class);
+            startActivity(painterIntent);
         });
         findViewById(R.id.cooler_service_appliance).setOnClickListener(v -> {
             Intent coolerIntent = new Intent(getApplicationContext(), AirCoolerActivity.class);
@@ -51,6 +53,7 @@ public class HomeApplianceActivity extends AppCompatActivity {
         });
 
     }
+
     private void ViewGeyserActivity() {
         Intent geyserIntent = new Intent(getApplicationContext(), GeyserActivity.class);
         startActivity(geyserIntent);

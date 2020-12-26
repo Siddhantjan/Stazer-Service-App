@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeAppliance.HomeApplianceActivity">
 
     <LinearLayout
@@ -25,8 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:textAllCaps="true"
                 android:text="Home Appliance Services"
+                android:textAllCaps="true"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
@@ -42,39 +42,40 @@
         </RelativeLayout>
         <!-- Header close -->
         <ScrollView
-            android:layout_marginBottom="18dp"
-            android:padding="12dp"
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="18dp"
             android:overScrollMode="never"
+            android:padding="12dp"
             android:scrollbars="none">
             <!-- main Scroll start -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:rowCount="4"
                 android:columnCount="3"
-                >
+                android:rowCount="4">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/electrician_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
-                    android:layout_column="0"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="0"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
@@ -83,37 +84,40 @@
                             android:src="@drawable/electrician_icon" />
 
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Electrician"/>
+                            android:padding="4dp"
+                            android:text="Electrician"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/plumber_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
-                    android:layout_column="1"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="1"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
@@ -122,53 +126,57 @@
                             android:src="@drawable/plumber_icon" />
 
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Plumber"/>
+                            android:padding="4dp"
+                            android:text="Plumber"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ac_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
-                    android:layout_column="2"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="2"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:layout_gravity="center"
                             android:layout_margin="8dp"
                             android:src="@drawable/air_conditioner_icon" />
+
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ac service"/>
+                            android:padding="4dp"
+                            android:text="Ac service"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -179,19 +187,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="1"
-                    android:layout_column="0"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="0"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
@@ -200,37 +210,40 @@
                             android:src="@drawable/carpenter_icon" />
 
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="carpenter"/>
+                            android:padding="4dp"
+                            android:text="carpenter"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ro_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="1"
-                    android:layout_column="1"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="1"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
@@ -239,115 +252,124 @@
                             android:src="@drawable/ro_icon" />
 
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ro Service"/>
+                            android:padding="4dp"
+                            android:text="Ro Service"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/geyser_service_appliance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_row="1"
-                android:layout_column="2"
-                android:layout_rowWeight="1"
-                android:layout_gravity="fill"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_gravity="center_horizontal |center_vertical">
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/geyser_icon" />
+                    android:layout_row="1"
+                    android:layout_rowWeight="1"
+                    android:layout_column="2"
+                    android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
 
-                    <TextView
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:textSize="10sp"
-                        android:padding="4dp"
-                        android:textAllCaps="true"
-                        android:textColor="@color/TextPrimary"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Geyser"/>
+                        android:layout_gravity="center_horizontal |center_vertical"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/geyser_icon" />
 
-            </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:text="Geyser"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/painter_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="2"
-                    android:layout_column="0"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="0"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:layout_gravity="center"
                             android:layout_margin="8dp"
                             android:src="@drawable/painter" />
+
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Painter"/>
+                            android:padding="4dp"
+                            android:text="Painter"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cooler_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="2"
-                    android:layout_column="1"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="1"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
@@ -356,53 +378,57 @@
                             android:src="@drawable/aircooler" />
 
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cooler"/>
+                            android:padding="4dp"
+                            android:text="Cooler"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/refrigerator_service_appliance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="2"
-                    android:layout_column="2"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="2"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:layout_gravity="center"
                             android:layout_margin="8dp"
                             android:src="@drawable/refrigerator_icon" />
+
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Refrigerator"/>
+                            android:padding="4dp"
+                            android:text="Refrigerator"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -413,263 +439,270 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="3"
-                    android:layout_column="0"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="0"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:layout_gravity="center"
                             android:layout_margin="8dp"
                             android:src="@drawable/washing_machine_icon" />
+
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
                             android:padding="4dp"
+                            android:text="Washing Machine"
+                            android:textAlignment="center"
                             android:textAllCaps="true"
                             android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Washing Machine"/>
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/waterDispenserView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_row="3"
-                    android:layout_column="1"
                     android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
+                    android:layout_column="1"
                     android:layout_columnWeight="1"
+                    android:layout_gravity="fill"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="8dp">
+
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal |center_vertical"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
+                        android:orientation="vertical">
+
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
                             android:layout_gravity="center"
                             android:layout_margin="8dp"
                             android:src="@drawable/water_dispenser_icon" />
+
                         <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
                             android:padding="4dp"
+                            android:text="Water DispenSer"
+                            android:textAlignment="center"
                             android:textAllCaps="true"
                             android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Water DispenSer"/>
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
 
-<!--
+                <!--
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_row="4"
-                    android:layout_column="1"
-                    android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
-                        <ImageView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_service"/>
-                        <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Electrician"/>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_row="4"
+                                    android:layout_column="1"
+                                    android:layout_rowWeight="1"
+                                    android:layout_gravity="fill"
+                                    android:layout_columnWeight="1"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="8dp">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal |center_vertical">
+                                        <ImageView
+                                            android:layout_margin="8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/icon_service"/>
+                                        <TextView
+                                            android:textStyle="bold"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:padding="4dp"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/TextPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Electrician"/>
 
-                    </LinearLayout>
+                                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_row="4"
-                    android:layout_column="2"
-                    android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
-                        <ImageView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_service"/>
-                        <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Electrician"/>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_row="4"
+                                    android:layout_column="2"
+                                    android:layout_rowWeight="1"
+                                    android:layout_gravity="fill"
+                                    android:layout_columnWeight="1"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="8dp">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal |center_vertical">
+                                        <ImageView
+                                            android:layout_margin="8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/icon_service"/>
+                                        <TextView
+                                            android:textStyle="bold"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:padding="4dp"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/TextPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Electrician"/>
 
-                    </LinearLayout>
+                                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                                </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_row="5"
-                    android:layout_column="0"
-                    android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
-                        <ImageView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_service"/>
-                        <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Electrician"/>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_row="5"
+                                    android:layout_column="0"
+                                    android:layout_rowWeight="1"
+                                    android:layout_gravity="fill"
+                                    android:layout_columnWeight="1"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="8dp">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal |center_vertical">
+                                        <ImageView
+                                            android:layout_margin="8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/icon_service"/>
+                                        <TextView
+                                            android:textStyle="bold"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:padding="4dp"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/TextPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Electrician"/>
 
-                    </LinearLayout>
+                                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_row="5"
-                    android:layout_column="1"
-                    android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
-                        <ImageView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_service"/>
-                        <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Electrician"/>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_row="5"
+                                    android:layout_column="1"
+                                    android:layout_rowWeight="1"
+                                    android:layout_gravity="fill"
+                                    android:layout_columnWeight="1"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="8dp">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal |center_vertical">
+                                        <ImageView
+                                            android:layout_margin="8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/icon_service"/>
+                                        <TextView
+                                            android:textStyle="bold"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:padding="4dp"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/TextPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Electrician"/>
 
-                    </LinearLayout>
+                                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_row="5"
-                    android:layout_column="2"
-                    android:layout_rowWeight="1"
-                    android:layout_gravity="fill"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="8dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_gravity="center_horizontal |center_vertical">
-                        <ImageView
-                            android:layout_margin="8dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/icon_service"/>
-                        <TextView
-                            android:textStyle="bold"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            android:padding="4dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/TextPrimary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Electrician"/>
+                                </androidx.cardview.widget.CardView>
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_row="5"
+                                    android:layout_column="2"
+                                    android:layout_rowWeight="1"
+                                    android:layout_gravity="fill"
+                                    android:layout_columnWeight="1"
+                                    android:layout_margin="8dp"
+                                    app:cardCornerRadius="8dp"
+                                    app:cardElevation="8dp">
+                                    <LinearLayout
+                                        android:orientation="vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_horizontal |center_vertical">
+                                        <ImageView
+                                            android:layout_margin="8dp"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/icon_service"/>
+                                        <TextView
+                                            android:textStyle="bold"
+                                            android:textAlignment="center"
+                                            android:textSize="10sp"
+                                            android:padding="4dp"
+                                            android:textAllCaps="true"
+                                            android:textColor="@color/TextPrimary"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Electrician"/>
 
-                    </LinearLayout>
+                                    </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
--->
+                                </androidx.cardview.widget.CardView>
+                -->
             </GridLayout>
         </ScrollView>
     </LinearLayout>
