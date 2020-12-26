@@ -9,24 +9,12 @@
     <string name="didn_t_receive_the_otp">Didn\'t receive the OTP</string>
     <string name="resend_otp">RESEND OTP</string>
     <string name="verify_btn">Verify</string>
-
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
-
     <string name="let_s_start_with_creating_your_account">Let\'s start with Creating your account</string>
-
     <string name="book_service_on_very_affordable_price_at_your_door_step">Book Service on Very Affordable Price At your Door Step.</string>
-
     <string name="logout">Logout</string>
-
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="save_btn">Save</string>
-
-    <string name="AboutUs">STAZER (Formerly Stazer Services) was Launched in Dec 2020.it is the Largest Home Services Platform in Kota.
-        STAZER provide a diverse variety of services at your doorstep to make your lives easier and more efficient.
-        The Platform helps customers book reliable home services like electrician, plumber, carpenter, Air conditioner, Purifier, Painter,
-        Also Complete Constructions Work, Our skilled workers are equipped with a solution to almost all your daily problems.
-        STAZER Vision is to Empower millions of service professionals across the world to deliver service at home like never seen Before.</string>
-
 </resources>
