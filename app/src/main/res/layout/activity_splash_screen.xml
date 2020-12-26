@@ -64,7 +64,7 @@
             android:fontFamily="@font/stazer_trocchi_font"
             android:gravity="center"
             android:padding="16dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="40dp"
             android:text="@string/book_service_on_very_affordable_price_at_your_door_step"
             android:textColor="@color/TextSecondary"
             android:textSize="12sp" />

@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
 
             this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " Press again to exit", Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
 
@@ -302,10 +302,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_rate_us:
                openActivityforRateUs();
                 break;
+            case R.id.nav_contact:
+                openWhatasppActivity();
+                break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openWhatasppActivity() {
+        Uri uri = Uri.parse("smsto:"+"919509866519");
+        Intent whatsappIntent = new Intent(Intent.ACTION_SENDTO,uri);
+        whatsappIntent.setPackage("com.whatsapp");
+        startActivity(whatsappIntent);
     }
 
 

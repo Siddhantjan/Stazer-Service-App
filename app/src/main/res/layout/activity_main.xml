@@ -778,7 +778,7 @@
                         android:id="@+id/constructionService"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:layout_margin="4dp"
+                        android:layout_margin="12dp"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="8dp">
                         <ImageView

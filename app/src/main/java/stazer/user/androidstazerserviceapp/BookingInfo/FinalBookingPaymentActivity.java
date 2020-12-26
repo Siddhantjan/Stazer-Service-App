@@ -151,7 +151,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                     snapshot.getRef().child("Amount").setValue(mAmount.getText().toString());
-                                    Toast.makeText(getApplicationContext(), "Thanks For Booking.... ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Thanks For Using App.... ", Toast.LENGTH_SHORT).show();
                                     goToHomeActivity();
 
                         }
@@ -167,7 +167,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
                     goToHomeActivity();
                 }
 
-            }).setNegativeButton("CANCEL", (dialog, which) -> dialog.dismiss());
+            });
             AlertDialog dialog = amountDialogBuilder.create();
             dialog.setCancelable(false);
             dialog.show();
@@ -227,6 +227,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     }
     private void goToHomeActivity() {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();
     }
