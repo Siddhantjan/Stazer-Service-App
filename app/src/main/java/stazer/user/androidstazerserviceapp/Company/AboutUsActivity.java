@@ -40,7 +40,7 @@ public class AboutUsActivity extends AppCompatActivity {
                 //.addPlayStore("stazer.user.androidstazerserviceapp")   //Replace all this with your package name
                 .addInstagram("stazer_service")    //Your instagram id
                 .addFacebook("stazer.service")
-                //.addTwitter("")
+                .addTwitter("stazer_service")
                 .addItem(createCopyright())
                 .create();
         setContentView(aboutPage);

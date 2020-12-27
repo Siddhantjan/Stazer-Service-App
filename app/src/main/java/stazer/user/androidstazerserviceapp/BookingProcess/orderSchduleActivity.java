@@ -217,7 +217,6 @@ public class orderSchduleActivity extends AppCompatActivity {
             amountDialogBuilder.setTitle("Your Service Address ");
             mAddress.setInputType(InputType.TYPE_CLASS_TEXT);
             mAddress.setHint("Your Service Address");
-            mAddress.setWidth(200);
             mAddress.setText(UserAddress);
             amountDialogBuilder.setView(mAddress);
             amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {

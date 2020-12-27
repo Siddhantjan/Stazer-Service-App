@@ -55,7 +55,7 @@
                        android:layout_alignParentEnd="true"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:text="Everyone always had an Idea No matter. What matters how effort You put to make successful that idea."
+                       android:text="Many people have a unique idea, but it doesn't matter until and unless one make efforts to turn the dream into reality."
                        android:textSize="12sp"
                        android:gravity="center"/>
                    <TextView

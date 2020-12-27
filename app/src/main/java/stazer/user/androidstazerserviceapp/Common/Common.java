@@ -24,7 +24,6 @@ public class Common {
     public static final String NOTI_Content = "body";
     public static final String ADMIN_INFO_REFERENCE = "Admin";
 
-
     public static UserModel currentUser;
 
 
@@ -78,5 +77,17 @@ public class Common {
             notificationManager.notify(id, notification);
         }
 
+    }
+
+    public static String buildWelcomeMessage() {
+        if (Common.currentUser != null){
+            return new StringBuilder("Welcome!")
+                    .append(Common.currentUser.getFirstName())
+                    .append(" ")
+                    .append(Common.currentUser.getLastName()).toString();
+        }
+        else {
+            return "Welcome User";
+        }
     }
 }

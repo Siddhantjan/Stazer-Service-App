@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
+import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
@@ -76,7 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     boolean doubleBackToExitPressedOnce = false;
 
-
     @Override
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
@@ -111,10 +112,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Menu
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
-
-
         navigationDrawer();
-
 
         // Popular Service
         /* ---------------------------------------------------------- Start ----------------------------------*/
@@ -158,51 +156,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Cleaning Services
         /* --------------------------------- start ----------------------------------*/
-        findViewById(R.id.carWash).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent carWashIntent = new Intent(getApplicationContext(), CarWashingActivity.class);
-                startActivity(carWashIntent);
-            }
+        findViewById(R.id.carWash).setOnClickListener(v -> {
+            Intent carWashIntent = new Intent(getApplicationContext(), CarWashingActivity.class);
+            startActivity(carWashIntent);
         });
-        findViewById(R.id.bathroomCleaning).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent BathroomCleaningIntent = new Intent(getApplicationContext(), BathroomCleaningActivity.class);
-                startActivity(BathroomCleaningIntent);
-            }
+        findViewById(R.id.bathroomCleaning).setOnClickListener(v -> {
+            Intent BathroomCleaningIntent = new Intent(getApplicationContext(), BathroomCleaningActivity.class);
+            startActivity(BathroomCleaningIntent);
         });
-        findViewById(R.id.homeSanitization).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent sanitizationIntent = new Intent(getApplicationContext(), SanitizationServiceActivity.class);
-                startActivity(sanitizationIntent);
-            }
+        findViewById(R.id.homeSanitization).setOnClickListener(v -> {
+            Intent sanitizationIntent = new Intent(getApplicationContext(), SanitizationServiceActivity.class);
+            startActivity(sanitizationIntent);
         });
-        findViewById(R.id.kitchenCleaning).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent kitchenCleaningIntent = new Intent(getApplicationContext(), KitchenCleaningActivity.class);
-                startActivity(kitchenCleaningIntent);
-            }
+        findViewById(R.id.kitchenCleaning).setOnClickListener(v -> {
+            Intent kitchenCleaningIntent = new Intent(getApplicationContext(), KitchenCleaningActivity.class);
+            startActivity(kitchenCleaningIntent);
         });
-        findViewById(R.id.allCleaningServiceShow).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cleaningIntent = new Intent(getApplicationContext(), AllCleaningServicesActivity.class);
-                startActivity(cleaningIntent);
-            }
+        findViewById(R.id.allCleaningServiceShow).setOnClickListener(v -> {
+            Intent cleaningIntent = new Intent(getApplicationContext(), AllCleaningServicesActivity.class);
+            startActivity(cleaningIntent);
         });
         /* --------------------------------- Close ----------------------------------*/
 
         //Major Work
         /* --------------------------------- Start ----------------------------------*/
-        findViewById(R.id.constructionService).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent constructionIntent = new Intent(getApplicationContext(), ConstructionWorkActivity.class);
-                startActivity(constructionIntent);
-            }
+        findViewById(R.id.constructionService).setOnClickListener(v -> {
+            Intent constructionIntent = new Intent(getApplicationContext(), ConstructionWorkActivity.class);
+            startActivity(constructionIntent);
         });
         /* --------------------------------- Close ----------------------------------*/
 
@@ -214,10 +194,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-
-
         menuOpenIcon.setOnClickListener(v -> {
-
             if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
                 drawerLayout.closeDrawer(GravityCompat.START);
             } else {
@@ -270,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             this.doubleBackToExitPressedOnce = true;
             Toast.makeText(this, " Press again to exit", Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(() -> doubleBackToExitPressedOnce=false, 2000);
+            new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 2000);
 
         }
     }
@@ -300,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 openShareAppActivity();
                 break;
             case R.id.nav_rate_us:
-               openActivityforRateUs();
+                openActivityforRateUs();
                 break;
             case R.id.nav_contact:
                 openWhatasppActivity();
@@ -312,39 +289,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void openWhatasppActivity() {
-        Uri uri = Uri.parse("smsto:"+"919509866519");
-        Intent whatsappIntent = new Intent(Intent.ACTION_SENDTO,uri);
+        Uri uri = Uri.parse("smsto:" + "919509866519");
+        Intent whatsappIntent = new Intent(Intent.ACTION_SENDTO, uri);
         whatsappIntent.setPackage("com.whatsapp");
         startActivity(whatsappIntent);
     }
 
 
     private void openActivityforRateUs() {
-        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id="+getApplicationContext().getPackageName());
-        Intent rateIntent = new Intent(Intent.ACTION_VIEW,uri);
+        Uri uri = Uri.parse("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
+        Intent rateIntent = new Intent(Intent.ACTION_VIEW, uri);
         try {
             Log.d("RateAct", "openActivityForRateUs: Play Store Opened");
             startActivity(rateIntent);
             finish();
-        }
-        catch (Exception e){
-            Toast.makeText(this, "Unable to open [Error]: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Unable to open [Error]: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void openShareAppActivity() {
-       try {
-           Log.d("ShareAct", "openShareAppActivity: Share done Successfully");
-           ApplicationInfo applicationInfo= getApplicationContext().getApplicationInfo();
-           String apkPath = applicationInfo.sourceDir;
-           Intent shareIntent = new Intent(Intent.ACTION_SEND);
-           shareIntent.setType("application/vnd.android.package-archive");
-           shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(apkPath)));
-           startActivity(Intent.createChooser(shareIntent,"ShareVia"));
-       }
-       catch (Exception e){
-           Toast.makeText(this, "[Error]: "+e.getMessage(), Toast.LENGTH_SHORT).show();
-       }
+        try {
+            Log.d("ShareAct", "openShareAppActivity: Share done Successfully");
+            ApplicationInfo applicationInfo = getApplicationContext().getApplicationInfo();
+            String apkPath = applicationInfo.sourceDir;
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("application/vnd.android.package-archive");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(apkPath)));
+            startActivity(Intent.createChooser(shareIntent, "ShareVia"));
+        } catch (Exception e) {
+            Toast.makeText(this, "[Error]: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -353,7 +328,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent missionIntent = new Intent(getApplicationContext(), OurVisionActivity.class);
         startActivity(missionIntent);
     }
-
 
 
     private void gotoTermsPage() {
@@ -440,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //Internal Checking Fun
     private void checkUserFromFirebase() {
-        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -461,6 +435,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
     }
+
 
     // when You Logout
     private void gotoLoginPage() {
