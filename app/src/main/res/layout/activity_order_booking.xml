@@ -46,128 +46,128 @@
             android:layout_margin="8dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="12dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:paddingLeft="15dp">
-
-                <TextView
-                    android:id="@+id/customer_name"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/details_user"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="6dp"
-                    android:text="Customer Name"
-                    android:textColor="@color/TextSecondary"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/customer_mobile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/customer_name"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="6dp"
-                    android:text=" User Mobile Number"
-                    android:textColor="@color/TextSecondary"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/booking_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/customer_mobile"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Booking Details"
-                    android:textColor="@color/TextPrimary"
-                    android:textSize="14sp" />
-
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/service_type_heading"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/booking_details"
-                    android:orientation="horizontal">
+                    android:layout_margin="8dp"
+                    android:paddingLeft="15dp">
 
                     <TextView
+                        android:id="@+id/customer_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="6dp"
+                        android:text="Customer Name"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/customer_mobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/customer_name"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="6dp"
+                        android:text=" User Mobile Number"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/booking_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/customer_mobile"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginTop="8dp"
-                        android:text="Service :"
+                        android:text="Booking Details"
                         android:textColor="@color/TextPrimary"
                         android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/service_type"
+                    <LinearLayout
+                        android:id="@+id/service_type_heading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:layout_below="@+id/booking_details"
                         android:layout_marginTop="8dp"
-                        android:text="Name of Service"
-                        android:textColor="@color/TextSecondary"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                        android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/category_container"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/service_type_heading"
-                    android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Service :"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="14sp" />
 
-                    <TextView
+                        <TextView
+                            android:id="@+id/service_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Name of Service"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/category_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/service_type_heading"
                         android:layout_marginTop="8dp"
-                        android:text="Purpose : "
-                        android:textColor="@color/TextPrimary"
-                        android:textSize="14sp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/category_type"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Purpose : "
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/category_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text=" Name of Purpose "
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/Address_content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
+                        android:layout_below="@+id/category_container"
                         android:layout_marginTop="8dp"
-                        android:text=" Name of Purpose "
-                        android:textColor="@color/TextSecondary"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Default Address :"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="14sp" />
 
-                <LinearLayout
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="20dp"
-                    android:id="@+id/Address_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/category_container"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Address :"
-                        android:textColor="@color/TextPrimary"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/address_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Address"
-                        android:textColor="@color/TextSecondary"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </RelativeLayout>
+                        <TextView
+                            android:id="@+id/address_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Address"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <!-- Second Layout -->
         <Button

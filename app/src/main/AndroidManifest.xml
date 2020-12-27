@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".services.Construction.ConstructionWorkActivity"></activity>
+        <activity android:name=".services.Construction.ConstructionWorkActivity" />
         <activity android:name=".services.WaterDispenser.WaterDispenserActivity" />
         <activity android:name=".services.WashingMachine.WashingMachineActivity" />
         <activity android:name=".services.Painter.PainterServiceActivity" />

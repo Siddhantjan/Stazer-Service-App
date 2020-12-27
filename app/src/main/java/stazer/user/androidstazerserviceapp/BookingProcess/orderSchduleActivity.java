@@ -1,11 +1,13 @@
 package stazer.user.androidstazerserviceapp.BookingProcess;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -14,6 +16,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,7 +48,7 @@ public class orderSchduleActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListener,filter);
+        registerReceiver(networkChangeListener, filter);
         super.onStart();
     }
 
@@ -57,14 +61,13 @@ public class orderSchduleActivity extends AppCompatActivity {
     private TextView mSelectTime, mSelectDate;
     private TextView mDisplayTime, mDisplayDate;
     FirebaseDatabase database;
-    DatabaseReference userInfoRef,adminInfoRef;
-    private TextView mServiceType,mServiceCategory;
+    DatabaseReference userInfoRef, adminInfoRef;
+    private TextView mServiceType, mServiceCategory;
     private Button btn_bookingSchedule;
-    private TextView mName, mMobileNumber,  mAddress;
-    private String UserAddress;
-
-    private int cYear,cMonth,cDay,sYear,sMonth,sDay;
-    private int cHour,cMinute,sHour,sMinute;
+    private TextView mName, mMobileNumber, mAddress;
+    private String UserAddress, mServiceAddress;
+    private int cYear, cMonth, cDay, sYear, sMonth, sDay;
+    private int cHour, cMinute, sHour, sMinute;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,17 +104,17 @@ public class orderSchduleActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog(orderSchduleActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    sYear=year;
+                    sYear = year;
                     sMonth = month;
                     sDay = dayOfMonth;
 
-                    String sDate = sDay+"-"+sMonth+"-"+sYear;
+                    String sDate = sDay + "-" + sMonth + "-" + sYear;
                     mDisplayDate.setText(sDate);
 
                 }
-            },cYear,cMonth,cDay);
+            }, cYear, cMonth, cDay);
             // Displayed previous selected Date
-            datePickerDialog.updateDate(sYear,sMonth,sDay);
+            datePickerDialog.updateDate(sYear, sMonth, sDay);
             //Disabled past Date
             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
             // Disabled future Date
@@ -121,10 +124,9 @@ public class orderSchduleActivity extends AppCompatActivity {
         });
 
         mSelectTime.setOnClickListener(v -> {
-            if (TextUtils.isEmpty(mDisplayDate.getText().toString())){
+            if (TextUtils.isEmpty(mDisplayDate.getText().toString())) {
                 Toast.makeText(this, "Please Select Date First", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 //Initialize Time Picker Dialog
                 TimePickerDialog timePickerDialog = new TimePickerDialog(
                         orderSchduleActivity.this, (view, hourOfDay, minute) -> {
@@ -168,6 +170,7 @@ public class orderSchduleActivity extends AppCompatActivity {
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
         adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
 
+
         userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -209,48 +212,79 @@ public class orderSchduleActivity extends AppCompatActivity {
             Toast.makeText(orderSchduleActivity.this, "Select Time", Toast.LENGTH_SHORT).show();
 
         } else {
-            String id =   userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
-                    .push().getKey();
-            HashMap<String, Object> scheduleMap = new HashMap<>();
-            scheduleMap.put("serviceType", mServiceType.getText().toString());
-            scheduleMap.put("serviceCategory",mServiceCategory.getText().toString());
-            scheduleMap.put("Time", mDisplayTime.getText().toString());
-            scheduleMap.put("Date", mDisplayDate.getText().toString());
-            scheduleMap.put("Status","pending");
-            scheduleMap.put("Amount","0");
-            try {
-                scheduleMap.put("id",id);
-            }
-            catch (Exception e){
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-
-            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
-                    .child(id).setValue(scheduleMap)
-                    .addOnCompleteListener(task -> {
-                        Toast.makeText(this, "Your Service Scheduled on Time ", Toast.LENGTH_SHORT).show();
-                        goToBookingActivity();
-
-                    }).addOnFailureListener(e -> {
-                Toast.makeText(this, "[Error]:"+e.getMessage(), Toast.LENGTH_SHORT).show();
+            AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
+            final EditText mAddress = new EditText(this);
+            amountDialogBuilder.setTitle("Your Service Address ");
+            mAddress.setInputType(InputType.TYPE_CLASS_TEXT);
+            mAddress.setHint("Your Service Address");
+            mAddress.setWidth(200);
+            mAddress.setText(UserAddress);
+            amountDialogBuilder.setView(mAddress);
+            amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
+                if (!TextUtils.isEmpty(mAddress.getText().toString())) {
+                    mServiceAddress = mAddress.getText().toString();
+                    goToUpdateOrderSchedule();
+                    dialog.dismiss();
+                }
             });
-
-            HashMap<String,Object> serviceScheduleMap = new HashMap<>();
-            serviceScheduleMap.put("UserName",mName.getText().toString());
-            serviceScheduleMap.put("UserMobile",mMobileNumber.getText().toString());
-            serviceScheduleMap.put("UserAddress",mAddress.getText().toString());
-            serviceScheduleMap.put("serviceType",mServiceType.getText().toString());
-            serviceScheduleMap.put("Time", mDisplayTime.getText().toString());
-            serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
-            serviceScheduleMap.put("serviceCategory",mServiceCategory.getText().toString());
-
-            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                    .setValue(serviceScheduleMap)
-                    .addOnCompleteListener(task -> Log.d("sendDataToAdminSchedule", "onComplete: Booking Confirmed saved"))
-                    .addOnFailureListener(e -> Log.d("sendDataToAdminSchedule", "onFailure: "+e.toString()));
-
-
+            AlertDialog dialog = amountDialogBuilder.create();
+            dialog.setCancelable(false);
+            dialog.show();
         }
+
+    }
+
+
+    private void goToUpdateOrderSchedule() {
+        String id = userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
+                .push().getKey();
+        HashMap<String, Object> scheduleMap = new HashMap<>();
+        scheduleMap.put("serviceType", mServiceType.getText().toString());
+        scheduleMap.put("serviceCategory", mServiceCategory.getText().toString());
+        scheduleMap.put("Time", mDisplayTime.getText().toString());
+        scheduleMap.put("Date", mDisplayDate.getText().toString());
+        scheduleMap.put("Status", "pending");
+        scheduleMap.put("Amount", "0");
+        try {
+            scheduleMap.put("id", id);
+            scheduleMap.put("ServiceAddress", mServiceAddress);
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
+                .child(id).setValue(scheduleMap)
+                .addOnCompleteListener(task -> {
+                    AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
+                    amountDialogBuilder.setTitle("Service Booked");
+                    amountDialogBuilder.setMessage("Your service has been booked. \n" + "We Will Contact you in 10 minutes.\n" + "Tap OK to View your Service");
+                    amountDialogBuilder.setPositiveButton("OK", (dialog, which) -> {
+                        Toast.makeText(orderSchduleActivity.this, "you Successfully booked Service.", Toast.LENGTH_SHORT).show();
+                        goToBookingActivity();
+                    });
+                    AlertDialog dialog = amountDialogBuilder.create();
+                    dialog.setCancelable(false);
+                    dialog.show();
+
+                }).addOnFailureListener(e -> {
+            Toast.makeText(this, "[Error]:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
+
+        HashMap<String, Object> serviceScheduleMap = new HashMap<>();
+        serviceScheduleMap.put("UserName", mName.getText().toString());
+        serviceScheduleMap.put("UserMobile", mMobileNumber.getText().toString());
+        serviceScheduleMap.put("UserAddress", mServiceAddress);
+        serviceScheduleMap.put("serviceType", mServiceType.getText().toString());
+        serviceScheduleMap.put("Time", mDisplayTime.getText().toString());
+        serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
+        serviceScheduleMap.put("serviceCategory", mServiceCategory.getText().toString());
+
+        adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                .setValue(serviceScheduleMap)
+                .addOnCompleteListener(task -> Log.d("sendDataToAdminSchedule", "onComplete: Booking Confirmed saved"))
+                .addOnFailureListener(e -> Log.d("sendDataToAdminSchedule", "onFailure: " + e.toString()));
+
+
     }
 
     private void goToBookingActivity() {

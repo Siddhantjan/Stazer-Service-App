@@ -160,6 +160,27 @@
                             android:textColor="@color/TextPrimary"
                             android:textSize="18sp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Service Address :"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/serviceAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="@null"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="18sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

@@ -1,14 +1,21 @@
 package stazer.user.androidstazerserviceapp.BookingProcess;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +40,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
+import stazer.user.androidstazerserviceapp.BookingInfo.FinalBookingPaymentActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.R;
@@ -46,7 +54,7 @@ public class OrderBookingActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListener,filter);
+        registerReceiver(networkChangeListener, filter);
         super.onStart();
     }
 
@@ -55,12 +63,11 @@ public class OrderBookingActivity extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
-
     private Button btn_bookingComplete;
     FirebaseDatabase database;
-    DatabaseReference userInfoRef,adminInfoRef;
+    DatabaseReference userInfoRef, adminInfoRef;
     String userName;
-    String UserAddress;
+    String UserAddress, mServiceAddress,CurrentDate,Time;
     private TextView mName, mMobileNumber, mServiceType, mCategoryType, mAddress;
 
 
@@ -85,11 +92,12 @@ public class OrderBookingActivity extends AppCompatActivity {
         mCategoryType.setText(getIntent().getStringExtra("categoryType"));
         mAddress = findViewById(R.id.address_type);
         btn_bookingComplete = findViewById(R.id.btn_booking_final);
+
         Date currentDate = Calendar.getInstance().getTime();
-        String CurrentDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentDate);
+         CurrentDate = DateFormat.getDateInstance(DateFormat.FULL).format(currentDate);
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
-        String Time = simpleDateFormat.format(calendar.getTime());
+        Time = simpleDateFormat.format(calendar.getTime());
 
 
         userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo").addValueEventListener(new ValueEventListener() {
@@ -121,54 +129,78 @@ public class OrderBookingActivity extends AppCompatActivity {
         });
 
         btn_bookingComplete.setOnClickListener(v -> {
+            AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
+            final EditText mAddress = new EditText(this);
+            amountDialogBuilder.setTitle("Your Service Address ");
+            mAddress.setInputType(InputType.TYPE_CLASS_TEXT);
+            mAddress.setHint("Your Service Address");
+            mAddress.setText(UserAddress);
+            amountDialogBuilder.setView(mAddress);
+            amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
+                if (!TextUtils.isEmpty(mAddress.getText().toString())) {
+                    mServiceAddress = mAddress.getText().toString();
+                            updateDataForOrder();
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog dialog = amountDialogBuilder.create();
+            dialog.setCancelable(false);
+            dialog.show();
+
+        });
+    }
+    private void updateDataForOrder(){
         String id = userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").push().getKey();
-            HashMap<String, Object> bookingMap = new HashMap<>();
-            bookingMap.put("serviceType", mServiceType.getText().toString());
-            bookingMap.put("serviceCategory", mCategoryType.getText().toString());
-            bookingMap.put("Amount","0");
-            try {
-                bookingMap.put("id",id);
-                bookingMap.put("Status","pending");
-                bookingMap.put("Date", CurrentDate);
-                bookingMap.put("Time",Time);
+        HashMap<String, Object> bookingMap = new HashMap<>();
+        bookingMap.put("serviceType", mServiceType.getText().toString());
+        bookingMap.put("serviceCategory", mCategoryType.getText().toString());
+        bookingMap.put("Amount", "0");
+        try {
+            bookingMap.put("id", id);
+            bookingMap.put("Status", "pending");
+            bookingMap.put("Date", CurrentDate);
+            bookingMap.put("Time", Time);
+            bookingMap.put("ServiceAddress", mServiceAddress);
 
-            } catch (Exception e) {
-                Toast.makeText(OrderBookingActivity.this, "Error", Toast.LENGTH_SHORT).show();
-            }
+        } catch (Exception e) {
+            Toast.makeText(OrderBookingActivity.this, "Error", Toast.LENGTH_SHORT).show();
+        }
 
-            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(id).setValue(bookingMap)
-                    .addOnCompleteListener(task -> {
-                        Log.d("Tag", "onComplete: Booking Confirmed saved");
+        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(id).setValue(bookingMap)
+                .addOnCompleteListener(task -> {
+                    Log.d("Tag", "onComplete: Booking Confirmed saved");
+                    AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
+                    amountDialogBuilder.setTitle("Service Booked");
+                    amountDialogBuilder.setMessage("Your service has been booked. \n" + "We Will Contact you in 10 minutes.\n" + "Tap OK to View your Service");
+                    amountDialogBuilder.setPositiveButton("OK", (dialog, which) -> {
                         Toast.makeText(OrderBookingActivity.this, "you Successfully booked Service.", Toast.LENGTH_SHORT).show();
                         goToBookingActivity();
-
-
-                    }).addOnFailureListener(e -> {
-                        Log.d("error", "onFailure: "+e.toString());
-                        Toast.makeText(OrderBookingActivity.this, "[Error]"+e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
-            //Send Data To Admin App
-            HashMap<String, Object> serviceSendAdmin = new HashMap<>();
-            serviceSendAdmin.put("UserName" , mName.getText().toString());
-            serviceSendAdmin.put("UserMobile",mMobileNumber.getText().toString());
-            serviceSendAdmin.put("UserAddress",mAddress.getText().toString());
-            serviceSendAdmin.put("serviceType",mServiceType.getText().toString());
-            serviceSendAdmin.put("serviceCategory",mCategoryType.getText().toString());
-            try {
-                serviceSendAdmin.put("Date", CurrentDate);
-                serviceSendAdmin.put("Time",Time);
-            } catch (Exception e){
-                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-            adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                    .setValue(serviceSendAdmin)
-                    .addOnCompleteListener(task -> Log.d("sendDataToAdmin", "onComplete: Booking Confirmed saved"))
-                    .addOnFailureListener(e -> Log.d("sendDataToAdmin", "onFailure: "+e.toString()));
+                    AlertDialog dialog = amountDialogBuilder.create();
+                    dialog.setCancelable(false);
+                    dialog.show();
+                }).addOnFailureListener(e -> {
+            Log.d("error", "onFailure: " + e.toString());
+            Toast.makeText(OrderBookingActivity.this, "[Error]" + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
-
-
+        //Send Data To Admin App
+        HashMap<String, Object> serviceSendAdmin = new HashMap<>();
+        serviceSendAdmin.put("UserName", mName.getText().toString());
+        serviceSendAdmin.put("UserMobile", mMobileNumber.getText().toString());
+        serviceSendAdmin.put("UserAddress", mServiceAddress);
+        serviceSendAdmin.put("serviceType", mServiceType.getText().toString());
+        serviceSendAdmin.put("serviceCategory", mCategoryType.getText().toString());
+        try {
+            serviceSendAdmin.put("Date", CurrentDate);
+            serviceSendAdmin.put("Time", Time);
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                .setValue(serviceSendAdmin)
+                .addOnCompleteListener(task -> Log.d("sendDataToAdmin", "onComplete: Booking Confirmed saved"))
+                .addOnFailureListener(e -> Log.d("sendDataToAdmin", "onFailure: " + e.toString()));
     }
-
     private void goToBookingActivity() {
         Intent mainIntent = new Intent(getApplicationContext(), BookingActivity.class);
         startActivity(mainIntent);

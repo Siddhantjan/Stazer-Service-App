@@ -1,19 +1,18 @@
 package stazer.user.androidstazerserviceapp.Company;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
 import mehdi.sakout.aboutpage.AboutPage;
 import mehdi.sakout.aboutpage.Element;
-import android.view.WindowManager;
-
 import stazer.user.androidstazerserviceapp.R;
 
 public class AboutUsActivity extends AppCompatActivity {
@@ -22,6 +21,7 @@ public class AboutUsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_about_us);
 
         Element adsElement = new Element();
@@ -35,12 +35,12 @@ public class AboutUsActivity extends AppCompatActivity {
                 .addItem(adsElement.setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
                 .addEmail("contact@stazerservices.com")
-                .addWebsite("http://www.stazerservices.com//")
+                .addWebsite("http://www.stazerservices.com/")
                 .addYoutube("UCVql9H0RkiRyLtBRKF2Ga_A")   //Enter your youtube link here (replace with my channel link)
                 //.addPlayStore("stazer.user.androidstazerserviceapp")   //Replace all this with your package name
                 .addInstagram("stazer_service")    //Your instagram id
                 .addFacebook("stazer.service")
-               // .addTwitter("")
+                //.addTwitter("")
                 .addItem(createCopyright())
                 .create();
         setContentView(aboutPage);
@@ -52,12 +52,7 @@ public class AboutUsActivity extends AppCompatActivity {
         copyright.setTitle(copyrightString);
          copyright.setIconDrawable(R.drawable.logo);
         copyright.setGravity(Gravity.CENTER);
-        copyright.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AboutUsActivity.this,copyrightString,Toast.LENGTH_SHORT).show();
-            }
-        });
+        copyright.setOnClickListener(v -> Toast.makeText(AboutUsActivity.this,copyrightString,Toast.LENGTH_SHORT).show());
         return copyright;
     }
 }

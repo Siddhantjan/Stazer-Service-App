@@ -44,12 +44,12 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
 
     private Spinner mFeedbackRating;
     private Button mServiceDone,mFeedbackDone;
-    private TextView mServiceType,mServiceStatus,mServiceCategory,mServiceDate,mServiceTime,mServiceAmount;
+    private TextView mServiceType,mServiceStatus,mServiceCategory,mServiceDate,mServiceTime,mServiceAmount,mServiceAddress;
     private EditText mMechanicName, mFeedbackText;
     FirebaseDatabase database;
     DatabaseReference adminInfoRef, userInfoRef;
     private  String Rating;
-    private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount,cID;
+    private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount,cID,cServiceAddress;
     private CheckBox mExperience,mTiming,mCost,mBehaviour;
     @Override
     protected void onStart() {
@@ -85,6 +85,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         mServiceStatus = findViewById(R.id.servicingStatus);
         mServiceDate = findViewById(R.id.servicingDate);
         mServiceTime = findViewById(R.id.servicingTime);
+        mServiceAddress = findViewById(R.id.serviceAddress);
 
         mExperience = findViewById(R.id.ch1);
         mBehaviour = findViewById(R.id.ch2);
@@ -107,6 +108,8 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             cServiceDate = bundle.getString("Date");
             cServiceTime = bundle.getString("Time");
             cServiceAmount = bundle.getString("Amount");
+            cServiceAddress = bundle.getString("Address");
+
 
             //SetData
             mServiceType.setText(cServiceType);
@@ -115,6 +118,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             mServiceDate.setText(cServiceDate);
             mServiceTime.setText(cServiceTime);
             mServiceAmount.setText(cServiceAmount);
+            mServiceAddress.setText(cServiceAddress);
 
 
         }

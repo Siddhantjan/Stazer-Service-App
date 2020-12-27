@@ -10,11 +10,6 @@
             android:icon="@drawable/ic_baseline_collections_bookmark_24"
             android:title="Bookings" />
 
-
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_baseline_exit_to_app_24"
-            android:title="Sign out" />
     </group>
     <item android:title="Share">
         <menu>
@@ -36,6 +31,7 @@
             <group android:checkableBehavior="none">
                 <item
                     android:id="@+id/nav_contact"
+                    android:icon="@drawable/ic_baseline_touch_app_24"
                     android:title="Get In Touch" />
                 <item
                     android:id="@+id/nav_aboutCompany"
@@ -50,5 +46,15 @@
         </menu>
     </item>
 
+    <item android:title="Logout">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_baseline_exit_to_app_24"
+                    android:title="Sign out" />
+            </group>
+        </menu>
+    </item>
 
 </menu>

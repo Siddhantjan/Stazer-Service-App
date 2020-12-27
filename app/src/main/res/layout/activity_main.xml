@@ -777,7 +777,7 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/constructionService"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="165dp"
                         android:layout_margin="12dp"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="8dp">
