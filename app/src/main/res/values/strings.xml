@@ -11,10 +11,36 @@
     <string name="verify_btn">Verify</string>
     <string name="title_activity_splash_screen">SplashScreenActivity</string>
     <string name="let_s_start_with_creating_your_account">Let\'s start with Creating your account</string>
-    <string name="book_service_on_very_affordable_price_at_your_door_step">Book Service on Very Affordable Price At your Door Step.</string>
+    <string name="book_service_on_very_affordable_price_at_your_door_step">Book Service on Very Affordable
+        Price At your Door Step.</string>
     <string name="logout">Logout</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="save_btn">Save</string>
+
+    <!-- Service Activity -->
+    <string name="notice_rates">* Charges May be Differ according to your Requirements final Charges can be
+        declared after inspection your site</string>
+    <string name="view_rate_card">View Rate Card</string>
+
+    <string name="book_your_service_or_schedule_your_service_on_one_click">Book your Service or Schedule
+        your Service on one Click</string>
+
+    <string name="no_hidden_charges_taking_by_us">*no hidden Charges taking By us.</string>
+    <string name="book_now">Book Now</string>
+    <string name="schedule_service">Schedule Service</string>
+    <!--Indivisual Service Activity -->
+    <string name="charges_for_basic_plumbing_services">Charges For Basic Plumbing Services</string>
+    <string name="charge_for_basic_electrical_services">Charge For Basic Electrical Services</string>
+    <string name="charge_for_basic_ac_cleaning_service">Charge For Basic Ac Cleaning Service</string>
+    <string name="visit_charge_for_book_a_carpenter">Visit Charge For Book a Carpenter</string>
+    <string name="this_only_visit_charge_final_charges_provide_by_our_carpenter_after_visiting_your_work_or_requirements">This only Visit Charge. Final charges provide by our Carpenter After Visiting your Work or Requirements</string>
+    <string name="schedule_meeting">Schedule Meeting</string>
+    <string name="charge_for_basic_ro_checkup_services">Charge For Basic RO Checkup Services</string>
+    <string name="charge_for_basic_air_cooler_service">Charge For Basic Air Cooler Service</string>
+    <string name="charge_for_basic_geyser_services">Charge For Basic Geyser Services</string>
+    <string name="charge_for_basic_refrigerator_services">Charge For Basic Refrigerator Services</string>
+    <string name="charge_for_basic_washing_machine_checkup">Charge For Basic Washing Machine Checkup</string>
+    <string name="charge_for_basic_water_dispenser_checkup">Charge For Basic water dispenser checkup</string>
 </resources>

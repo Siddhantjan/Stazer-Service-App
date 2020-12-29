@@ -23,6 +23,8 @@ public class Common {
     public static final String NOTI_TITLE = "title";
     public static final String NOTI_Content = "body";
     public static final String ADMIN_INFO_REFERENCE = "Admin";
+    public static final int COMPANY_START_TIME = 8;
+    public static final int COMPANY_STOP_TIME = 22;
 
     public static UserModel currentUser;
 

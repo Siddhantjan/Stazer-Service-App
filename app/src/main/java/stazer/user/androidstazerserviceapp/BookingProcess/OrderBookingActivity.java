@@ -129,21 +129,27 @@ public class OrderBookingActivity extends AppCompatActivity {
         });
 
         btn_bookingComplete.setOnClickListener(v -> {
-            AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder addressDialogBuilder = new AlertDialog.Builder(this);
             final EditText mAddress = new EditText(this);
-            amountDialogBuilder.setTitle("Your Service Address ");
+            addressDialogBuilder.setTitle("Your Service Address ");
             mAddress.setInputType(InputType.TYPE_CLASS_TEXT);
             mAddress.setHint("Your Service Address");
             mAddress.setText(UserAddress);
-            amountDialogBuilder.setView(mAddress);
-            amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
+            addressDialogBuilder.setView(mAddress);
+            addressDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
                 if (!TextUtils.isEmpty(mAddress.getText().toString())) {
                     mServiceAddress = mAddress.getText().toString();
                             updateDataForOrder();
                     dialog.dismiss();
                 }
+                else {
+                    Toast.makeText(this, "Please Enter the Service Address", Toast.LENGTH_SHORT).show();
+                }
             });
-            AlertDialog dialog = amountDialogBuilder.create();
+            addressDialogBuilder.setNegativeButton("CANCEL",(dialog, which) -> {
+                    dialog.dismiss();
+            });
+            AlertDialog dialog = addressDialogBuilder.create();
             dialog.setCancelable(false);
             dialog.show();
 

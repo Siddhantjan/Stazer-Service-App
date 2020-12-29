@@ -86,7 +86,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Visit Charge For Book a Carpenter"
+                                android:text="@string/visit_charge_for_book_a_carpenter"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
@@ -105,7 +105,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/carpenter_rate"
                                 android:layout_marginStart="25dp"
-                                android:text="This only Visit Charge. Final charges provide by our Carpenter After Visiting your Work or Requirements"
+                                android:text="@string/this_only_visit_charge_final_charges_provide_by_our_carpenter_after_visiting_your_work_or_requirements"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp" />
 
@@ -129,12 +129,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="* Charges May be Differ according to your Requirements final Charges can be declared after inspection your site"
+                            android:text="@string/notice_rates"
                             android:textColor="@color/TextPrimary"
                             android:textSize="14sp" />
-
-
-
 
                         <TextView
                             android:layout_width="match_parent"
@@ -144,7 +141,7 @@
                             android:layout_marginTop="16dp"
                             android:gravity="center"
                             android:padding="16dp"
-                            android:text="Book your Service  or Schedule your Service  on one Click"
+                            android:text="@string/book_your_service_or_schedule_your_service_on_one_click"
                             android:textColor="@color/TextPrimary"
                             android:textSize="12sp" />
                     </RelativeLayout>
@@ -154,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:padding="8dp"
-                        android:text="*no hidden Charges taking By us."
+                        android:text="@string/no_hidden_charges_taking_by_us"
                         android:textColor="@color/TextPrimary"
                         android:textSize="8sp" />
 
@@ -166,7 +163,7 @@
                         android:layout_marginEnd="30dp"
                         android:background="@drawable/background_button"
                         android:padding="14dp"
-                        android:text="Book Now"
+                        android:text="@string/book_now"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
 
@@ -180,7 +177,7 @@
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/background_button"
                         android:padding="14dp"
-                        android:text="Schedule Meeting"
+                        android:text="@string/schedule_meeting"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
                 </LinearLayout>

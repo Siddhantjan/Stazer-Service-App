@@ -40,10 +40,8 @@ public class ConstructionWorkActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_contruction_work);
-
         mScheduleServiceConstruction = findViewById(R.id.scheduleServiceConstruction);
         mGroupService = findViewById(R.id.ConstructionServiceSelectGroup);
-
         mScheduleServiceConstruction.setOnClickListener(v -> {
             int selectedId = mGroupService.getCheckedRadioButtonId();
             mWorkServiceName = (RadioButton) findViewById(selectedId);
@@ -57,7 +55,5 @@ public class ConstructionWorkActivity extends AppCompatActivity {
                 startActivity(categoryIntent);
             }
         });
-
-
     }
 }

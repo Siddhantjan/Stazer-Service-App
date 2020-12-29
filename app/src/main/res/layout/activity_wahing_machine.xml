@@ -85,7 +85,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Visit Charge For Basic  Service"
+                                android:text="@string/charge_for_basic_washing_machine_checkup"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
@@ -129,7 +129,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="* Charges May be Differ according to your Requirements final Charges can be declared after inspection your site"
+                            android:text="@string/notice_rates"
                             android:textColor="@color/TextPrimary"
                             android:textSize="14sp" />
 
@@ -141,7 +141,7 @@
                             android:layout_alignParentEnd="true"
                             android:background="@null"
                             android:elevation="16dp"
-                            android:text="View Rate Card" />
+                            android:text="@string/view_rate_card" />
 
                         <View
                             android:layout_width="match_parent"
@@ -159,7 +159,7 @@
                             android:layout_marginTop="16dp"
                             android:gravity="center"
                             android:padding="16dp"
-                            android:text="Book your Service  or Schedule your Service  on one Click"
+                            android:text="@string/book_your_service_or_schedule_your_service_on_one_click"
                             android:textColor="@color/TextPrimary"
                             android:textSize="12sp" />
                     </RelativeLayout>
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:padding="8dp"
-                        android:text="*no hidden Charges taking By us."
+                        android:text="@string/no_hidden_charges_taking_by_us"
                         android:textColor="@color/TextPrimary"
                         android:textSize="8sp" />
 
@@ -181,7 +181,7 @@
                         android:layout_marginEnd="30dp"
                         android:background="@drawable/background_button"
                         android:padding="14dp"
-                        android:text="Book Now"
+                        android:text="@string/book_now"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
 
@@ -195,7 +195,7 @@
                         android:layout_marginBottom="30dp"
                         android:background="@drawable/background_button"
                         android:padding="14dp"
-                        android:text="Schedule Service"
+                        android:text="@string/schedule_service"
                         android:textColor="@color/colorWhite"
                         android:textSize="18sp" />
                 </LinearLayout>

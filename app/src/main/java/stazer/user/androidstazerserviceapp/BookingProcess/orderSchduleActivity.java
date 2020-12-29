@@ -132,27 +132,40 @@ public class orderSchduleActivity extends AppCompatActivity {
                         orderSchduleActivity.this, (view, hourOfDay, minute) -> {
                     sHour = hourOfDay;
                     sMinute = minute;
+                    if (sHour >= Common.COMPANY_START_TIME && sHour < Common.COMPANY_STOP_TIME) {
+                        //Initialize Calender
+                        Calendar calendar1 = Calendar.getInstance();
 
-                    //Initialize Calender
-                    Calendar calendar1 = Calendar.getInstance();
+                        String sDate = mDisplayDate.getText().toString().trim();
+                        //Split Date
+                        String[] strings = sDate.split("-");
+                        //Get day on Calender
+                        sDay = Integer.parseInt(strings[0]);
+                        //set day on Calender
+                        calendar1.set(Calendar.DAY_OF_MONTH, sDay);
+                        //set Hour on Calender
+                        calendar1.set(Calendar.HOUR_OF_DAY, sHour);
+                        //set Minute on Calender
+                        calendar1.set(Calendar.MINUTE, sMinute);
 
-                    String sDate = mDisplayDate.getText().toString().trim();
-                    //Split Date
-                    String[] strings = sDate.split("-");
-                    //Get day on Calender
-                    sDay = Integer.parseInt(strings[0]);
-                    //set day on Calender
-                    calendar1.set(Calendar.DAY_OF_MONTH, sDay);
-                    //set Hour on Calender
-                    calendar1.set(Calendar.HOUR_OF_DAY, sHour);
-                    //set Minute on Calender
-                    calendar1.set(Calendar.MINUTE, sMinute);
-                    if (calendar1.getTimeInMillis() >= Calendar.getInstance().getTimeInMillis()) {
-                        mDisplayTime.setText(DateFormat.format("hh:mm aa", calendar1));
-                    } else {
-                        Toast.makeText(this, "You Selected Past Time Please Select Correct Time", Toast.LENGTH_SHORT).show();
+                        if (calendar1.getTimeInMillis() >= Calendar.getInstance().getTimeInMillis()) {
+                            mDisplayTime.setText(DateFormat.format("hh:mm aa", calendar1));
+                        } else {
+                            Toast.makeText(this, "You Selected Past Time Please Select Correct Time", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
+                    else {
+                        AlertDialog.Builder workingHours = new AlertDialog.Builder(this);
+                        workingHours.setTitle("Not Available");
+                        workingHours.setMessage("We Are Not Available At this moment  \n" +
+                                "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 Pm\n");
+                        workingHours.setPositiveButton("OK", (dialog, which) -> {
+                            dialog.dismiss();
+                        });
+                        AlertDialog dialog = workingHours.create();
+                        dialog.setCancelable(false);
+                        dialog.show();
+                    }
 
                 }, cHour, cMinute, false);
                 //show Dialog
@@ -212,21 +225,32 @@ public class orderSchduleActivity extends AppCompatActivity {
             Toast.makeText(orderSchduleActivity.this, "Select Time", Toast.LENGTH_SHORT).show();
 
         } else {
-            AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder addressDialogBuilder = new AlertDialog.Builder(this);
             final EditText mAddress = new EditText(this);
-            amountDialogBuilder.setTitle("Your Service Address ");
+            addressDialogBuilder.setTitle("Your Service Address ");
             mAddress.setInputType(InputType.TYPE_CLASS_TEXT);
             mAddress.setHint("Your Service Address");
             mAddress.setText(UserAddress);
-            amountDialogBuilder.setView(mAddress);
-            amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
+            addressDialogBuilder.setView(mAddress);
+            addressDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
                 if (!TextUtils.isEmpty(mAddress.getText().toString())) {
                     mServiceAddress = mAddress.getText().toString();
                     goToUpdateOrderSchedule();
                     dialog.dismiss();
                 }
+                else {
+                    mDisplayDate.setText(null);
+                    mDisplayTime.setText(null);
+                    Toast.makeText(this, "Please Enter the Service Address", Toast.LENGTH_SHORT).show();
+                }
             });
-            AlertDialog dialog = amountDialogBuilder.create();
+            addressDialogBuilder.setNegativeButton("CANCEL", (dialog, which) -> {
+                mDisplayDate.setText(null);
+                mDisplayTime.setText(null);
+                dialog.dismiss();
+            });
+
+            AlertDialog dialog = addressDialogBuilder.create();
             dialog.setCancelable(false);
             dialog.show();
         }
