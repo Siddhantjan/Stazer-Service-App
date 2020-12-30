@@ -73,7 +73,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
     }
 
     private void checkUserFromFirebase() {
-        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -118,6 +118,8 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                     model.setFlatNo(editFlatno.getText().toString());
                                     model.setArea(editArea.getText().toString());
                                     model.setLandmark(editLandmark.getText().toString());
+                                    String UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    model.setId(UserId);
                                     userInfoRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("userInfo")
                                             .setValue(model)
                                             .addOnFailureListener(e -> Toast.makeText(UserRegistrationActivity.this, "[Error]:" + e.getMessage(), Toast.LENGTH_SHORT).show()).addOnSuccessListener(aVoid -> {

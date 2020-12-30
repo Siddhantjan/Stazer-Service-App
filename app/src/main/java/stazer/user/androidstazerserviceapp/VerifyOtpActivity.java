@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -24,15 +25,24 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 
 public class VerifyOtpActivity extends AppCompatActivity {
 
     private EditText inputCode1, inputCode2, inputCode3, inputCode4, inputCode5, inputCode6;
     private String verificationID;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference userInfoRef;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onStart() {
@@ -52,7 +62,8 @@ public class VerifyOtpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_verify_otp);
-
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        userInfoRef = firebaseDatabase.getReference(Common.USER_INFO_REFERENCE);
         TextView textMobile = findViewById(R.id.textMobile);
         textMobile.setText(String.format(
                 "+91-%s", getIntent().getStringExtra("mobile")
@@ -99,10 +110,7 @@ public class VerifyOtpActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 verifyBtn.setVisibility(View.VISIBLE);
                                 if (task.isSuccessful()) {
-                                    Intent registerIntent = new Intent(getApplicationContext(), UserRegistrationActivity.class);
-                                    registerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(registerIntent);
-                                    finish();
+                                    checkUserFromFirebase();
                                 } else {
                                     Toast.makeText(VerifyOtpActivity.this, "Verification Code is Invalid", Toast.LENGTH_SHORT).show();
 
@@ -234,5 +242,36 @@ public class VerifyOtpActivity extends AppCompatActivity {
 
     }
 
+    private void checkUserFromFirebase() {
+        Toast.makeText(this, "Please wait! We are fetching your Details", Toast.LENGTH_SHORT).show();
+        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            gotoHomeScreen();
+                        } else {
+                            Toast.makeText(VerifyOtpActivity.this, "Your Details Not Found Please Register yourself", Toast.LENGTH_SHORT).show();
+                            Intent registerIntent = new Intent(getApplicationContext(), UserRegistrationActivity.class);
+                            registerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(registerIntent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(VerifyOtpActivity.this, "[Error]" + error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+    }
+    private void gotoHomeScreen() {
+        Intent mainIntent;
+        mainIntent = new Intent(this, MainActivity.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        startActivity(mainIntent);
+    }
 
 }

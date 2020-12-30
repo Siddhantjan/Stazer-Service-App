@@ -18,7 +18,6 @@ import stazer.user.androidstazerserviceapp.R;
 
 public class AcServiceActivity extends AppCompatActivity {
 
-    int cHour;
     String service_name = "Ac Service";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +25,7 @@ public class AcServiceActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ac_service);
 
-        //initialize calender
-        Calendar calendar = Calendar.getInstance();
-        // Get Current Hour
-        cHour = calendar.get(Calendar.HOUR_OF_DAY);
+
         findViewById(R.id.btn_book_ac).setOnClickListener(v -> bookAcService());
         findViewById(R.id.scheduleServiceAc).setOnClickListener(v -> scheduleServiceAc());
         findViewById(R.id.ac_RateCard).setOnClickListener(v -> {
@@ -45,6 +41,11 @@ public class AcServiceActivity extends AppCompatActivity {
     }
 
     private void bookAcService() {
+        int cHour;
+        //initialize calender
+        Calendar calendar = Calendar.getInstance();
+        // Get Current Hour
+        cHour = calendar.get(Calendar.HOUR_OF_DAY);
         if (cHour >= Common.COMPANY_START_TIME && cHour < Common.COMPANY_STOP_TIME) {
             Intent bookingIntent = new Intent(AcServiceActivity.this, OrderCategoryActivity.class);
             bookingIntent.putExtra("serviceType",service_name);
@@ -54,7 +55,7 @@ public class AcServiceActivity extends AppCompatActivity {
             AlertDialog.Builder workingHours = new AlertDialog.Builder(this);
             workingHours.setTitle("Not Available");
             workingHours.setMessage("We Are Not Available At this moment  \n" +
-                    "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 Pm\n");
+                    "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 PM\n");
             workingHours.setPositiveButton("OK", (dialog, which) -> {
                 dialog.dismiss();
             });

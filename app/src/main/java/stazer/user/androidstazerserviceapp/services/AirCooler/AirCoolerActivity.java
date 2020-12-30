@@ -18,7 +18,6 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class AirCoolerActivity extends AppCompatActivity {
-    int cHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +25,6 @@ public class AirCoolerActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_air_cooler);
 
-        //initialize calender
-        Calendar calendar = Calendar.getInstance();
-
-        // Get Current Hour
-        cHour = calendar.get(Calendar.HOUR_OF_DAY);
 
         findViewById(R.id.btn_book_airCooler).setOnClickListener(v -> goToAirCoolerBooking());
         findViewById(R.id.scheduleServiceAirCooler).setOnClickListener(v -> scheduleServiceCooler());
@@ -48,6 +42,11 @@ public class AirCoolerActivity extends AppCompatActivity {
     }
 
     private void goToAirCoolerBooking() {
+        int cHour;
+        //initialize calender
+        Calendar calendar = Calendar.getInstance();
+        // Get Current Hour
+        cHour = calendar.get(Calendar.HOUR_OF_DAY);
         if (cHour >= Common.COMPANY_START_TIME && cHour < Common.COMPANY_STOP_TIME) {
             Intent bookingIntent = new Intent(getApplicationContext(), OrderCategoryActivity.class);
             bookingIntent.putExtra("serviceType", "Air Cooler Service");
@@ -57,7 +56,7 @@ public class AirCoolerActivity extends AppCompatActivity {
             AlertDialog.Builder workingHours = new AlertDialog.Builder(this);
             workingHours.setTitle("Not Available");
             workingHours.setMessage("We Are Not Available At this moment  \n" +
-                    "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 Pm\n");
+                    "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 PM\n");
             workingHours.setPositiveButton("OK", (dialog, which) -> {
                 dialog.dismiss();
             });

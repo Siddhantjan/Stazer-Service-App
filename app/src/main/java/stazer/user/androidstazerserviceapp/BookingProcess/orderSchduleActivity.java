@@ -158,7 +158,7 @@ public class orderSchduleActivity extends AppCompatActivity {
                         AlertDialog.Builder workingHours = new AlertDialog.Builder(this);
                         workingHours.setTitle("Not Available");
                         workingHours.setMessage("We Are Not Available At this moment  \n" +
-                                "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 Pm\n");
+                                "Book Next Day Service in Working Hours\n" + "Working Hours : 8:00 AM to 9:00 PM\n");
                         workingHours.setPositiveButton("OK", (dialog, which) -> {
                             dialog.dismiss();
                         });

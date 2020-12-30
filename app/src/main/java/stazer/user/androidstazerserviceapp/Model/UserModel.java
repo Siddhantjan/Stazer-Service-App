@@ -2,8 +2,27 @@ package stazer.user.androidstazerserviceapp.Model;
 
 public class UserModel {
     private String firstName,lastName,PhoneNumber,flatNo,Area,Landmark;
+    private String id;
 
     public UserModel() {
+    }
+
+    public UserModel(String firstName, String lastName, String phoneNumber, String flatNo, String area, String landmark, String id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.PhoneNumber = phoneNumber;
+        this.flatNo = flatNo;
+        this.Area = area;
+        this.Landmark = landmark;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFlatNo() {

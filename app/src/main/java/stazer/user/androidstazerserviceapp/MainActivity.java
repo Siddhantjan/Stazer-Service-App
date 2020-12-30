@@ -1,5 +1,6 @@
 package stazer.user.androidstazerserviceapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
@@ -30,13 +31,16 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
+import stazer.user.androidstazerserviceapp.BookingProcess.OrderBookingActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
@@ -64,8 +68,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     //Variables
     static final float END_SCALE = 0.7f;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference userInfoRef;
     FirebaseAuth firebaseAuth;
     private ImageView menuOpenIcon;
     //Home Ads RecyclerView
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     boolean doubleBackToExitPressedOnce = false;
+    DatabaseReference userInfoRef;
 
     @Override
     protected void onStop() {
@@ -89,14 +92,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, filter);
         firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        userInfoRef = firebaseDatabase.getReference(Common.USER_INFO_REFERENCE);
-
+        userInfoRef  = FirebaseDatabase.getInstance().getReference(Common.USER_INFO_REFERENCE);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            checkUserFromFirebase();
-        } else {
-            gotoLoginPage();
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo")
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                String firstName = snapshot.child("firstName").getValue().toString();
+                                String lastName = snapshot.child("lastName").getValue().toString();
+                                String mobileNumber = snapshot.child("phoneNumber").getValue().toString();
+                                String userName = firstName + " " + lastName;
+                                View headerView = navigationView.getHeaderView(0);
+                                TextView txt_name = (TextView) headerView.findViewById(R.id.yourName);
+                                TextView txt_number = (TextView) headerView.findViewById(R.id.yourMobile);
+                                txt_name.setText("Welcome! "+ userName);
+                                txt_number.setText(mobileNumber);
+                                Log.d("TAG", "onDataChange: User Present");
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(MainActivity.this, "[Error]" + error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+            //checkUserFromFirebase();
         }
         super.onStart();
     }
@@ -230,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
@@ -289,10 +313,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void openWhatasppActivity() {
-        Uri uri = Uri.parse("smsto:" + "919509866519");
-        Intent whatsappIntent = new Intent(Intent.ACTION_SENDTO, uri);
-        whatsappIntent.setPackage("com.whatsapp");
-        startActivity(whatsappIntent);
+        int cHour;
+        //initialize calender
+        Calendar calendar = Calendar.getInstance();
+        // Get Current Hour
+        cHour = calendar.get(Calendar.HOUR_OF_DAY);
+        if (cHour >= Common.USER_FEEDBACK_START_TIME && cHour < Common.USER_FEEDBACK_STOP_TIME) {
+            Uri uri = Uri.parse("smsto:" + Common.COMPANY_CONTACT_NUMBER);
+            Intent whatsappIntent = new Intent(Intent.ACTION_SENDTO, uri);
+            whatsappIntent.setPackage("com.whatsapp");
+            startActivity(whatsappIntent);
+        }
+        else{
+            AlertDialog.Builder workingHours = new AlertDialog.Builder(this);
+            workingHours.setTitle("Not Available");
+            workingHours.setMessage("We Are Not Available At this moment  \n" +
+                    "Send your Complain or Feedback in Between : 7:00 AM to 9:00 PM\n");
+            workingHours.setPositiveButton("OK", (dialog, which) -> {
+                dialog.dismiss();
+            });
+            AlertDialog dialog = workingHours.create();
+            dialog.setCancelable(false);
+            dialog.show();
+        }
     }
 
 
@@ -411,31 +454,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent electricianIntent = new Intent(getApplicationContext(), ElectricianActivity.class);
         startActivity(electricianIntent);
     }
-
-    //Internal Checking Fun
-    private void checkUserFromFirebase() {
-        userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            Log.d("TAG", "onDataChange: User Present");
-                        } else {
-                            Intent registerIntent = new Intent(getApplicationContext(), UserRegistrationActivity.class);
-                            registerIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(registerIntent);
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(MainActivity.this, "[Error]" + error.getMessage(), Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-    }
-
 
     // when You Logout
     private void gotoLoginPage() {

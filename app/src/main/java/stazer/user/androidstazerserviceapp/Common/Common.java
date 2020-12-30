@@ -25,6 +25,9 @@ public class Common {
     public static final String ADMIN_INFO_REFERENCE = "Admin";
     public static final int COMPANY_START_TIME = 8;
     public static final int COMPANY_STOP_TIME = 22;
+    public static final int USER_FEEDBACK_START_TIME = 7;
+    public static final int USER_FEEDBACK_STOP_TIME = 23;
+    public static final String COMPANY_CONTACT_NUMBER = "919509866519";
 
     public static UserModel currentUser;
 
@@ -81,15 +84,5 @@ public class Common {
 
     }
 
-    public static String buildWelcomeMessage() {
-        if (Common.currentUser != null){
-            return new StringBuilder("Welcome!")
-                    .append(Common.currentUser.getFirstName())
-                    .append(" ")
-                    .append(Common.currentUser.getLastName()).toString();
-        }
-        else {
-            return "Welcome User";
-        }
-    }
+
 }

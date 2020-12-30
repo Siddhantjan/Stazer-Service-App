@@ -1,6 +1,7 @@
 package stazer.user.androidstazerserviceapp.BookingInfo;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -43,7 +45,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     private Spinner mFeedbackRating;
-    private Button mServiceDone,mFeedbackDone;
+    private Button mServiceDone,mFeedbackDone,mServiceCancel;
     private TextView mServiceType,mServiceStatus,mServiceCategory,mServiceDate,mServiceTime,mServiceAmount,mServiceAddress;
     private EditText mMechanicName, mFeedbackText;
     FirebaseDatabase database;
@@ -51,15 +53,22 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     private  String Rating;
     private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount,cID,cServiceAddress;
     private CheckBox mExperience,mTiming,mCost,mBehaviour;
+    private String reason;
     @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener,filter);
-        if (!mServiceStatus.getText().toString().equals("Completed")){
-            mServiceDone.setEnabled(true);
+        if (mServiceStatus.getText().toString().equals("Completed")){
+            mServiceDone.setEnabled(false);
+            mServiceCancel.setEnabled(false);
+        }
+        else if (mServiceStatus.getText().toString().equals("Canceled")){
+            mServiceDone.setEnabled(false);
+            mServiceCancel.setEnabled(false);
         }
         else {
-            mServiceDone.setEnabled(false);
+            mServiceDone.setEnabled(true);
+            mServiceCancel.setEnabled(true);
         }
         super.onStart();
     }
@@ -71,6 +80,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_final_booking_payment);
         database = FirebaseDatabase.getInstance();
         adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
@@ -95,8 +105,10 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         mFeedbackDone = findViewById(R.id.sendFeedback);
         mFeedbackRating = findViewById(R.id.feedbackRating);
         mMechanicName = findViewById(R.id.mechanicName);
+
         mServiceDone = findViewById(R.id.serviceDone);
         mServiceAmount = findViewById(R.id.serviceAmount);
+        mServiceCancel = findViewById(R.id.serviceCancel);
 
         Bundle bundle = getIntent().getExtras();
         if ( bundle != null){
@@ -131,7 +143,8 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         mServiceDone.setOnClickListener(v -> {
             mServiceStatus.setText("Completed");
 
-            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(cID).addListenerForSingleValueEvent(new ValueEventListener() {
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(cID)
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 snapshot.getRef().child("Status").setValue("Completed");
@@ -227,8 +240,43 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             }
         });
 
+        mServiceCancel.setOnClickListener(v -> {
+            showOptionDialog();
+        });
+
 
     }
+
+    private void showOptionDialog() {
+        String[] CancelReasons = {"Service man Can't able to Fix problem","Service man not reach location","Service man requested to cancel",
+        "Service man delayed to reach location","Spare Part Cost is too high","Service man taking too high Cost"};
+        AlertDialog.Builder cancelDialogBuilder = new AlertDialog.Builder(this);
+        cancelDialogBuilder.setTitle("Cancel Service");
+        cancelDialogBuilder.setSingleChoiceItems(CancelReasons, 0, (dialog, which) -> reason = CancelReasons[which]);
+        cancelDialogBuilder.setPositiveButton("Proceed", (dialog, which) -> {
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
+                    .child(cID).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    snapshot.getRef().child("Status").setValue("Canceled");
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(FinalBookingPaymentActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
+                    .child(cID).child("CancelReason").setValue(reason);
+            Toast.makeText(getApplicationContext(), "Thanks For Using App.... "+"\n"+"Sorry For Inconvenience"+"\n"+"Next Time we Take Care of it", Toast.LENGTH_SHORT).show();
+            goToHomeActivity();
+        });
+        cancelDialogBuilder.setNegativeButton("Back", (dialog, which) -> dialog.dismiss());
+        AlertDialog dialog = cancelDialogBuilder.create();
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
     private void goToHomeActivity() {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         mainIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
