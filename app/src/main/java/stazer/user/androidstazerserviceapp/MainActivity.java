@@ -47,6 +47,8 @@ import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
 import stazer.user.androidstazerserviceapp.Company.OurVisionActivity;
 import stazer.user.androidstazerserviceapp.Company.TermsAndConditionActivity;
+import stazer.user.androidstazerserviceapp.Education.EducationBooking.RunningCoursesActivity;
+import stazer.user.androidstazerserviceapp.Education.ProgramSectionActivity;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
 import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewHelperClass;
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
@@ -136,6 +138,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         navigationDrawer();
+
+        //Education
+        findViewById(R.id.education).setOnClickListener(v -> {
+            Intent educationIntent = new Intent(getApplicationContext(), ProgramSectionActivity.class);
+            startActivity(educationIntent);
+        });
 
         // Popular Service
         /* ---------------------------------------------------------- Start ----------------------------------*/
@@ -306,10 +314,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_contact:
                 openWhatasppActivity();
                 break;
+            case R.id.nav_Education:
+                openCourseActivity();
+                break;
 
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void openCourseActivity() {
+        Intent eduIntent = new Intent(getApplicationContext(), RunningCoursesActivity.class);
+        startActivity(eduIntent);
     }
 
     private void openWhatasppActivity() {

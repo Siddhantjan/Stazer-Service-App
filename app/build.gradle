@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "stazer.user.androidstazerserviceapp"
-        minSdkVersion 23
+        minSdkVersion 17
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -35,10 +35,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.firebase:firebase-auth:20.0.1'
-    implementation 'com.google.firebase:firebase-database:19.5.1'
+    implementation 'com.google.firebase:firebase-database:19.6.0'
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
-    implementation 'androidx.wear:wear:1.1.0'
-    implementation 'com.google.firebase:firebase-messaging:21.0.0'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
     implementation 'com.google.firebase:firebase-analytics:18.0.0'
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -49,7 +48,7 @@ dependencies {
         // When using the BoM, you don't specify versions in Firebase library dependencies
         implementation 'com.google.firebase:firebase-auth'
 
-    //About Us Page Liberary
+    //About Us Page Library
     implementation 'com.github.medyo:android-about-page:1.3.1'
 
 

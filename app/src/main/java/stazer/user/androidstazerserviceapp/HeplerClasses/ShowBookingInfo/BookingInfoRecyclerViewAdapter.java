@@ -50,12 +50,14 @@ public class BookingInfoRecyclerViewAdapter extends RecyclerView.Adapter {
         String cAmount = fetchBookingDetailsModel.getAmount();
         String id = fetchBookingDetailsModel.getId();
         String getAddress = fetchBookingDetailsModel.getServiceAddress();
+        String getSpareCost = fetchBookingDetailsModel.getSparePartCost();
 
         bookingInfoViewHolder.relativeLayoutDetails.setOnClickListener(v -> {
             Intent newDetailIntent = new Intent(context, FinalBookingPaymentActivity.class);
             newDetailIntent.putExtra("id",id);
             newDetailIntent.putExtra("Amount", cAmount);
             newDetailIntent.putExtra("Address",getAddress);
+            newDetailIntent.putExtra("SparePartCost",getSpareCost);
             newDetailIntent.putExtra("Service", bookingInfoViewHolder.serviceName.getText().toString());
             newDetailIntent.putExtra("Category", bookingInfoViewHolder.serviceCategory.getText().toString());
             newDetailIntent.putExtra("Status", bookingInfoViewHolder.mServiceStatus.getText().toString());

@@ -21,20 +21,7 @@ public class AcRateCardActivity extends AppCompatActivity {
 
     RecyclerView recView;
     AcRateCardAdapter acRateCardAdapter;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_ac_rate_card);
-        recView = findViewById(R.id.acRateCardView);
-        recView.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseRecyclerOptions<RateModel> options =
-                new FirebaseRecyclerOptions.Builder<RateModel>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("RateCards").child("Ac Service"), RateModel.class)
-                        .build();
-        acRateCardAdapter = new AcRateCardAdapter(options);
-        recView.setAdapter(acRateCardAdapter);
-    }
+
 
     @Override
     protected void onStop() {
@@ -50,4 +37,19 @@ public class AcRateCardActivity extends AppCompatActivity {
         super.onStart();
         acRateCardAdapter.startListening();
     }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_ac_rate_card);
+        recView = findViewById(R.id.acRateCardView);
+        recView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<RateModel> options =
+                new FirebaseRecyclerOptions.Builder<RateModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("RateCards").child("Ac Service"), RateModel.class)
+                        .build();
+        acRateCardAdapter = new AcRateCardAdapter(options);
+        recView.setAdapter(acRateCardAdapter);
+    }
+
 }

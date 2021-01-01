@@ -27,11 +27,11 @@ public class AboutUsActivity extends AppCompatActivity {
         Element adsElement = new Element();
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setDescription("STAZER (Formerly Stazer Services) was Launched in Dec 2020.it is the Largest Home Services Platform in Kota.\n" +
-                        "        STAZER provide a diverse variety of services at your doorstep to make your lives easier and more efficient.\n" +
-                        "        The Platform helps customers book reliable home services like electrician, plumber, carpenter, Air conditioner, Purifier, Painter,\n" +
-                        "        Also Complete Constructions Work, Our skilled workers are equipped with a solution to almost all your daily problems.\n" +
-                        "        STAZER Vision is to Empower millions of service professionals across the world to deliver service at home like never seen Before.")
+                .setDescription("STAZER (Formerly Stazer Services) was launched in Dec 2020.It is the largest Home Services platform in Kota.\n" +
+                        "        Stazer provide a diverse variety of services at your doorstep to make your lives easier and more efficient.\n" +
+                        "        The platform helps customers book reliable home services like Electrician, Plumber, Carpenter, Air conditioner, Purifier, Painter,\n" +
+                        "        Also complete constructions work, Our skilled workers are equipped with a solution to almost all your daily problems.\n" +
+                        "        Stazer vision is to empower millions of service professionals across the world to deliver service at home like never seen before.")
                 .addItem(adsElement.setTitle("Version 1.0"))
                 .addGroup("CONNECT WITH US!")
                 .addEmail("contact@stazerservices.com")

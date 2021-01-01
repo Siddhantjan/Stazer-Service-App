@@ -9,11 +9,12 @@ public class FetchBookingDetailsModel {
     private  String Amount;
     private String id;
     private String ServiceAddress;
+    private String SparePartCost;
 
     public FetchBookingDetailsModel() {
     }
 
-    public FetchBookingDetailsModel(String serviceType, String serviceCategory, String time, String date, String status, String amount, String id, String serviceAddress) {
+    public FetchBookingDetailsModel(String serviceType, String serviceCategory, String time, String date, String status, String amount, String id, String serviceAddress, String sparePartCost) {
         this.serviceType = serviceType;
         this.serviceCategory = serviceCategory;
         Time = time;
@@ -22,6 +23,15 @@ public class FetchBookingDetailsModel {
         Amount = amount;
         this.id = id;
         ServiceAddress = serviceAddress;
+        SparePartCost = sparePartCost;
+    }
+
+    public String getSparePartCost() {
+        return SparePartCost;
+    }
+
+    public void setSparePartCost(String sparePartCost) {
+        SparePartCost = sparePartCost;
     }
 
     public String getServiceAddress() {

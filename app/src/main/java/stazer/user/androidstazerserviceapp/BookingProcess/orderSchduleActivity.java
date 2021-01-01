@@ -268,6 +268,7 @@ public class orderSchduleActivity extends AppCompatActivity {
         scheduleMap.put("Date", mDisplayDate.getText().toString());
         scheduleMap.put("Status", "pending");
         scheduleMap.put("Amount", "0");
+        scheduleMap.put("SparePartCost","0");
         try {
             scheduleMap.put("id", id);
             scheduleMap.put("ServiceAddress", mServiceAddress);
@@ -302,7 +303,7 @@ public class orderSchduleActivity extends AppCompatActivity {
         serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
         serviceScheduleMap.put("serviceCategory", mServiceCategory.getText().toString());
 
-        adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+        adminInfoRef.child("Orders").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .setValue(serviceScheduleMap)
                 .addOnCompleteListener(task -> Log.d("sendDataToAdminSchedule", "onComplete: Booking Confirmed saved"))
                 .addOnFailureListener(e -> Log.d("sendDataToAdminSchedule", "onFailure: " + e.toString()));

@@ -161,6 +161,7 @@ public class OrderBookingActivity extends AppCompatActivity {
         bookingMap.put("serviceType", mServiceType.getText().toString());
         bookingMap.put("serviceCategory", mCategoryType.getText().toString());
         bookingMap.put("Amount", "0");
+        bookingMap.put("SparePartCost","0");
         try {
             bookingMap.put("id", id);
             bookingMap.put("Status", "pending");
@@ -202,10 +203,11 @@ public class OrderBookingActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+        adminInfoRef.child("Orders").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .setValue(serviceSendAdmin)
                 .addOnCompleteListener(task -> Log.d("sendDataToAdmin", "onComplete: Booking Confirmed saved"))
                 .addOnFailureListener(e -> Log.d("sendDataToAdmin", "onFailure: " + e.toString()));
+
     }
     private void goToBookingActivity() {
         Intent mainIntent = new Intent(getApplicationContext(), BookingActivity.class);

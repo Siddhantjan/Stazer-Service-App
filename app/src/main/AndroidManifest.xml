@@ -13,6 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Education.EducationBooking.RunningCoursesActivity"></activity>
+        <activity android:name=".Education.SkillSection.SkillCourseDetailPageActivity" />
+        <activity android:name=".Education.SkillSection.SkillCoursesListActivity" />
+        <activity android:name=".Education.SchoolSection.SchoolSubjectClassroomActivity" />
+        <activity android:name=".Education.ProgramSectionActivity" />
         <activity android:name=".services.Construction.ConstructionWorkActivity" />
         <activity android:name=".services.WaterDispenser.WaterDispenserActivity" />
         <activity android:name=".services.WashingMachine.WashingMachineActivity" />

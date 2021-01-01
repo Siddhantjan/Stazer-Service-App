@@ -37,7 +37,6 @@ public class AcRateCardAdapter extends FirebaseRecyclerAdapter<RateModel, AcRate
 
     public static class ACRateCardViewHolder extends RecyclerView.ViewHolder {
         TextView mSparePart, mSparePartCost, mLabourCost;
-        ImageView mEdit, mDelete;
 
         public ACRateCardViewHolder(@NonNull View itemView) {
             super(itemView);

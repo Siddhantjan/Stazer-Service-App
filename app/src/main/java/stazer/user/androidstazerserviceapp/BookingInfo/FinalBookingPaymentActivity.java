@@ -45,38 +45,39 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     private Spinner mFeedbackRating;
-    private Button mServiceDone,mFeedbackDone,mServiceCancel;
-    private TextView mServiceType,mServiceStatus,mServiceCategory,mServiceDate,mServiceTime,mServiceAmount,mServiceAddress;
+    private Button mServiceDone, mFeedbackDone, mServiceCancel;
+    private TextView mServiceType, mSpareCost, mServiceStatus, mServiceCategory, mServiceDate, mServiceTime, mServiceAmount, mServiceAddress;
     private EditText mMechanicName, mFeedbackText;
     FirebaseDatabase database;
     DatabaseReference adminInfoRef, userInfoRef;
-    private  String Rating;
-    private String cServiceType, cServiceStatus,cServiceCategory,cServiceDate,cServiceTime,cServiceAmount,cID,cServiceAddress;
-    private CheckBox mExperience,mTiming,mCost,mBehaviour;
-    private String reason;
+    private String Rating;
+    private String cServiceType, cServiceStatus, cServiceCategory, cServiceDate, cServiceTime, cServiceAmount, cID, cServiceAddress;
+    private CheckBox mExperience, mTiming, mCost, mBehaviour;
+    private String reason, cSpareCost;
+
     @Override
     protected void onStart() {
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(networkChangeListener,filter);
-        if (mServiceStatus.getText().toString().equals("Completed")){
+        registerReceiver(networkChangeListener, filter);
+        if (mServiceStatus.getText().toString().equals("Completed")) {
             mServiceDone.setEnabled(false);
             mServiceCancel.setEnabled(false);
-        }
-        else if (mServiceStatus.getText().toString().equals("Canceled")){
+        } else if (mServiceStatus.getText().toString().equals("Canceled")) {
             mServiceDone.setEnabled(false);
             mServiceCancel.setEnabled(false);
-        }
-        else {
+        } else {
             mServiceDone.setEnabled(true);
             mServiceCancel.setEnabled(true);
         }
         super.onStart();
     }
+
     @Override
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +86,6 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         database = FirebaseDatabase.getInstance();
         adminInfoRef = database.getReference(Common.ADMIN_INFO_REFERENCE);
         userInfoRef = database.getReference(Common.USER_INFO_REFERENCE);
-
-
 
 
         //hooks
@@ -109,9 +108,10 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
         mServiceDone = findViewById(R.id.serviceDone);
         mServiceAmount = findViewById(R.id.serviceAmount);
         mServiceCancel = findViewById(R.id.serviceCancel);
+        mSpareCost = findViewById(R.id.sparePartAmount);
 
         Bundle bundle = getIntent().getExtras();
-        if ( bundle != null){
+        if (bundle != null) {
             //getData
             cID = bundle.getString("id");
             cServiceType = bundle.getString("Service");
@@ -121,7 +121,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             cServiceTime = bundle.getString("Time");
             cServiceAmount = bundle.getString("Amount");
             cServiceAddress = bundle.getString("Address");
-
+            cSpareCost = bundle.getString("SparePartCost");
 
             //SetData
             mServiceType.setText(cServiceType);
@@ -131,11 +131,12 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             mServiceTime.setText(cServiceTime);
             mServiceAmount.setText(cServiceAmount);
             mServiceAddress.setText(cServiceAddress);
+            mSpareCost.setText(cSpareCost);
 
 
         }
 
-        String[] feedback = {"Select","Excellent", "Best", "Good", "Poor"};
+        String[] feedback = {"Select", "Excellent", "Best", "Good", "Poor"};
         ArrayAdapter<String> feedbackAdapter = new ArrayAdapter<String>(this, R.layout.spinner_options, feedback);
         mFeedbackRating.setAdapter(feedbackAdapter);
         mFeedbackRating.setOnItemSelectedListener(this);
@@ -145,15 +146,16 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
 
             userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(cID)
                     .addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                snapshot.getRef().child("Status").setValue("Completed");
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(FinalBookingPaymentActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            snapshot.getRef().child("Status").setValue("Completed");
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(FinalBookingPaymentActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
             AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(FinalBookingPaymentActivity.this);
             final EditText mAmount = new EditText(FinalBookingPaymentActivity.this);
@@ -161,17 +163,15 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             mAmount.setInputType(InputType.TYPE_CLASS_NUMBER);
             mAmount.setHint("Enter Amount");
             amountDialogBuilder.setView(mAmount);
-            amountDialogBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
+            amountDialogBuilder.setPositiveButton("NEXT", (dialog, which) -> {
                 if (!TextUtils.isEmpty(mAmount.getText().toString())) {
                     userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails").child(cID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                    snapshot.getRef().child("Amount").setValue(mAmount.getText().toString());
-                                    Toast.makeText(getApplicationContext(), "Thanks For Using App.... ", Toast.LENGTH_SHORT).show();
-                                    goToHomeActivity();
-
+                            snapshot.getRef().child("Amount").setValue(mAmount.getText().toString());
+                            goToOpenDialog();
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                             Toast.makeText(FinalBookingPaymentActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -179,16 +179,15 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
                     });
 
                     dialog.dismiss();
-                } else {
-                    Toast.makeText(this, "Thanks For Booking.... ", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(this, "Thanks For Using Us..", Toast.LENGTH_SHORT).show();
                     goToHomeActivity();
                 }
-
             });
             AlertDialog dialog = amountDialogBuilder.create();
             dialog.setCancelable(false);
             dialog.show();
-
 
         });
 
@@ -196,28 +195,25 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
 
             if (mMechanicName.getText().toString().trim().isEmpty()) {
                 Toast.makeText(FinalBookingPaymentActivity.this, "Enter Mechanic Name", Toast.LENGTH_SHORT).show();
-            }
-            else if (mFeedbackRating.getSelectedItemPosition() < 1){
+            } else if (mFeedbackRating.getSelectedItemPosition() < 1) {
                 Toast.makeText(FinalBookingPaymentActivity.this, "Please Select Rating", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 StringBuffer feedBackText = new StringBuffer();
-                if (!mTiming.isChecked() && !mExperience.isChecked() && !mCost.isChecked() && !mBehaviour.isChecked()){
+                if (!mTiming.isChecked() && !mExperience.isChecked() && !mCost.isChecked() && !mBehaviour.isChecked()) {
                     feedBackText.append("");
-                }
-                else {
+                } else {
                     feedBackText.append("Service man is : ");
                     if (mExperience.isChecked()) {
-                         feedBackText.append(" "+ mExperience.getText().toString());
+                        feedBackText.append(" " + mExperience.getText().toString());
                     }
                     if (mBehaviour.isChecked()) {
-                        feedBackText.append(","+ mBehaviour.getText().toString());
+                        feedBackText.append("," + mBehaviour.getText().toString());
                     }
                     if (mCost.isChecked()) {
-                        feedBackText.append(","+ mCost.getText().toString());
+                        feedBackText.append("," + mCost.getText().toString());
                     }
                     if (mTiming.isChecked()) {
-                        feedBackText.append(","+ mTiming.getText().toString());
+                        feedBackText.append("," + mTiming.getText().toString());
                     }
                 }
                 String feedbackTxt = feedBackText.toString();
@@ -225,7 +221,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
                 HashMap<String, Object> feedbackMap = new HashMap<>();
                 feedbackMap.put("rating", Rating);
                 try {
-                    feedbackMap.put("feedback",feedbackTxt);
+                    feedbackMap.put("feedback", feedbackTxt);
 
                 } catch (Exception e) {
                     Toast.makeText(FinalBookingPaymentActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -247,9 +243,47 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
 
     }
 
+    private void goToOpenDialog() {
+        AlertDialog.Builder spareBuilder = new AlertDialog.Builder(FinalBookingPaymentActivity.this);
+        final EditText mSpareAmount = new EditText(FinalBookingPaymentActivity.this);
+        spareBuilder.setTitle("Enter The Spare Part Cost");
+        mSpareAmount.setInputType(InputType.TYPE_CLASS_NUMBER);
+        mSpareAmount.setHint("Enter Spare Cost");
+        spareBuilder.setView(mSpareAmount);
+        spareBuilder.setPositiveButton("CONFIRM", (dialog, which) -> {
+            if (!TextUtils.isEmpty(mSpareAmount.getText().toString())) {
+                userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                        .child("OrdersDetails").child(cID)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                snapshot.getRef().child("SparePartCost").setValue(mSpareAmount.getText().toString());
+                                Toast.makeText(getApplicationContext(), "Thanks For Using App.... ", Toast.LENGTH_SHORT).show();
+                                goToHomeActivity();
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(FinalBookingPaymentActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                dialog.dismiss();
+            } else {
+                Toast.makeText(this, "Thanks For Booking.... ", Toast.LENGTH_SHORT).show();
+                goToHomeActivity();
+            }
+
+        });
+        AlertDialog dialog = spareBuilder.create();
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
     private void showOptionDialog() {
-        String[] CancelReasons = {"Service man Can't able to Fix problem","Service man not reach location","Service man requested to cancel",
-        "Service man delayed to reach location","Spare Part Cost is too high","Service man taking too high Cost"};
+        String[] CancelReasons = {"Service man Can't able to Fix problem", "Service man not reach location", "Service man requested to cancel",
+                "Service man delayed to reach location", "Spare Part Cost is too high", "Service man taking too high Cost"};
         AlertDialog.Builder cancelDialogBuilder = new AlertDialog.Builder(this);
         cancelDialogBuilder.setTitle("Cancel Service");
         cancelDialogBuilder.setSingleChoiceItems(CancelReasons, 0, (dialog, which) -> reason = CancelReasons[which]);
@@ -268,7 +302,7 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
             });
             userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("OrdersDetails")
                     .child(cID).child("CancelReason").setValue(reason);
-            Toast.makeText(getApplicationContext(), "Thanks For Using App.... "+"\n"+"Sorry For Inconvenience"+"\n"+"Next Time we Take Care of it", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Thanks For Using App.... " + "\n" + "Sorry For Inconvenience" + "\n" + "Next Time we Take Care of it", Toast.LENGTH_SHORT).show();
             goToHomeActivity();
         });
         cancelDialogBuilder.setNegativeButton("Back", (dialog, which) -> dialog.dismiss());
@@ -287,11 +321,12 @@ public class FinalBookingPaymentActivity extends AppCompatActivity implements Ad
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Rating  = parent.getItemAtPosition(position).toString();
+        Rating = parent.getItemAtPosition(position).toString();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }

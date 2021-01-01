@@ -74,7 +74,6 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     //Internal Checking Fun
     private void checkUserFromFirebase() {
-        Toast.makeText(this, "Please wait! We are fetching your Details", Toast.LENGTH_SHORT).show();
         userInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child("userInfo")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

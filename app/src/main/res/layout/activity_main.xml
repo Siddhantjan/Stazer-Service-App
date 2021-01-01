@@ -50,8 +50,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-
                 <!-- First Layout -->
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -88,7 +86,7 @@
                             <!-- card 1 -->
                             <androidx.cardview.widget.CardView
                                 android:layout_width="75dp"
-                                android:layout_height="100dp"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
                                 app:cardCornerRadius="8dp"
                                 app:cardElevation="8dp">
@@ -121,7 +119,7 @@
                             <!-- card 2 -->
                             <androidx.cardview.widget.CardView
                                 android:layout_width="75dp"
-                                android:layout_height="100dp"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
                                 app:cardCornerRadius="8dp"
                                 app:cardElevation="8dp">
@@ -154,7 +152,7 @@
                             <!-- card 3 -->
                             <androidx.cardview.widget.CardView
                                 android:layout_width="75dp"
-                                android:layout_height="100dp"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
                                 app:cardCornerRadius="8dp"
                                 app:cardElevation="8dp">
@@ -187,7 +185,7 @@
                             <!-- card 4 -->
                             <androidx.cardview.widget.CardView
                                 android:layout_width="75dp"
-                                android:layout_height="100dp"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="4dp"
                                 app:cardCornerRadius="8dp"
                                 app:cardElevation="8dp">
@@ -269,7 +267,7 @@
                         <!-- card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -303,7 +301,7 @@
                         <!-- card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -337,7 +335,7 @@
                         <!-- card 3 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -371,7 +369,7 @@
                         <!-- card 4 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -413,7 +411,7 @@
                         <!-- card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -447,7 +445,7 @@
                         <!-- card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -481,7 +479,7 @@
                         <!-- card 3 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -515,7 +513,7 @@
                         <!-- card 4 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="75dp"
-                            android:layout_height="100dp"
+                            android:layout_height="wrap_content"
                             android:layout_margin="4dp"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="8dp">
@@ -549,7 +547,14 @@
                     </LinearLayout>
 
                 </LinearLayout>
-                <!-- Forth Layout -->
+                <!-- fourth Layout -->
+                <ImageView
+                    android:id="@+id/education"
+                    android:layout_width="match_parent"
+                    android:layout_height="165dp"
+                    android:elevation="12dp"
+                    android:src="@drawable/education_banner" />
+                <!-- fifth Layout -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -581,7 +586,7 @@
                         <!--Row 1 card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="150dp"
-                            android:layout_height="200dp"
+                            android:layout_height="wrap_content"
                             android:layout_row="0"
                             android:layout_rowWeight="1"
                             android:layout_column="0"
@@ -620,7 +625,7 @@
                         <!--Row 1 card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="150dp"
-                            android:layout_height="200dp"
+                            android:layout_height="wrap_content"
                             android:layout_row="0"
                             android:layout_rowWeight="1"
                             android:layout_column="1"
@@ -659,7 +664,7 @@
                         <!--Row 2 card 1 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="150dp"
-                            android:layout_height="200dp"
+                            android:layout_height="wrap_content"
                             android:layout_row="1"
                             android:layout_rowWeight="1"
                             android:layout_column="0"
@@ -698,7 +703,7 @@
                         <!--Row 2 card 2 -->
                         <androidx.cardview.widget.CardView
                             android:layout_width="150dp"
-                            android:layout_height="200dp"
+                            android:layout_height="wrap_content"
                             android:layout_row="1"
                             android:layout_rowWeight="1"
                             android:layout_column="1"
@@ -750,7 +755,7 @@
                         android:textSize="12dp" />
 
                 </LinearLayout>
-                <!-- Fifth Layout -->
+                <!-- sixth Layout -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -781,10 +786,11 @@
                         android:layout_margin="12dp"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="8dp">
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/banner_construction"/>
+                            android:src="@drawable/banner_construction" />
 
                     </androidx.cardview.widget.CardView>
 

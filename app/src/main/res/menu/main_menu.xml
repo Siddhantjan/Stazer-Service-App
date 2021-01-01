@@ -10,6 +10,11 @@
             android:icon="@drawable/ic_baseline_collections_bookmark_24"
             android:title="Bookings" />
 
+        <item
+            android:id="@+id/nav_Education"
+            android:icon="@drawable/ic_baseline_collections_bookmark_24"
+            android:title="Current Courses" />
+
     </group>
     <item android:title="Share">
         <menu>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Education.SchoolSection.SchoolSubjectClassroomActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- First Layout -->
+        <!-- Header Class -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:elevation="12dp">
+
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:text="Classroom"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_below="@+id/header_text"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="40dp"
+                android:background="@color/colorDivider" />
+
+        </RelativeLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+            <!-- main Scroll start -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- First Layout -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="12dp">
+
+                    <LinearLayout
+                        android:focusableInTouchMode="true"
+                        android:id="@+id/details_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical"
+                        android:paddingStart="15dp">
+
+                        <TextView
+                            android:id="@+id/customer_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Customer Name"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="12sp" />
+                        <TextView
+                            android:id="@+id/customer_mobile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="6dp"
+                            android:text=" User Mobile Number"
+                            android:textColor="@color/TextSecondary"
+                            android:textSize="12sp" />
+                        <LinearLayout
+                            android:id="@+id/Address_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Default Address :"
+                                android:textColor="@color/TextPrimary"
+                                android:textSize="14sp" />
+
+                            <TextView
+                                android:id="@+id/address_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:text="Address"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                        <EditText
+                            android:id="@+id/studentName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Student Name"
+                            android:inputType="textPersonName"
+                            android:padding="8dp"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+                        <EditText
+                            android:id="@+id/optionalNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter Optional Mobile Number"
+                            android:inputType="phone"
+                            android:padding="8dp"
+                            android:textColor="@color/TextPrimary"
+                            android:textSize="16sp" />
+                        <LinearLayout
+                            android:id="@+id/service_type_heading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/customer_mobile"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="Select Class :"
+                                android:textColor="@color/TextPrimary"
+                                android:textSize="14sp" />
+
+                            <Spinner
+                                android:id="@+id/class_type"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:textColor="@color/TextSecondary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_margin="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <!-- column 1 -->
+                            <CheckBox
+                                android:layout_alignParentStart="true"
+                                android:id="@+id/allSubject"
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="All Subjects"/>
+                            <CheckBox
+                                android:layout_below="@+id/sst"
+                                android:layout_alignParentStart="true"
+                                android:id="@+id/english"
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="English"/>
+                            <CheckBox
+                                android:id="@+id/sst"
+                                android:layout_below="@+id/allSubject"
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Social Science"/>
+                            <!-- column 2 -->
+                            <CheckBox
+                                android:layout_alignParentEnd="true"
+                                android:id="@+id/maths"
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mathematics"/>
+                            <CheckBox
+                                android:layout_alignParentEnd="true"
+                                android:id="@+id/science"
+                                android:layout_below="@+id/maths"
+                                android:padding="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Science"/>
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!-- Second Layout -->
+                <Button
+                    android:id="@+id/btn_booking_final_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/background_button"
+                    android:padding="14dp"
+                    android:text="Confirm Booking"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>
