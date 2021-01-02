@@ -27,10 +27,9 @@ public class Common {
     public static final int COMPANY_STOP_TIME = 22;
     public static final int USER_FEEDBACK_START_TIME = 7;
     public static final int USER_FEEDBACK_STOP_TIME = 23;
-    public static final String COMPANY_CONTACT_NUMBER = "919509866519";
+    public static final String COMPANY_CONTACT_NUMBER = "917597014628";
 
     public static UserModel currentUser;
-
 
     public static boolean isConnectedToInternet(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
@@ -46,7 +45,6 @@ public class Common {
         }
         return false;
     }
-
 
     public static void showNotification(Context context, int id, String title, String body, Intent intent) {
 

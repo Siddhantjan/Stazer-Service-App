@@ -101,17 +101,14 @@ public class orderSchduleActivity extends AppCompatActivity {
 
         mSelectDate.setOnClickListener(v -> {
             //Initialize date Picker Dialog
-            DatePickerDialog datePickerDialog = new DatePickerDialog(orderSchduleActivity.this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    sYear = year;
-                    sMonth = month;
-                    sDay = dayOfMonth;
+            DatePickerDialog datePickerDialog = new DatePickerDialog(orderSchduleActivity.this, (view, year, month, dayOfMonth) -> {
+                sYear = year;
+                sMonth = month+1;
+                sDay = dayOfMonth;
 
-                    String sDate = sDay + "-" + sMonth + "-" + sYear;
-                    mDisplayDate.setText(sDate);
+                String sDate =getMonthFormat(sMonth)+" "+ sDay + " " + sYear;
+                mDisplayDate.setText(sDate);
 
-                }
             }, cYear, cMonth, cDay);
             // Displayed previous selected Date
             datePickerDialog.updateDate(sYear, sMonth, sDay);
@@ -138,9 +135,9 @@ public class orderSchduleActivity extends AppCompatActivity {
 
                         String sDate = mDisplayDate.getText().toString().trim();
                         //Split Date
-                        String[] strings = sDate.split("-");
+                        String[] strings = sDate.split(" ");
                         //Get day on Calender
-                        sDay = Integer.parseInt(strings[0]);
+                        sDay = Integer.parseInt(strings[1]);
                         //set day on Calender
                         calendar1.set(Calendar.DAY_OF_MONTH, sDay);
                         //set Hour on Calender
@@ -215,6 +212,33 @@ public class orderSchduleActivity extends AppCompatActivity {
         btn_bookingSchedule.setOnClickListener(v -> {
             goToOrderCompleteActivity();
         });
+    }
+
+    private String getMonthFormat(int sMonth) {
+        if (sMonth == 1)
+            return "January";
+        else if (sMonth == 2)
+            return "February";
+        else if (sMonth == 3)
+            return "March";
+        else if (sMonth == 4)
+            return "April";
+        else if (sMonth == 5)
+            return "May";
+        else if (sMonth == 6)
+            return "June";
+        else if (sMonth == 7)
+            return "July";
+        else if (sMonth == 8)
+            return "August";
+        else if (sMonth == 9)
+            return "September";
+        else if (sMonth == 10)
+            return "October";
+        else if (sMonth == 11)
+            return "November";
+        else
+            return "December";
     }
 
     private void goToOrderCompleteActivity() {
