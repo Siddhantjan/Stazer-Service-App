@@ -62,7 +62,7 @@
                 <!-- Layout second -->
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="16dp"
                     android:gravity="center"
@@ -90,15 +90,54 @@
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
-                            <TextView
+                            <LinearLayout
+                                android:id="@+id/cardRate1_ac"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/cardTitleRefrigerator"
-                                android:layout_marginStart="25dp"
-                                android:padding="8dp"
-                                android:text=" ₹ 399/-"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="25dp"
+                                    android:padding="8dp"
+                                    android:text="Single Door :"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/rateSingleDoor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/cardRate2_ac"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/cardRate1_ac"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="25dp"
+                                    android:padding="8dp"
+                                    android:text=" Multi Door :"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/multiDoorRate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>

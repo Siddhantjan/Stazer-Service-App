@@ -91,12 +91,13 @@
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:layout_width="match_parent"
+                                android:id="@+id/eleRate"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/cardTitleEle"
                                 android:layout_marginStart="25dp"
+                                android:layout_marginTop="4dp"
                                 android:padding="8dp"
-                                android:text=" ₹ 199/-"
                                 android:textColor="@color/colorWhite"
                                 android:textSize="14sp" />
                         </RelativeLayout>

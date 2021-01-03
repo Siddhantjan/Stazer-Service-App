@@ -1,5 +1,6 @@
 package stazer.user.androidstazerserviceapp.services.AirCooler;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,8 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.AllRatesCard.AirCooler.AirCoolerRateCardActivity;
 import stazer.user.androidstazerserviceapp.AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity;
@@ -18,6 +26,28 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class AirCoolerActivity extends AppCompatActivity {
+TextView mCoolerRate;
+
+    @Override
+    protected void onStart() {
+        FirebaseDatabase.getInstance().getReference().child("RateCards").child("ServiceRates")
+                .child("Cooler").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String rateCooler = Objects.requireNonNull(snapshot.child("coolerRate").getValue()).toString();
+                    mCoolerRate.setText("₹ "+rateCooler);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +55,7 @@ public class AirCoolerActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_air_cooler);
 
-
+        mCoolerRate = findViewById(R.id.coolerRate);
         findViewById(R.id.btn_book_airCooler).setOnClickListener(v -> goToAirCoolerBooking());
         findViewById(R.id.scheduleServiceAirCooler).setOnClickListener(v -> scheduleServiceCooler());
 

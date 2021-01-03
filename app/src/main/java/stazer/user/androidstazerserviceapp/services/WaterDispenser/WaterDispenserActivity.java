@@ -1,5 +1,6 @@
 package stazer.user.androidstazerserviceapp.services.WaterDispenser;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,8 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.AllRatesCard.waterDispenser.WaterDispenserRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
@@ -17,11 +25,34 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class WaterDispenserActivity extends AppCompatActivity {
+    TextView mServiceRate;
+    @Override
+    protected void onStart() {
+        FirebaseDatabase.getInstance().getReference().child("RateCards").child("ServiceRates")
+                .child("dispenser").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String rate = Objects.requireNonNull(snapshot.child("rateDispenser").getValue()).toString();
+                    mServiceRate.setText("₹ "+rate);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        super.onStart();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_water_dispenser);
+
+        mServiceRate = findViewById(R.id.rate_dispenser);
         findViewById(R.id.btn_book_WaterDispenser).setOnClickListener(v -> goToWaterDispenserBooking());
         findViewById(R.id.scheduleServiceWaterDispenser).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Home Appliance Services"
+                android:text="Home Repair Services"
                 android:textAllCaps="true"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />

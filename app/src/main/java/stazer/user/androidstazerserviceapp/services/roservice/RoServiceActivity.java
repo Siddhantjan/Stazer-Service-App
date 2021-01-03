@@ -1,5 +1,6 @@
 package stazer.user.androidstazerserviceapp.services.roservice;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,8 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.AllRatesCard.RO.RoRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
@@ -17,11 +25,33 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class RoServiceActivity extends AppCompatActivity {
+    TextView mServiceRate;
+    @Override
+    protected void onStart() {
+        FirebaseDatabase.getInstance().getReference().child("RateCards").child("ServiceRates")
+                .child("ro").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String rate = Objects.requireNonNull(snapshot.child("rateRO").getValue()).toString();
+                    mServiceRate.setText("₹ "+rate);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        super.onStart();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ro_service);
+        mServiceRate = findViewById(R.id.rate_RO);
         findViewById(R.id.btn_book_ro).setOnClickListener(v -> gotoRoBooking());
         findViewById(R.id.scheduleServiceRo).setOnClickListener(v -> scheduleServiceRo());
         findViewById(R.id.roService_RateCard).setOnClickListener(v -> {

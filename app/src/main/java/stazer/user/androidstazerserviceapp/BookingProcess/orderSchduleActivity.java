@@ -305,7 +305,7 @@ public class orderSchduleActivity extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
                     amountDialogBuilder.setTitle("Service Booked");
-                    amountDialogBuilder.setMessage("Your service has been booked. \n" + "We Will Contact you in 10 minutes.\n" + "Tap OK to View your Service");
+                    amountDialogBuilder.setMessage("Your service has been booked. \n" + "We will contact you in few minutes.\n" + "Tap OK to view your service");
                     amountDialogBuilder.setPositiveButton("OK", (dialog, which) -> {
                         Toast.makeText(orderSchduleActivity.this, "you Successfully booked Service.", Toast.LENGTH_SHORT).show();
                         goToBookingActivity();
@@ -327,7 +327,7 @@ public class orderSchduleActivity extends AppCompatActivity {
         serviceScheduleMap.put("Date", mDisplayDate.getText().toString());
         serviceScheduleMap.put("serviceCategory", mServiceCategory.getText().toString());
 
-        adminInfoRef.child("Orders").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+        adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .setValue(serviceScheduleMap)
                 .addOnCompleteListener(task -> Log.d("sendDataToAdminSchedule", "onComplete: Booking Confirmed saved"))
                 .addOnFailureListener(e -> Log.d("sendDataToAdminSchedule", "onFailure: " + e.toString()));

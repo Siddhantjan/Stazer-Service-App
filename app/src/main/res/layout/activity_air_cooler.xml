@@ -90,17 +90,29 @@
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
-                            <TextView
-                                android:id="@+id/cardRate1_ac"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/cardTitleAirCooler"
-                                android:layout_marginStart="25dp"
-                                android:padding="8dp"
-                                android:text="Air Cooler : ₹ 299/-"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
+                                android:orientation="horizontal">
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="25dp"
+                                    android:padding="8dp"
+                                    android:text="Air Cooler :"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+
+                                <TextView
+                                    android:id="@+id/coolerRate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>

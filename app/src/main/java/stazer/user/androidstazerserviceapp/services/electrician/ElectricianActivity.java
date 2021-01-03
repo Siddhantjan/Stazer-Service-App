@@ -5,13 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
@@ -20,6 +28,28 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class ElectricianActivity extends AppCompatActivity {
+TextView mEleRate;
+
+    @Override
+    protected void onStart() {
+        FirebaseDatabase.getInstance().getReference().child("RateCards").child("ServiceRates")
+                .child("Electrician").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String rate = Objects.requireNonNull(snapshot.child("rateEle").getValue()).toString();
+                    mEleRate.setText("₹ "+rate);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +57,7 @@ public class ElectricianActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_electrician);
 
+        mEleRate = findViewById(R.id.eleRate);
         findViewById(R.id.btn_book_ele).setOnClickListener(v -> goToElectricianBooking());
         findViewById(R.id.scheduleServiceEle).setOnClickListener(v -> scheduleServiceEle());
 

@@ -89,26 +89,51 @@
                                 android:textColor="@color/colorWhite"
                                 android:textSize="16sp" />
 
-                            <TextView
+                            <LinearLayout
+                                android:layout_below="@+id/cardTitleAc"
                                 android:id="@+id/cardRate1_ac"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/cardTitleAc"
-                                android:layout_marginStart="25dp"
-                                android:padding="8dp"
-                                android:text="Washing Machine(normal) : ₹ 349/-"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
-                            <TextView
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="25dp"
+                                    android:padding="8dp"
+                                    android:text="Washing Machine(normal) :"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                                <TextView
+                                    android:id="@+id/rateMachineNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_below="@+id/cardRate1_ac"
                                 android:id="@+id/cardRate2_ac"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_below="@+id/cardRate1_ac"
-                                android:layout_marginStart="25dp"
-                                android:padding="8dp"
-                                android:text=" Washing Machine(Automatic): ₹449/-"
-                                android:textColor="@color/colorWhite"
-                                android:textSize="14sp" />
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="25dp"
+                                    android:padding="8dp"
+                                    android:text="Washing Machine(Automatic) :"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                                <TextView
+                                    android:id="@+id/rateAutomaticMachine"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:padding="8dp"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
                         </RelativeLayout>
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>

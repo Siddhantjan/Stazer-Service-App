@@ -20,18 +20,18 @@
     <string name="save_btn">Save</string>
 
     <!-- Service Activity -->
-    <string name="notice_rates">* Charges May be Differ according to your Requirements final Charges can be
+    <string name="notice_rates">* Charges may be differ according to your requirements final charges can be
         declared after inspection your site</string>
     <string name="view_rate_card">View Rate Card</string>
 
-    <string name="book_your_service_or_schedule_your_service_on_one_click">Book your Service or Schedule
-        your Service on one Click</string>
+    <string name="book_your_service_or_schedule_your_service_on_one_click">Book your service or schedule
+        your service on one Click</string>
 
-    <string name="no_hidden_charges_taking_by_us">*no hidden Charges taking By us.</string>
+    <string name="no_hidden_charges_taking_by_us">*no hidden charges taking By us.</string>
     <string name="book_now">Book Now</string>
     <string name="schedule_service">Schedule Service</string>
     <!--Indivisual Service Activity -->
-    <string name="charges_for_basic_plumbing_services">Charges For Basic Plumbing Services</string>
+    <string name="charges_for_basic_plumbing_services">Charge For Basic Plumbing Services</string>
     <string name="charge_for_basic_electrical_services">Charge For Basic Electrical Services</string>
     <string name="charge_for_basic_ac_cleaning_service">Charge For Basic Ac Cleaning Service</string>
     <string name="visit_charge_for_book_a_carpenter">Visit Charge For Book a Carpenter</string>

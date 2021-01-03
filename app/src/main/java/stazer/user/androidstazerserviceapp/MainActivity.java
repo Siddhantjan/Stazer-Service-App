@@ -21,8 +21,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,17 +29,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.BookingInfo.BookingActivity;
-import stazer.user.androidstazerserviceapp.BookingProcess.OrderBookingActivity;
-import stazer.user.androidstazerserviceapp.BookingProcess.orderSchduleActivity;
 import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.Common.NetworkChangeListener;
 import stazer.user.androidstazerserviceapp.Company.AboutUsActivity;
@@ -49,8 +43,6 @@ import stazer.user.androidstazerserviceapp.Company.OurVisionActivity;
 import stazer.user.androidstazerserviceapp.Company.TermsAndConditionActivity;
 import stazer.user.androidstazerserviceapp.Education.EducationBooking.RunningCoursesActivity;
 import stazer.user.androidstazerserviceapp.Education.ProgramSectionActivity;
-import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewAdapter;
-import stazer.user.androidstazerserviceapp.HeplerClasses.homeScreenAds.homeScreenAdsRecyclerViewHelperClass;
 import stazer.user.androidstazerserviceapp.HomeAppliance.HomeApplianceActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.AllCleaningServicesActivity;
 import stazer.user.androidstazerserviceapp.services.CleaningServices.CarWash.CarWashingActivity;
@@ -73,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseAuth firebaseAuth;
     private ImageView menuOpenIcon;
     //Home Ads RecyclerView
-    RecyclerView homeScreenAdsLayout;
-    RecyclerView.Adapter homeScreenAdsLayoutAdapter;
+//    RecyclerView homeScreenAdsLayout;
+//    RecyclerView.Adapter homeScreenAdsLayoutAdapter;
     LinearLayout contentView;
 
     //HomeDrawer menu
@@ -179,8 +171,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /* --------------------------------- Close ----------------------------------*/
         //RecyclerView layout for ads
         /* --------------------------------- Start ----------------------------------*/
-        homeScreenAdsLayout = findViewById(R.id.home_screen_ads_recyclerView);
-        homeScreenAdsLayout();
+      //  homeScreenAdsLayout = findViewById(R.id.home_screen_ads_recyclerView);
+        //homeScreenAdsLayout();
 
         /* --------------------------------- Close ----------------------------------*/
 
@@ -418,15 +410,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //layout function RecyclerView
     private void homeScreenAdsLayout() {
-        homeScreenAdsLayout.setHasFixedSize(true);
-        homeScreenAdsLayout.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ArrayList<homeScreenAdsRecyclerViewHelperClass> adsList = new ArrayList<>();
-        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.ac, "Super Offer on Ac Cleaning", "Ac Split : ₹499/-", "Ac window : ₹449/-"));
-        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.refrigerator, "Super Offer on Refrigerator Service", "Single Door : ₹399/-", "MultiDoor : ₹449/-"));
-        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.washinemachine, "Super Offer on Washing Machine Service", "Normal : ₹349/-", "Automatic : ₹449/-"));
-
-        homeScreenAdsLayoutAdapter = new homeScreenAdsRecyclerViewAdapter(adsList);
-        homeScreenAdsLayout.setAdapter(homeScreenAdsLayoutAdapter);
+//        homeScreenAdsLayout.setHasFixedSize(true);
+//        homeScreenAdsLayout.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        ArrayList<homeScreenAdsRecyclerViewHelperClass> adsList = new ArrayList<>();
+//        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.ac, "Super Offer on Ac Cleaning", "Ac Split : ₹499/-", "Ac window : ₹449/-"));
+//        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.refrigerator, "Super Offer on Refrigerator Service", "Single Door : ₹399/-", "MultiDoor : ₹449/-"));
+//        adsList.add(new homeScreenAdsRecyclerViewHelperClass(R.drawable.washinemachine, "Super Offer on Washing Machine Service", "Normal : ₹349/-", "Automatic : ₹449/-"));
+//
+//        homeScreenAdsLayoutAdapter = new homeScreenAdsRecyclerViewAdapter(adsList);
+//        homeScreenAdsLayout.setAdapter(homeScreenAdsLayoutAdapter);
 
     }
 

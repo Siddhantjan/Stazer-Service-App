@@ -178,7 +178,7 @@ public class OrderBookingActivity extends AppCompatActivity {
                     Log.d("Tag", "onComplete: Booking Confirmed saved");
                     AlertDialog.Builder amountDialogBuilder = new AlertDialog.Builder(this);
                     amountDialogBuilder.setTitle("Service Booked");
-                    amountDialogBuilder.setMessage("Your service has been booked. \n" + "We Will Contact you in 10 minutes.\n" + "Tap OK to View your Service");
+                    amountDialogBuilder.setMessage("Your service has been booked. \n" + "We will contact you in few minutes.\n" + "Tap OK to view your service");
                     amountDialogBuilder.setPositiveButton("OK", (dialog, which) -> {
                         Toast.makeText(OrderBookingActivity.this, "you Successfully booked Service.", Toast.LENGTH_SHORT).show();
                         goToBookingActivity();
@@ -203,7 +203,7 @@ public class OrderBookingActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        adminInfoRef.child("Orders").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+        adminInfoRef.child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .setValue(serviceSendAdmin)
                 .addOnCompleteListener(task -> Log.d("sendDataToAdmin", "onComplete: Booking Confirmed saved"))
                 .addOnFailureListener(e -> Log.d("sendDataToAdmin", "onFailure: " + e.toString()));

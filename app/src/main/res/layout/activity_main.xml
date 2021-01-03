@@ -227,13 +227,13 @@
                     android:layout_marginTop="16dp"
                     android:gravity="center"
                     android:padding="8dp">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/home_screen_ads_recyclerView"
+                    <ImageView
+                        android:id="@+id/education"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:background="@color/colorWhite" />
+                        android:layout_height="165dp"
+                        android:elevation="12dp"
+                        android:src="@drawable/education_banner" />
+
                 </RelativeLayout>
                 <!-- Third Layout -->
                 <LinearLayout
@@ -292,7 +292,7 @@
                                     android:layout_height="35sp"
                                     android:layout_marginBottom="2dp"
                                     android:gravity="center"
-                                    android:text="Home Appliance"
+                                    android:text="Home Services"
                                     android:textAlignment="center"
                                     android:textColor="@color/TextPrimary"
                                     android:textSize="12sp" />
@@ -548,13 +548,6 @@
 
                 </LinearLayout>
                 <!-- fourth Layout -->
-                <ImageView
-                    android:id="@+id/education"
-                    android:layout_width="match_parent"
-                    android:layout_height="165dp"
-                    android:elevation="12dp"
-                    android:src="@drawable/education_banner" />
-                <!-- fifth Layout -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -755,7 +748,7 @@
                         android:textSize="12dp" />
 
                 </LinearLayout>
-                <!-- sixth Layout -->
+                <!-- fifth Layout -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

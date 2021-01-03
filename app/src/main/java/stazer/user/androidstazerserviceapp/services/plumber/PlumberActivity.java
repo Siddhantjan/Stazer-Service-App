@@ -7,9 +7,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Calendar;
+import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.AllRatesCard.ElectricianRateCard.ElectricianRateCardActivity;
 import stazer.user.androidstazerserviceapp.AllRatesCard.PlumberRateCard.PlumberRateCardActivity;
@@ -19,6 +26,27 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class PlumberActivity extends AppCompatActivity {
+TextView mServiceRate;
+    @Override
+    protected void onStart() {
+        FirebaseDatabase.getInstance().getReference().child("RateCards").child("ServiceRates")
+                .child("Plumber").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    String rate = Objects.requireNonNull(snapshot.child("ratePlu").getValue()).toString();
+                    mServiceRate.setText("₹ "+rate);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +54,7 @@ public class PlumberActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_plumber);
-
+        mServiceRate = findViewById(R.id.pluRate);
         findViewById(R.id.btn_book_plumber).setOnClickListener(v -> gotoPlumberbooking());
         findViewById(R.id.scheduleServicePlumber).setOnClickListener(v -> scheduleServicePlu());
         findViewById(R.id.plumber_RateCard).setOnClickListener(v -> {

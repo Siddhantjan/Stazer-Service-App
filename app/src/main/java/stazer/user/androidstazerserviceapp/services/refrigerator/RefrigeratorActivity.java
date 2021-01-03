@@ -1,5 +1,6 @@
 package stazer.user.androidstazerserviceapp.services.refrigerator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -7,8 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 import stazer.user.androidstazerserviceapp.AllRatesCard.RefrigeratorRateCard.RefrigeratorRateCardActivity;
 import stazer.user.androidstazerserviceapp.BookingProcess.OrderCategoryActivity;
@@ -17,11 +25,39 @@ import stazer.user.androidstazerserviceapp.Common.Common;
 import stazer.user.androidstazerserviceapp.R;
 
 public class RefrigeratorActivity extends AppCompatActivity {
+    TextView mRateSingleDoor,mRateMultiDoor;
+
+    @Override
+    protected void onStart() {
+        FirebaseDatabase.getInstance().getReference().child("RateCards").child("ServiceRates").child("Refrigerator")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            String singleDoorRate = Objects.requireNonNull(snapshot.child("singleDoor").getValue()).toString();
+                            String multiDoorRate = Objects.requireNonNull(snapshot.child("MultiDoor").getValue()).toString();
+                            mRateSingleDoor.setText("₹ "+singleDoorRate);
+                            mRateMultiDoor.setText("₹"+multiDoorRate);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+        super.onStart();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_refrigerator);
+
+        mRateMultiDoor = findViewById(R.id.multiDoorRate);
+        mRateSingleDoor = findViewById(R.id.rateSingleDoor);
+
         findViewById(R.id.btn_book_refrigerator).setOnClickListener(v -> gotoRefrigeratorbooking());
         findViewById(R.id.scheduleServiceRefrigerator).setOnClickListener(v -> scheduleServiceRefrigerator());
         findViewById(R.id.refrigerator_RateCard).setOnClickListener(v -> {
