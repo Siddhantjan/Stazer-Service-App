@@ -19,19 +19,19 @@
             android:elevation="12dp">
 
             <TextView
-                android:id="@+id/geyser_text"
+                android:id="@+id/carWash_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:padding="8dp"
-                android:text="Car Washing Tyoe"
+                android:text="Car Washing Type"
                 android:textColor="@color/TextPrimary"
                 android:textSize="22sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:layout_below="@+id/geyser_text"
+                android:layout_below="@+id/carWash_text"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="40dp"
                 android:background="@color/colorDivider" />
@@ -98,17 +98,26 @@
 
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:text=" * Full exterior body shampoo and wash"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
 
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:text=" * Customers to provide plug point within 20m and water"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
+                            <TextView
+                                android:id="@+id/priceEco"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:textColor="@color/TextPrimary" />
+
                         </LinearLayout>
 
                         <ImageView
@@ -176,6 +185,14 @@
                                 android:text=" * Customers to provide plug point within 20m and water"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
+                            <TextView
+                                android:id="@+id/priceStandard"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:textColor="@color/TextPrimary"/>
                         </LinearLayout>
 
                         <ImageView
@@ -229,27 +246,32 @@
                                 android:text=" * Full exterior body shampoo and wash"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
-
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" * Inside seats, doors, roof, mats, trunk shampoo and cleaning"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
-
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" * Interior vacuuming and dashboard polishing"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
-
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text=" * Customers to provide plug point within 20m and water"
                                 android:textColor="@color/TextSecondary"
                                 android:textSize="8sp" />
+                            <TextView
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:padding="8dp"
+                                android:textColor="@color/TextPrimary"
+                                android:id="@+id/pricePremium"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
                         </LinearLayout>
 
                         <ImageView
