@@ -94,14 +94,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
-                                String firstName = snapshot.child("firstName").getValue().toString();
-                                String lastName = snapshot.child("lastName").getValue().toString();
-                                String mobileNumber = snapshot.child("phoneNumber").getValue().toString();
+                                String firstName = Objects.requireNonNull(snapshot.child("firstName").getValue()).toString();
+                                String lastName = Objects.requireNonNull(snapshot.child("lastName").getValue()).toString();
+                                String mobileNumber = Objects.requireNonNull(snapshot.child("phoneNumber").getValue()).toString();
                                 String userName = firstName + " " + lastName;
                                 View headerView = navigationView.getHeaderView(0);
                                 TextView txt_name = (TextView) headerView.findViewById(R.id.yourName);
                                 TextView txt_number = (TextView) headerView.findViewById(R.id.yourMobile);
-                                txt_name.setText("Welcome! "+ userName);
+                                txt_name.setText("Welcome! " + userName);
                                 txt_number.setText(mobileNumber);
                                 Log.d("TAG", "onDataChange: User Present");
                             }

@@ -14,7 +14,6 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
-import stazer.user.androidstazerserviceapp.Model.UserModel;
 import stazer.user.androidstazerserviceapp.R;
 
 public class Common {
@@ -29,7 +28,6 @@ public class Common {
     public static final int USER_FEEDBACK_STOP_TIME = 23;
     public static final String COMPANY_CONTACT_NUMBER = "917597014628";
 
-    public static UserModel currentUser;
 
     public static boolean isConnectedToInternet(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
